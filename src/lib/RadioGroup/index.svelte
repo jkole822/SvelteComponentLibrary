@@ -43,7 +43,7 @@
 	aria-label={ariaLabel}
 >
 	{#each options as option}
-		<div class={OptionStyles}>
+		<div class={OptionStyles({ isChecked: $isChecked(option) })}>
 			<button
 				use:melt={$item(option)}
 				class={ButtonStyles}

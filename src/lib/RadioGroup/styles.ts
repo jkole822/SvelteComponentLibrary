@@ -43,7 +43,9 @@ transition-all
 uppercase
 `;
 
-export const OptionStyles = oneLine`
+export const OptionStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
+${isChecked ? '[&:focus-within_label]:text-stone-400 [&:hover_label]:text-stone-400' : ''}
+
 cursor-pointer
 duration-300
 flex
