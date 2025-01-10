@@ -1,0 +1,20 @@
+export const localeOptions = [
+	{ label: "Arabic", value: "ar" },
+	{ label: "German", value: "de" },
+	{ label: "English (UK)", value: "en-UK" },
+	{ label: "English (US)", value: "en-US" },
+	{ label: "Spanish (ES)", value: "es-ES" },
+	{ label: "Spanish (MX)", value: "es-MX" },
+	{ label: "French", value: "fr" },
+	{ label: "Italian", value: "it" },
+	{ label: "Japanese", value: "ja" },
+	{ label: "Korean", value: "ko" },
+	{ label: "Dutch", value: "nl" },
+	{ label: "Portuguese", value: "pt" },
+	{ label: "Russian", value: "ru" },
+	{ label: "Swedish", value: "sv" },
+	{ label: "Turkish", value: "tr" },
+	{ label: "Ukrainian", value: "uk" },
+	{ label: "Vietnamese", value: "vi" },
+	{ label: "Chinese", value: "zh" }
+];
