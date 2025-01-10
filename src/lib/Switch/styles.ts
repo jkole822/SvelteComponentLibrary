@@ -59,7 +59,7 @@ group-hover:text-stone-50
 export const SliderStyles = oneLine`
 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)]
 border-2
-border-gray-700
+border-stone-600
 duration-300
 h-8
 inset-0

@@ -26,7 +26,7 @@ transition-all
 uppercase
 
 disabled:cursor-not-allowed
-disabled:!text-gray-500
+disabled:!text-stone-500
 
 focus:text-stone-50
 
@@ -60,7 +60,7 @@ active:shadow-[0.25rem_0.25rem_0.25rem_rgba(0,0,0,0.4)]
 active:translate-x-px
 active:translate-y-0.5
 
-disabled:!bg-gray-400
+disabled:!bg-stone-400
 disabled:cursor-not-allowed
 
 before:absolute
@@ -96,10 +96,10 @@ text-orange-400
 
 active:scale-100
 
-disabled:!border-gray-400
+disabled:!border-stone-400
 disabled:!scale-100
 disabled:!shadow-none
-disabled:!text-gray-400
+disabled:!text-stone-400
 disabled:cursor-not-allowed
 
 focus:scale-110
