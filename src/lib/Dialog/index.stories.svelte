@@ -2,7 +2,6 @@
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import { fn } from "@storybook/test";
 	import Dialog from "./story.svelte";
-	import { ButtonVariantsEnum } from "../Button/types";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -11,7 +10,7 @@
 		tags: ["autodocs"],
 		argTypes: {},
 		args: {
-			onsubmit: fn()
+			onsubmit: fn(),
 		}
 	});
 </script>
@@ -20,12 +19,11 @@
 <Story
 	name="Basic"
 	args={{
-		buttonText: "Open Dialog",
-		buttonVariant: ButtonVariantsEnum.fill,
 		cancelButtonText: "Cancel",
 		description:
 			"Make changes to your profile here. Click save when you're done.",
 		id: "dialog",
+		open: false,
 		submitButtonText: "Save Changes",
 		title: "Edit profile"
 	}}

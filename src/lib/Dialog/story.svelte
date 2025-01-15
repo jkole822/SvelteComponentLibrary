@@ -6,15 +6,27 @@
 	// Types
 	import type { Props } from "./types";
 	import { AutoCompleteEnum } from "../Input/types";
+	import Button from "../Button/index.svelte";
+	import { ButtonVariantsEnum } from "../Button/types";
 
 	// Props
-	let props: Props = $props();
+	let { id, open, ...rest }: Props = $props();
 
 	// State
+	let openState = $state(false);
 	let name = $state("");
 	let username = $state("");
 
+	// Effects
+	$effect(() => {
+		openState = open;
+	});
+
 	// Helpers
+	const handleOpen = () => {
+		openState = !openState;
+	};
+
 	const handleSubmit = () => {
 		console.log("Name:", name);
 		console.log("Username:", username);
@@ -31,7 +43,24 @@
 	/>
 {/snippet}
 
-<Dialog {...props} {dialogContent} onsubmit={handleSubmit} />
+{#snippet trigger()}
+	<Button
+		ariaControls={id}
+		ariaExpanded={open}
+		onclick={handleOpen}
+		variant={ButtonVariantsEnum.fill}
+		>Open Dialog
+	</Button>
+{/snippet}
+
+<Dialog
+	{...rest}
+	{dialogContent}
+	{id}
+	onsubmit={handleSubmit}
+	open={openState}
+	{trigger}
+/>
 
 <div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
 	Binding Check

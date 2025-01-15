@@ -1,10 +1,7 @@
 <script lang="ts">
 	// Packages
-	import { createDialog, melt } from "@melt-ui/svelte";
+	import { createDialog, createSync, melt } from "@melt-ui/svelte";
 	import { fade } from "svelte/transition";
-
-	// Components
-	import Button from "../Button/index.svelte";
 
 	// Styles
 	import {
@@ -26,23 +23,21 @@
 
 	// Props
 	let {
-		buttonClass,
-		buttonText,
-		buttonVariant,
 		cancelButtonText,
 		className = "",
 		description,
 		dialogContent,
 		id,
 		onsubmit,
+		open,
 		submitButtonText,
-		title
+		title,
+		trigger
 	}: Props = $props();
 
 	// MeltUI
 	const {
 		elements: {
-			trigger,
 			overlay,
 			content,
 			title: meltTitle,
@@ -50,28 +45,29 @@
 			close,
 			portalled
 		},
-		states: { open }
+		states
 	} = createDialog({
 		forceVisible: true
 	});
+
+	const sync = createSync(states);
+
+	$effect(() => {
+		sync.open(open, v => (open = v));
+	});
 </script>
 
-<Button
-	{...$trigger}
-	ariaControls={id}
-	ariaExpanded={$open}
-	className={buttonClass}
-	variant={buttonVariant}
-	>{buttonText}
-</Button>
+{#if trigger}
+	{@render trigger()}
+{/if}
 
-{#if $open}
-	<div use:melt={$portalled} {className}>
+{#if open}
+	<div use:melt={$portalled} class={className} id={String(id)}>
 		<div
 			use:melt={$overlay}
 			class={OverlayStyles}
 			transition:fade={{ duration: 200 }}
-		/>
+		></div>
 		<div
 			class={ContentStyles}
 			transition:flyAndScale={{
@@ -110,7 +106,7 @@
 				aria-label="close"
 				class={CloseButtonStyles}
 			>
-				<i class="fa-solid fa-xmark" />
+				<i class="fa-solid fa-xmark"></i>
 			</button>
 		</div>
 	</div>

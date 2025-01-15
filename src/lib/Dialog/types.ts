@@ -1,16 +1,14 @@
-import type { ButtonVariants } from "../Button/types";
 import type { Snippet } from "svelte";
 
 export interface Props {
-	buttonClass?: string;
-	buttonText: string;
-	buttonVariant: ButtonVariants;
-	cancelButtonText?: string
+	cancelButtonText?: string;
 	className?: string;
 	description?: string;
 	dialogContent: Snippet;
 	id: number | string;
 	onsubmit?: () => void;
+	open: boolean;
 	submitButtonText?: string;
 	title?: string;
+	trigger?: Snippet;
 }
