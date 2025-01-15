@@ -11,8 +11,6 @@
 
 	// Props
 	let {
-		ariaControls,
-		ariaExpanded,
 		ariaLabel,
 		buttonContent,
 		className = "",
