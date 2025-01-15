@@ -15,7 +15,7 @@
 </script>
 
 {#snippet template()}
-	<i class="fa-solid fa-ghost" />
+	<i class="fa-solid fa-ghost"></i>
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->

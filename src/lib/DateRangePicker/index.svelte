@@ -92,7 +92,7 @@
 			{/key}
 			<div>
 				<button use:melt={$trigger}>
-					<i class="fa-solid fa-calendar" />
+					<i class="fa-solid fa-calendar"></i>
 				</button>
 			</div>
 		</div>
@@ -102,13 +102,13 @@
 			<div use:melt={$calendar} class={CalendarStyles}>
 				<header class={HeaderStyles}>
 					<button use:melt={$prevButton}>
-						<i class="fa-solid fa-chevron-left" />
+						<i class="fa-solid fa-chevron-left"></i>
 					</button>
 					<div use:melt={$heading} class={HeaderTextStyles}>
 						{$headingValue}
 					</div>
 					<button use:melt={$nextButton}>
-						<i class="fa-solid fa-chevron-right" />
+						<i class="fa-solid fa-chevron-right"></i>
 					</button>
 				</header>
 				<div>

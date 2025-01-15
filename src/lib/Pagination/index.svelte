@@ -14,7 +14,7 @@
 		className,
 		count,
 		defaultPage,
-        ellipsis,
+		ellipsis,
 		onPageChange,
 		perPage,
 		siblingCount
@@ -28,7 +28,7 @@
 		count,
 		perPage,
 		defaultPage,
-        onPageChange,
+		onPageChange,
 		siblingCount
 	});
 </script>
@@ -36,7 +36,7 @@
 <nav class={NavigationStyles} aria-label={ariaLabel} use:melt={$root}>
 	<div class={ContainerStyles}>
 		<button class={ButtonStyles} use:melt={$prevButton}
-			><i class="fa-solid fa-chevron-left" /></button
+			><i class="fa-solid fa-chevron-left"></i></button
 		>
 		{#each $pages as page (page.key)}
 			{#if page.type === "ellipsis" && ellipsis}
@@ -48,7 +48,7 @@
 			{/if}
 		{/each}
 		<button class={ButtonStyles} use:melt={$nextButton}
-			><i class="fa-solid fa-chevron-right" /></button
+			><i class="fa-solid fa-chevron-right"></i></button
 		>
 	</div>
 </nav>

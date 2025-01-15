@@ -30,7 +30,7 @@
 {#snippet templateOne()}
 	<div class="flex gap-2 items-center">
 		<span>Button</span>
-		<i class="fa-solid fa-arrow-right" />
+		<i class="fa-solid fa-arrow-right"></i>
 	</div>
 {/snippet}
 

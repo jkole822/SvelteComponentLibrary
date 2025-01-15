@@ -57,10 +57,10 @@
 		transition:fade={{ duration: 100 }}
 		class={ContentStyles}
 	>
-		<div use:melt={$arrow} />
+		<div use:melt={$arrow}></div>
 		{@render popoverContent()}
 		<button use:melt={$close} class={CloseButtonStyles}>
-			<i class="fa-solid fa-xmark" />
+			<i class="fa-solid fa-xmark"></i>
 		</button>
 	</div>
 {/if}

@@ -62,14 +62,14 @@
 			value={$value[0]}
 		/>
 		<span class={RangeContainerStyles}>
-			<span use:melt={$range} class={RangeStyles} />
+			<span use:melt={$range} class={RangeStyles}></span>
 		</span>
 		{#if useMultiValue}
 			{#each $thumbs as thumb}
-				<span use:melt={thumb} class={ThumbStyles} />
+				<span use:melt={thumb} class={ThumbStyles}></span>
 			{/each}
 		{:else}
-			<span use:melt={$thumbs[0]} class={ThumbStyles} />
+			<span use:melt={$thumbs[0]} class={ThumbStyles}></span>
 		{/if}
 	</span>
 </div>

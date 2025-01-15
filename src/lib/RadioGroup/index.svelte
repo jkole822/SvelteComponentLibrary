@@ -55,7 +55,7 @@
 					style:transform={$isChecked(option)
 						? "scale(0)"
 						: "scale(1)"}
-				/>
+				></div>
 			</button>
 			<label
 				class={LabelStyles({ isChecked: $isChecked(option) })}

@@ -16,7 +16,7 @@
 </script>
 
 {#snippet buttonContent()}
-	<i class="fa-solid fa-ghost" />
+	<i class="fa-solid fa-ghost"></i>
 {/snippet}
 
 {#snippet popoverContent()}
