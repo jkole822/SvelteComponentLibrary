@@ -84,7 +84,7 @@ focus:!ring-0
 `;
 
 export const TriggerStyles = oneLine`
-bg-white
+bg-transparent
 flex
 h-10
 items-center
@@ -94,13 +94,14 @@ outline-none
 px-3
 py-2
 relative
-ring-orange-300
+ring-2
+ring-stone-200
 rounded-md
 select-trigger
-text-orange-800
+text-stone-200
 transition-opacity
 
-focus:ring-2
+focus:ring-orange-400
 
 hover:opacity-90
 `;
@@ -110,13 +111,18 @@ export const VectorContainerStyles = ({
 }: {
 	isOpen: boolean;
 }) => oneLine`
-${isOpen ? "rotate-0" : "rotate-180"}
+${isOpen ? `
+rotate-0
+text-orange-500
+` : `
+rotate-180
+text-stone-200
+`}
 
 -translate-y-1/2
 absolute
 select-vector-container
 right-2
-text-orange-700
 top-1/2
 z-10
 transition-all

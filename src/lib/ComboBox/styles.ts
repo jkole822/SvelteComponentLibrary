@@ -25,7 +25,7 @@ gap-1
 `;
 
 export const InputStyles = oneLine`
-bg-white
+bg-transparent
 combo-box-input
 duration-200
 ease-in-out
@@ -36,14 +36,15 @@ justify-between
 outline-none
 pr-4
 px-3
-ring-orange-400
+ring-2
+ring-stone-200
 rounded-md
-text-stone-700
+text-stone-200
 text-sm
 transition-all
 w-full
 
-focus:ring-2
+focus:ring-orange-400
 `;
 
 export const LabelStyles = oneLine`
@@ -122,13 +123,18 @@ export const VectorContainerStyles = ({
 }: {
 	isOpen: boolean;
 }) => oneLine`
-${isOpen ? "rotate-0" : "rotate-180"}
+${isOpen ? `
+rotate-0
+text-orange-500
+` : `
+rotate-180
+text-stone-200
+`}
 
 -translate-y-1/2
 absolute
 combo-box-vector-container
 right-2
-text-orange-700
 top-1/2
 z-10
 transition-all

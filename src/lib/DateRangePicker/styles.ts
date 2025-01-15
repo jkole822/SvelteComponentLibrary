@@ -101,7 +101,7 @@ date-range-picker-container
 [&_[data-melt-popover-trigger]]:outline-none
 [&_[data-melt-popover-trigger]]:py-0.5
 [&_[data-melt-popover-trigger]]:px-1.5
-[&_[data-melt-popover-trigger]]:ring-orange-400
+[&_[data-melt-popover-trigger]]:ring-orange-300
 [&_[data-melt-popover-trigger]]:rounded-md
 [&_[data-melt-popover-trigger]]:text-sm
 [&_[data-melt-popover-trigger]]:text-stone-100
@@ -118,20 +118,20 @@ date-range-picker-container
 [&_[data-melt-datefield-label]]:tracking-wide
 [&_[data-melt-datefield-label]]:uppercase
 
-[&_[data-melt-datefield-field]]:bg-stone-100
+[&_[data-melt-datefield-field]]:bg-transparent
 [&_[data-melt-datefield-field]]:flex
 [&_[data-melt-datefield-field]]:h-10
 [&_[data-melt-datefield-field]]:items-center
 [&_[data-melt-datefield-field]]:min-w-40
 [&_[data-melt-datefield-field]]:mt-1
 [&_[data-melt-datefield-field]]:px-3
-[&_[data-melt-datefield-field]]:ring-orange-400
+[&_[data-melt-datefield-field]]:ring-2
+[&_[data-melt-datefield-field]]:ring-stone-200
 [&_[data-melt-datefield-field]]:rounded-md
-[&_[data-melt-datefield-field]]:shadow-md
-[&_[data-melt-datefield-field]]:text-orange-800
+[&_[data-melt-datefield-field]]:text-stone-200
 [&_[data-melt-datefield-field]]:w-full
 
-[&_[data-melt-datefield-field]:focus-within]:ring-2
+[&_[data-melt-datefield-field]:focus-within]:ring-orange-400
 
 [&_[data-melt-datefield-field]_.separator]:px-2
 
@@ -139,7 +139,8 @@ date-range-picker-container
 [&_[data-melt-datefield-label][data-invalid]]:text-red-500
 
 [&_[data-melt-datefield-segment]]:outline-none
-[&_[data-melt-datefield-segment]]:ring-orange-400
+[&_[data-melt-datefield-segment]]:ring-orange-300
+[&_[data-melt-datefield-segment]]:rounded
 
 [&_[data-melt-datefield-segment]:focus]:ring-2
 
