@@ -30,19 +30,19 @@
 
 <div class={`${className} ${ContainerStyles}`} {...$root}>
 	{#each items as { id, title, description }, i}
-		<div use:melt={$item(id)} class={SectionStyles}>
+		<div use:melt={$item(String(id))} class={SectionStyles}>
 			<svelte:element this={headingLevel} class={HeadingStyles}>
 				<button
-					use:melt={$trigger(id)}
+					use:melt={$trigger(String(id))}
 					class={ButtonStyles({ isFirstItem: i !== 0 })}
 				>
 					{title}
 				</button>
 			</svelte:element>
-			{#if $isSelected(id)}
+			{#if $isSelected(String(id))}
 				<div
 					class={ContentStyles}
-					use:melt={$content(id)}
+					use:melt={$content(String(id))}
 					transition:slide
 				>
 					<div class={DescriptionStyles}>
