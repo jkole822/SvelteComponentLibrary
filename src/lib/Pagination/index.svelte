@@ -33,7 +33,11 @@
 	});
 </script>
 
-<nav class={NavigationStyles} aria-label={ariaLabel} use:melt={$root}>
+<nav
+	class={`${className} ${NavigationStyles}`}
+	aria-label={ariaLabel}
+	use:melt={$root}
+>
 	<div class={ContainerStyles}>
 		<button class={ButtonStyles} use:melt={$prevButton}
 			><i class="fa-solid fa-chevron-left"></i></button
