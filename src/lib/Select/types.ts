@@ -10,6 +10,7 @@ export interface Props {
     ariaLabel: string;
 	className?: string;
 	defaultSelected?: CreateSelectProps<string>["defaultSelected"];
+	disabled?: boolean;
 	label: string;
 	onSelectedChange?: CreateSelectProps<string>["onSelectedChange"];
 	options: any;

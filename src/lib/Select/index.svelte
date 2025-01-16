@@ -23,6 +23,7 @@
 		ariaLabel,
 		className = "",
 		defaultSelected,
+		disabled = false,
 		label,
 		onSelectedChange,
 		options,
@@ -43,6 +44,7 @@
 		helpers: { isSelected }
 	} = createSelect<string>({
 		defaultSelected,
+		disabled,
 		forceVisible: true,
 		onSelectedChange,
 		positioning: {

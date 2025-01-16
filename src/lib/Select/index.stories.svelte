@@ -7,7 +7,9 @@
 		title: "Select",
 		component: Select,
 		tags: ["autodocs"],
-		argTypes: {}
+		argTypes: {
+			disabled: { control: "boolean" }
+		}
 	});
 
 	const options = {

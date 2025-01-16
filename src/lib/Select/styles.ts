@@ -101,6 +101,13 @@ select-trigger
 text-stone-200
 transition-opacity
 
+disabled:cursor-not-allowed
+disabled:ring-stone-600
+disabled:text-stone-600
+
+[&:disabled_.select-vector-container]:text-stone-600
+
+
 focus:ring-orange-400
 
 hover:opacity-90
