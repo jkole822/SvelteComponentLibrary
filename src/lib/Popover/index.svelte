@@ -14,6 +14,8 @@
 		ariaLabel,
 		buttonContent,
 		className = "",
+		disabled = false,
+		isIconButton,
 		popoverContent
 	}: Props = $props();
 
@@ -23,7 +25,8 @@
 	// Derived
 	let buttonProps = $derived({
 		"aria-label": ariaLabel,
-		class: `${className} ${ButtonStyles}`
+		class: `${className} ${ButtonStyles({ isIconButton })}`,
+		disabled
 	});
 
 	// MeltUI

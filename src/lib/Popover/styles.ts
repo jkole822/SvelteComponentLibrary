@@ -1,29 +1,48 @@
 import { oneLine } from "common-tags";
 
-export const ButtonStyles = oneLine`
+export const ButtonStyles = ({
+	isIconButton
+}: {
+	isIconButton?: boolean;
+}) => oneLine`
+${
+	isIconButton
+		? `
+rounded-full
+size-12
+text-3xl
+`
+		: `
+rounded-md
+font-bold
+px-6
+py-3
+tracking-wider
+uppercase
+`
+}
+
 [&_.trigger-content]:z-10
 
 bg-stone-100
 duration-300
 ease-in-out
 flex
-h-12
 items-center
 justify-center
 outline-none
 overflow-hidden
 popover-button
 relative
-rounded-full
-text-3xl
 text-stone-700
 tooltip-button
 transition-all
-w-12
 
 disabled:!bg-stone-400
 disabled:cursor-not-allowed
 disabled:text-stone-100
+
+[&:disabled:hover:before]:h-0
 
 focus-visible:text-stone-50
 

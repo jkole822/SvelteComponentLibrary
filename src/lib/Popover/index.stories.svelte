@@ -7,7 +7,10 @@
 		title: "Popover",
 		component: Popover,
 		tags: ["autodocs"],
-		argTypes: {}
+		argTypes: {
+			disabled: { control: "boolean" },
+			isIconButton: { control: "boolean" }
+		}
 	});
 </script>
 

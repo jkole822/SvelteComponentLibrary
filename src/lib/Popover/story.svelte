@@ -8,7 +8,7 @@
 	import { AutoCompleteEnum } from "../Input/types";
 
 	// Props
-	let props: Props = $props();
+	let { isIconButton, ...rest }: Props = $props();
 
 	// State
 	let name = $state("");
@@ -16,7 +16,11 @@
 </script>
 
 {#snippet buttonContent()}
-	<i class="fa-solid fa-ghost"></i>
+	{#if isIconButton}
+		<i aria-hidden="true" class="fa-solid fa-ghost"></i>
+	{:else}
+		<span>Open Popover</span>
+	{/if}
 {/snippet}
 
 {#snippet popoverContent()}
@@ -29,7 +33,7 @@
 	/>
 {/snippet}
 
-<Popover {...props} {buttonContent} {popoverContent} />
+<Popover {...rest} {buttonContent} {isIconButton} {popoverContent} />
 
 <div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
 	Binding Check
