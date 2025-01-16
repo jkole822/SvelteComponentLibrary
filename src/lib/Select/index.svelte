@@ -21,7 +21,7 @@
 	// Props
 	let {
 		ariaLabel,
-		className,
+		className = "",
 		defaultSelected,
 		label,
 		onSelectedChange,

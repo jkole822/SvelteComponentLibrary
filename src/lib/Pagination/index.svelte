@@ -11,7 +11,7 @@
 	// Props
 	let {
 		ariaLabel,
-		className,
+		className = "",
 		count,
 		defaultPage,
 		ellipsis,
