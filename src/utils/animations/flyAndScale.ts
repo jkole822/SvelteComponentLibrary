@@ -1,9 +1,12 @@
 import { quadInOut } from "svelte/easing";
 
-export const flyAndScale = (node, { duration, transform }) => {
+export const flyAndScale = (
+	node: any,
+	{ duration, transform }: { duration: number; transform: string }
+) => {
 	return {
 		duration,
-		css: time => {
+		css: (time: number) => {
 			const easing = quadInOut(time);
 
 			return `
