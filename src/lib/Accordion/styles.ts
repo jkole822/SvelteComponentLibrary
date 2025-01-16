@@ -1,14 +1,8 @@
 import { oneLine } from "common-tags";
 
-export const ButtonStyles = ({
-	isFirstItem
-}: {
-	isFirstItem: boolean;
-}) => oneLine`
-${isFirstItem ? "border-t border-t-neutral-300" : ""}
-
+export const ButtonStyles = oneLine`
 accordion-button
-bg-stone-100
+bg-stone-700
 cursor-pointer
 flex
 flex-grow
@@ -20,29 +14,28 @@ outline-none
 px-5
 py-5
 text-left
-text-stone-700
+text-stone-200
 transition-colors
 
-focus-visible:text-orange-600
+focus-visible:text-orange-400
 
-hover:bg-stone-200
+hover:bg-stone-600
 `;
 
 export const ContainerStyles = oneLine`
 accordion-container
-bg-stone-100
+bg-stone-700
 mx-auto
 rounded-md
-shadow-md
 `;
 
 export const ContentStyles = oneLine`
 accordion-content
-bg-orange-100
+bg-orange-200
 overflow-hidden
 shadow-[inset_0px_1px_0px_rgb(214,211,209)]
 text-sm
-text-stone-900
+text-stone-700
 `;
 
 export const DescriptionStyles = oneLine`
@@ -61,7 +54,7 @@ accordion-section
 overflow-hidden
 transition-colors
 
-first:rounded-t-xl
+first:rounded-t-md
 
-last:rounded-b-xl
+last:rounded-b-md
 `;

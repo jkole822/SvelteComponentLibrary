@@ -32,10 +32,7 @@
 	{#each items as { id, title, description }, i}
 		<div use:melt={$item(String(id))} class={SectionStyles}>
 			<svelte:element this={headingLevel} class={HeadingStyles}>
-				<button
-					use:melt={$trigger(String(id))}
-					class={ButtonStyles({ isFirstItem: i !== 0 })}
-				>
+				<button use:melt={$trigger(String(id))} class={ButtonStyles}>
 					{title}
 				</button>
 			</svelte:element>
