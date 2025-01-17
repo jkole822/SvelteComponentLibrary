@@ -58,6 +58,7 @@
 			aria-hidden="true"
 			class={InputStyles}
 			{id}
+			tabindex="-1"
 			type="number"
 			value={$value[0]}
 		/>
@@ -66,10 +67,18 @@
 		</span>
 		{#if useMultiValue}
 			{#each $thumbs as thumb}
-				<span use:melt={thumb} class={ThumbStyles}></span>
+				<span
+					use:melt={thumb}
+					aria-label="slider-control"
+					class={ThumbStyles}
+				></span>
 			{/each}
 		{:else}
-			<span use:melt={$thumbs[0]} class={ThumbStyles}></span>
+			<span
+				use:melt={$thumbs[0]}
+				aria-label="slider-control"
+				class={ThumbStyles}
+			></span>
 		{/if}
 	</span>
 </div>

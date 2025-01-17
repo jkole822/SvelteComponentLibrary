@@ -1,6 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Slider from "./index.svelte";
+	import Slider from "./story.svelte";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -20,10 +20,6 @@
 		label: "Lorem Ipsum",
 		max: 100,
 		min: 0,
-		onValueChange: ({ next }) => {
-			console.log(next);
-			return next;
-		},
 		step: 1
 	}}
 />
@@ -36,10 +32,7 @@
 		label: "Lorem Ipsum",
 		max: 100,
 		min: 0,
-		onValueChange: ({ next }) => {
-			console.log(next);
-			return next;
-		},
+
 		step: 1,
 		useMultiValue: true
 	}}

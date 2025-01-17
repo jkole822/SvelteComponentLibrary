@@ -14,6 +14,7 @@
 	// Props
 	let {
 		className = "",
+		id,
 		inputType = InputTypeEnum.text,
 		name,
 		value = $bindable(),
@@ -42,10 +43,11 @@
 	<input
 		bind:value
 		class={InputStyles({ hasValue })}
+		{id}
 		type={inputType}
 		{...props}
 	/>
-	<label class={LabelStyles}>
+	<label class={LabelStyles} for={id}>
 		{#each characters as char}
 			{@render splitCharacters(char.char, char.delay)}
 		{/each}

@@ -9,7 +9,7 @@
 	let { value, ...rest }: Props = $props();
 
 	// State
-	let valueState = $state("");
+	let valueState: Date | number | string = $state("");
 
 	// Effects
 	$effect(() => {
@@ -17,7 +17,7 @@
 	});
 </script>
 
-<Input {...rest} bind:value={valueState} />
+<Input {...rest} bind:value={valueState} id="lorem" />
 
 <div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
 	Binding Check

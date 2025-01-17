@@ -36,4 +36,6 @@ export interface Props extends HTMLAttributes<HTMLInputElement> {
 	autoComplete?: AutoCompleteType;
 	className?: string;
 	inputType?: InputType;
+	name: string;
+	value: Date | number | string;
 }

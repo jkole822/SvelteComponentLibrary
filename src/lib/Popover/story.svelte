@@ -24,11 +24,12 @@
 {/snippet}
 
 {#snippet popoverContent()}
-	<Input autoComplete={AutoCompleteEnum.name} bind:value={name} name="Name" />
+	<Input autoComplete={AutoCompleteEnum.name} bind:value={name} id="name" name="Name" />
 	<Input
 		autoComplete={AutoCompleteEnum.username}
 		bind:value={username}
 		className="mt-4"
+		id="username"
 		name="Username"
 	/>
 {/snippet}

@@ -75,7 +75,7 @@
 						{data.description}
 					</div>
 				</div>
-				<button use:melt={$close(id)} class={CloseButtonStyles}>
+				<button use:melt={$close(id)} aria-label="close" class={CloseButtonStyles}>
 					<i class={CloseButtonIconStyles}></i></button
 				>
 			</div>

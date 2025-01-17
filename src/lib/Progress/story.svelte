@@ -1,19 +1,25 @@
 <script lang="ts">
-    // Packages
-    import { writable } from 'svelte/store';
+	// Packages
+	import { writable } from "svelte/store";
 
-    // Components
+	// Components
 	import Progress from "./index.svelte";
 
+	// Types
+	import type { Props } from "./types";
+
+	// Props
+	let { ariaLabel }: Props = $props();
+
 	// State
-    const value = writable(25);
+	const value = writable(25);
 
 	// Helpers
 	const sleep = (ms: number) =>
 		new Promise(resolve => setTimeout(resolve, ms));
 	sleep(1000).then(() => {
-        value.set(100);
+		value.set(100);
 	});
 </script>
 
-<Progress {value} />
+<Progress {ariaLabel} {value} />

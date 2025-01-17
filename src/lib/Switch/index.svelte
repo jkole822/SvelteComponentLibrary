@@ -25,6 +25,7 @@
 		bind:checked
 		class={InputStyles}
 		{disabled}
+		tabindex="-1"
 		type="checkbox"
 	/>
 	<span class={SliderStyles}></span>

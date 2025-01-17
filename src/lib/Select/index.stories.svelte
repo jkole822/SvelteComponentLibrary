@@ -25,6 +25,10 @@
 		ariaLabel: "Flavor Selection",
 		label: "Favorite Flavor",
 		options,
+		onSelectedChange: ({ next }) => {
+			console.log(next);
+			return next;
+		},
 		placeholder: "Select a flavor"
 	}}
 />

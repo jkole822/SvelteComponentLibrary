@@ -62,7 +62,7 @@
 	>
 		<div use:melt={$arrow}></div>
 		{@render popoverContent()}
-		<button use:melt={$close} class={CloseButtonStyles}>
+		<button use:melt={$close} aria-label="close" class={CloseButtonStyles}>
 			<i class="fa-solid fa-xmark"></i>
 		</button>
 	</div>
