@@ -35,8 +35,7 @@
 			},
 			max: { control: "number" },
 			min: { control: "number" },
-			required: { control: "boolean" },
-			step: { control: "number" }
+			required: { control: "boolean" }
 		}
 	});
 </script>

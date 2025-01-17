@@ -81,7 +81,7 @@
 
 <div class={`${className} ${ContainerStyles}`}>
 	<div class={FormControlStyles}>
-		<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
+		<!-- svelte-ignore a11y_label_has_associated_control - $label contains the 'for' attribute -->
 		<label use:melt={$meltLabel}>
 			<span class={LabelStyles}>{label}</span>
 		</label>
@@ -98,7 +98,7 @@
 			use:melt={$menu}
 			transition:fly={{ duration: 150, y: -5 }}
 		>
-			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<div class={ScrollContainerStyles} tabindex="0">
 				{#each filteredOptions as option, index (index)}
 					<li

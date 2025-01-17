@@ -33,7 +33,7 @@ export interface Props {
 	className?: string;
 	disabled?: boolean;
 	href?: string;
-	id?: number | string;
+	id?: string;
 	onclick?: () => void;
 	tabIndex?: number;
 	target?: "_blank" | "_self" | "_parent" | "_top" | "framename";

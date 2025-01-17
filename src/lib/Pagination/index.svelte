@@ -39,19 +39,21 @@
 	use:melt={$root}
 >
 	<div class={ContainerStyles}>
-		<button class={ButtonStyles} use:melt={$prevButton}
-			><i class="fa-solid fa-chevron-left"></i></button
-		>
+		<!-- svelte-ignore a11y_consider_explicit_label -->
+		<button use:melt={$prevButton} class={ButtonStyles}>
+			<i class="fa-solid fa-chevron-left"></i>
+		</button>
 		{#each $pages as page (page.key)}
 			{#if page.type === "ellipsis" && ellipsis}
 				{@render ellipsis()}
 			{:else}
-				<button class={ButtonStyles} use:melt={$pageTrigger(page)}
-					>{page.value}</button
-				>
+				<button class={ButtonStyles} use:melt={$pageTrigger(page)}>
+					{page.value}
+				</button>
 			{/if}
 		{/each}
-		<button class={ButtonStyles} use:melt={$nextButton}
+		<!-- svelte-ignore a11y_consider_explicit_label -->
+		<button use:melt={$nextButton} class={ButtonStyles}
 			><i class="fa-solid fa-chevron-right"></i></button
 		>
 	</div>

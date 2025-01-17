@@ -56,7 +56,7 @@
 </script>
 
 <div class={`${className} ${ContainerStyles}`}>
-	<!-- svelte-ignore a11y-label-has-associated-control - $label contains the 'for' attribute -->
+	<!-- svelte-ignore a11y_label_has_associated_control - $label contains the 'for' attribute -->
 	<label class={LabelStyles} use:melt={$meltLabel}>{label}</label>
 	<button class={TriggerStyles} use:melt={$trigger} aria-label={ariaLabel}>
 		{$selectedLabel || placeholder}

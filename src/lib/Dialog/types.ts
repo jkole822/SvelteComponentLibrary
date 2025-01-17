@@ -5,7 +5,7 @@ export interface Props {
 	className?: string;
 	description?: string;
 	dialogContent: Snippet;
-	id: number | string;
+	id: string;
 	onsubmit?: () => void;
 	open: boolean;
 	submitButtonText?: string;

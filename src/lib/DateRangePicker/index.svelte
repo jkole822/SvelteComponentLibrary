@@ -64,6 +64,7 @@
 		label="Locale"
 		onSelectedChange={({ next }) => {
 			if (next) {
+				//@ts-ignore
 				locale.set(next.value.value);
 			}
 
@@ -91,6 +92,7 @@
 				{/each}
 			{/key}
 			<div>
+				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button use:melt={$trigger}>
 					<i class="fa-solid fa-calendar"></i>
 				</button>
@@ -101,12 +103,14 @@
 		<div transition:fade={{ duration: 100 }} use:melt={$content}>
 			<div use:melt={$calendar} class={CalendarStyles}>
 				<header class={HeaderStyles}>
+					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button use:melt={$prevButton}>
 						<i class="fa-solid fa-chevron-left"></i>
 					</button>
 					<div use:melt={$heading} class={HeaderTextStyles}>
 						{$headingValue}
 					</div>
+					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button use:melt={$nextButton}>
 						<i class="fa-solid fa-chevron-right"></i>
 					</button>
