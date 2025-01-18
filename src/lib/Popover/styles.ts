@@ -24,7 +24,7 @@ uppercase
 
 [&_.trigger-content]:z-10
 
-bg-stone-100
+bg-transparent
 duration-300
 ease-in-out
 flex
@@ -34,7 +34,9 @@ outline-none
 overflow-hidden
 popover-button
 relative
-text-stone-700
+ring-2
+ring-orange-500
+text-orange-500
 tooltip-button
 transition-all
 
@@ -46,7 +48,7 @@ disabled:text-stone-100
 
 focus-visible:text-stone-50
 
-hover:text-stone-50
+hover:text-stone-800
 
 before:absolute
 before:bg-orange-500
