@@ -15,3 +15,9 @@ tooltip-tooltip
 z-10
 md:max-w-60
 `;
+
+export const TriggerStyles = oneLine`
+outline-none
+tooltip-trigger
+w-fit
+`;
