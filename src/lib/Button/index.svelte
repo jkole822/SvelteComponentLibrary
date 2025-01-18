@@ -68,10 +68,10 @@
 	});
 </script>
 
-{#if !!href}
-	<a {...derivedProps}>{@render children()}</a>
-{:else if !!action}
+{#if !!action}
 	<button {...derivedProps} use:action>{@render children()}</button>
 {:else}
-	<button {...derivedProps}>{@render children()}</button>
+	<svelte:element this={!!href ? "a" : "button"} {...derivedProps}>
+		{@render children()}
+	</svelte:element>
 {/if}
