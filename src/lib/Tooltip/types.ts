@@ -1,7 +1,7 @@
-import type { Props as ButtonProps } from "../Button/types";
+import type { Snippet } from "svelte";
 
-export interface Props extends ButtonProps {
-	nonInteractive?: boolean;
+export interface Props {
+	children: Snippet;
+	className?: string;
 	text: string;
-	triggerClass?: string;
 }

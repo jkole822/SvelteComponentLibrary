@@ -44,7 +44,7 @@
 	} = createLabel();
 
 	// Derived
-	let isMultiValue = $derived(value.get().length);
+	let isMultiValue = $derived($value.length > 1);
 </script>
 
 <div class={className}>
