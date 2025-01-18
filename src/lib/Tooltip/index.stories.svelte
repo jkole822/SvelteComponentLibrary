@@ -24,6 +24,6 @@
 	name="Basic"
 	args={{
 		children,
-		text: faker.lorem.sentence()
+		text: faker.lorem.sentence(),
 	}}
 />

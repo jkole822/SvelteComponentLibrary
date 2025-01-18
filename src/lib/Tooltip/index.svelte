@@ -4,11 +4,15 @@
 	import { fly } from "svelte/transition";
 
 	// Styles
-	import { TextStyles, TooltipStyles } from "./styles";
+	import { TextStyles, TooltipStyles, TriggerStyles } from "./styles";
 
 	// Types
 	import type { Props } from "./types";
 
+	// Props
+	let { children, className = "", text, triggerClass }: Props = $props();
+
+	// MeltUI
 	const {
 		elements: { trigger, content, arrow },
 		states: { open }
@@ -20,15 +24,12 @@
 		closeDelay: 0,
 		closeOnPointerDown: false
 	});
-
-	// Props
-	let { children, className = "", text }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
 	use:melt={$trigger}
-	class="inline-block outline-none"
+	class={`${triggerClass} ${TriggerStyles}`}
 	role="tooltip"
 	tabindex="0"
 >
