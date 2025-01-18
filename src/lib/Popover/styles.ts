@@ -40,9 +40,9 @@ text-orange-500
 tooltip-button
 transition-all
 
-disabled:!bg-stone-400
+disabled:!ring-stone-400
+disabled:!text-stone-400
 disabled:cursor-not-allowed
-disabled:text-stone-100
 
 [&:disabled:hover:before]:h-0
 

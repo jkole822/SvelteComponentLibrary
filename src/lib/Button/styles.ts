@@ -89,14 +89,14 @@ hover:before:w-7
 export const OutlineButtonStyles = oneLine`
 ${SharedStyles}
 bg-transparent
-border-2
-border-orange-400
+ring-2
+ring-orange-400
 overflow-hidden
 text-orange-400
 
 active:scale-100
 
-disabled:!border-stone-400
+disabled:!ring-stone-400
 disabled:!scale-100
 disabled:!shadow-none
 disabled:!text-stone-400
