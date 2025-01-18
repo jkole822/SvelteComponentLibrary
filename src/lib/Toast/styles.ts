@@ -18,19 +18,19 @@ ease-in
 h-6
 outline-none
 p-1
-right-5
+right-2
 ring-orange-400
 rounded-full
 text-center
 text-orange-600
 toast-close-button
-top-5
+top-2
 transition-all
 w-6
 
-hover:bg-orange-100
-
 focus:ring-2
+
+hover:bg-orange-100
 `;
 
 export const ContainerStyles = oneLine`
@@ -50,21 +50,16 @@ md:top-auto
 
 export const DescriptionStyles = oneLine`
 text-stone-400
+text-sm
 toast-description
-`;
-
-export const StatusIndicatorStyles = ({ color }: { color: string }) => oneLine`
-${color}
-h-1.5
-rounded-full
-toast-status-indicator
-w-1.5
 `;
 
 export const ToastContainerStyles = oneLine`
 bg-stone-900
-rounded-xl
-shadow-medium
+border-[1px]
+border-stone-600
+rounded-md
+shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),_0_4px_6px_-4px_rgb(0_0_0_/_0.1)]
 toast-toast-container
 `;
 
@@ -74,18 +69,14 @@ gap-4
 items-center
 justify-between
 max-w-[calc(100vw-2rem)]
-p-5
+p-3
 relative
 toast-toast-inner-container
 w-96
 `;
 
 export const TitleStyles = oneLine`
-flex
-font-semibold
-gap-2
-items-center
-mb-2
-text-stone-200
+font-medium
+text-stone-50
 toast-title
 `;

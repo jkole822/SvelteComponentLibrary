@@ -1,19 +1,14 @@
-export enum ToastColorEnum {
-	error = "bg-red-500",
-	success = "bg-green-500"
+export interface Toast {
+	id: string;
+	value: string;
 }
 
-export type ToastColorType = ToastColorEnum.error | ToastColorEnum.success;
-
-export interface ToastData {
-	color: ToastColorType;
+export interface ToastUpdate {
 	description: string;
-	id: number | string;
+	id: string;
 	title: string;
 }
 
 export interface Props {
-	className?: string;
-	toastData: ToastData[];
-	toastToDisplay?: string;
+	toastUpdates: ToastUpdate[];
 }

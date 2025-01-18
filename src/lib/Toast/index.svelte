@@ -10,17 +10,18 @@
 		CloseButtonStyles,
 		ContainerStyles,
 		DescriptionStyles,
-		StatusIndicatorStyles,
 		ToastContainerStyles,
 		ToastInnerContainerStyles,
 		TitleStyles
 	} from "./styles";
 
 	// Types
-	import type { Props, ToastData } from "./types";
+	import type { Props, Toast, ToastUpdate } from "./types";
 
 	// Props
-	let { className = "", toastData, toastToDisplay }: Props = $props();
+	let { toastUpdates }: Props = $props();
+
+	let toasts: Toast[] = $state([]);
 
 	// MeltUI
 	const {
@@ -28,31 +29,39 @@
 			content,
 			title: meltTitle,
 			description: meltDescription,
-			close
+			close,
 		},
-		helpers: { addToast },
-		states: { toasts },
+		helpers: { addToast, updateToast },
+		states: { toasts: meltToasts },
 		actions: { portal }
-	} = createToaster<ToastData>();
+	} = createToaster<ToastUpdate>();
 
 	// Effects
 	$effect(() => {
-		if (!!toastToDisplay) {
-			const matchingToast = toastData.find(
-				toast => toast.id === toastToDisplay
+		const toastUpdatesLength = toastUpdates.length;
+
+		if (toastUpdatesLength > 0 && toastUpdatesLength !== toasts.length) {
+			const mostRecentUpdate = toastUpdates[toastUpdatesLength - 1];
+			const mostRecentUpdateId = mostRecentUpdate.id;
+			const existingToast = toasts.find(
+				toast => toast.id === mostRecentUpdateId
 			);
 
-			if (!!matchingToast) {
-				addToast({
-					data: matchingToast
-				});
+			if (existingToast) {
+				updateToast(existingToast.value, mostRecentUpdate);
+			} else {
+				const createdToast = addToast({ data: mostRecentUpdate });
+				toasts = [
+					...toasts,
+					{ id: mostRecentUpdateId, value: createdToast.id }
+				];
 			}
 		}
 	});
 </script>
 
-<div class={`${className} ${ContainerStyles}`} use:portal>
-	{#each $toasts as { id, data } (id)}
+<div class={ContainerStyles} use:portal>
+	{#each $meltToasts as { id, data } (id)}
 		<div
 			use:melt={$content(id)}
 			animate:flip={{ duration: 500 }}
@@ -64,9 +73,6 @@
 				<div>
 					<h3 use:melt={$meltTitle(id)} class={TitleStyles}>
 						{data.title}
-						<span
-							class={StatusIndicatorStyles({ color: data.color })}
-						></span>
 					</h3>
 					<div
 						use:melt={$meltDescription(id)}
@@ -75,7 +81,11 @@
 						{data.description}
 					</div>
 				</div>
-				<button use:melt={$close(id)} aria-label="close" class={CloseButtonStyles}>
+				<button
+					use:melt={$close(id)}
+					aria-label="close"
+					class={CloseButtonStyles}
+				>
 					<i class={CloseButtonIconStyles}></i></button
 				>
 			</div>

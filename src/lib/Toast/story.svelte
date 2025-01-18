@@ -1,31 +1,52 @@
 <script lang="ts">
+	// Packages
+	import { faker } from "@faker-js/faker";
+	import { v4 as uuid } from "uuid";
+
 	// Components
 	import Button from "../Button/index.svelte";
 	import Toast from "./index.svelte";
 
 	// Types
 	import { ButtonVariantsEnum } from "../Button/types";
-	import type { Props } from "./types";
-
-	// Props
-	let { toastToDisplay: unusedToastToDisplay, ...rest }: Props = $props();
+	import type { ToastUpdate } from "./types";
 
 	// State
-	const toastIds = ["error", "success"];
-	let toastToDisplay = $state("");
-
-	// Derived
-	let allProps = $derived({
-		...rest,
-		toastToDisplay
-	});
+	let toastUpdates: ToastUpdate[] = $state([]);
 
 	// Helpers
-	const handleOpen = () => {
-		const randomId = toastIds[Math.floor(Math.random() * toastIds.length)];
-		toastToDisplay = randomId;
+	const handleCreateToast = () => {
+		toastUpdates = [
+			...toastUpdates,
+			{
+				description: faker.lorem.sentence(),
+				id: uuid(),
+				title: faker.lorem.words(2)
+			}
+		];
+	};
+
+	const handleUpdateRandomToast = () => {
+		if (toastUpdates.length > 0) {
+			const randomToast =
+				toastUpdates[Math.floor(Math.random() * toastUpdates.length)];
+
+			toastUpdates = [
+				...toastUpdates,
+				{
+					description: faker.lorem.sentence(),
+					id: randomToast.id,
+					title: faker.lorem.words(3)
+				}
+			];
+		}
 	};
 </script>
 
-<Toast {...allProps} />
-<Button variant={ButtonVariantsEnum.outline} onclick={handleOpen}>Display Toast</Button>
+<Toast {toastUpdates} />
+<Button className="mr-10" variant={ButtonVariantsEnum.fill} onclick={handleCreateToast}
+	>Create Toast</Button
+>
+<Button variant={ButtonVariantsEnum.outline} onclick={handleUpdateRandomToast}
+	>Update Random Toast</Button
+>
