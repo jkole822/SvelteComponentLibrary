@@ -1,6 +1,7 @@
 import type { CreateSliderProps } from "@melt-ui/svelte";
 
 export interface Props {
+    className?: string;
     defaultValue: number[];
 	id: string;
 	label: string;
@@ -8,5 +9,4 @@ export interface Props {
     min: number;
 	onValueChange: CreateSliderProps["onValueChange"];
     step: number;
-    useMultiValue?: boolean;
 }

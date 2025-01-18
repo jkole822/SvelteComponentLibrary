@@ -20,6 +20,7 @@ uppercase
 export const RangeContainerStyles = oneLine`
 bg-stone-900
 h-[3px]
+slider-range-container
 w-full
 `;
 

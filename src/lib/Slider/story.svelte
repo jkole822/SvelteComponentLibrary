@@ -6,7 +6,7 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { onValueChange, ...rest }: Props = $props();
+	let { defaultValue, onValueChange, ...rest }: Props = $props();
 
 	// State
 	let value = $state([0]);
@@ -16,10 +16,16 @@
 		value = next;
 		return next;
 	};
+
+	// Effects
+	$effect(() => {
+		value = defaultValue;
+	});
 </script>
 
 <Slider
 	{...rest}
+	{defaultValue}
 	id="lorem"
 	onValueChange={({ next }) => handleValueState(next)}
 />

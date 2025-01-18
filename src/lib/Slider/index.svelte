@@ -17,14 +17,14 @@
 
 	// Props
 	let {
+		className = "",
 		defaultValue,
 		id,
 		label,
 		max,
 		min,
 		onValueChange,
-		step,
-		useMultiValue
+		step
 	}: Props = $props();
 
 	// MeltUI
@@ -42,9 +42,12 @@
 	const {
 		elements: { root: labelRoot }
 	} = createLabel();
+
+	// Derived
+	let isMultiValue = $derived(value.get().length);
 </script>
 
-<div>
+<div class={className}>
 	<label
 		use:melt={$labelRoot}
 		for={id}
@@ -65,7 +68,7 @@
 		<span class={RangeContainerStyles}>
 			<span use:melt={$range} class={RangeStyles}></span>
 		</span>
-		{#if useMultiValue}
+		{#if isMultiValue}
 			{#each $thumbs as thumb}
 				<span
 					use:melt={thumb}

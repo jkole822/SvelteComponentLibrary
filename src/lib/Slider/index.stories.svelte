@@ -32,8 +32,6 @@
 		label: "Lorem Ipsum",
 		max: 100,
 		min: 0,
-
 		step: 1,
-		useMultiValue: true
 	}}
 />
