@@ -20,12 +20,16 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
 		length: 5,
-		name: "lorem",
+		name: faker.lorem.word(),
 		onValueChange: ({ next }) => {
 			console.log(next);
 			return next;

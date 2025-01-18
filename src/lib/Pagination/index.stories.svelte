@@ -11,15 +11,19 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 {#snippet template()}
-    <span class="text-stone-100">...</span>
+	<span class="text-stone-100">...</span>
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
-		ariaLabel: "pagination",
+		ariaLabel: faker.lorem.word(),
 		count: 100,
 		defaultPage: 1,
 		ellipsis: template,

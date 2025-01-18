@@ -11,13 +11,18 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+	import { v4 as uuid } from "uuid";
+</script>
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
 		defaultValue: [30],
-		id: "lorem",
-		label: "Lorem Ipsum",
+		id: uuid(),
+		label: faker.lorem.words(2),
 		max: 100,
 		min: 0,
 		step: 1
@@ -28,10 +33,10 @@
 	name="Multi Value"
 	args={{
 		defaultValue: [30, 50],
-		id: "lorem",
-		label: "Lorem Ipsum",
+		id: uuid(),
+		label: faker.lorem.words(2),
 		max: 100,
 		min: 0,
-		step: 1,
+		step: 1
 	}}
 />

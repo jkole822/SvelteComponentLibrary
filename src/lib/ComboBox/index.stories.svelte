@@ -1,5 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
+	import { v4 as uuid } from "uuid";
 	import ComboBox from "./index.svelte";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -12,68 +13,72 @@
 
 	const options = [
 		{
-			id: "Kentaro Miura",
-			title: "Berserk",
+			id: uuid(),
+			title: faker.lorem.word(),
 			disabled: false
 		},
 		{
-			id: "ONE",
-			title: "Mob Psycho 100",
+			id: uuid(),
+			title: faker.lorem.words(2),
 			disabled: false
 		},
 		{
-			id: "Hajime Isayama",
-			title: "Attack on Titan",
+			id: uuid(),
+			title: faker.lorem.words(3),
 			disabled: false
 		},
 		{
-			id: "Junji Ito",
-			title: "Uzumaki",
+			id: uuid(),
+			title: faker.lorem.words(2),
 			disabled: false
 		},
 		{
-			id: "Yomi Sarachi",
-			title: "Steins Gate",
+			id: uuid(),
+			title: faker.lorem.word(),
 			disabled: false
 		},
 		{
-			id: "Tite Kubo",
-			title: "Bleach",
+			id: uuid(),
+			title: faker.lorem.words(2),
 			disabled: false
 		},
 		{
-			id: "Masashi Kishimoto",
-			title: "Naruto",
+			id: uuid(),
+			title: faker.lorem.word(),
 			disabled: true
 		},
 		{
-			id: "Katsura Hoshino",
-			title: "D.Gray Man",
+			id: uuid(),
+			title: faker.lorem.words(3),
 			disabled: false
 		},
 		{
-			id: "Tsugumi Ohba",
-			title: "Death Note",
+			id: uuid(),
+			title: faker.lorem.words(1),
 			disabled: false
 		},
 		{
-			id: "Hiromu Arakawa",
-			title: "Fullmetal Alchemist",
+			id: uuid(),
+			title: faker.lorem.words(2),
 			disabled: false
 		}
 	];
+</script>
+
+<script>
+	import { faker } from "@faker-js/faker";
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
-		label: "Manga",
+		label: faker.lorem.words(2),
 		onSelectedChange: ({ next }) => {
 			console.log(next);
 			return next;
 		},
 		options,
-		placeholder: "Select Your Favorite Manga"
+		placeholder: faker.lorem.words(2)
 	}}
 />

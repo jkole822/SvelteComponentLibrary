@@ -10,9 +10,13 @@
 		tags: ["autodocs"],
 		argTypes: {},
 		args: {
-			onsubmit: fn(),
+			onsubmit: fn()
 		}
 	});
+</script>
+
+<script>
+	import { v4 as uuid } from "uuid";
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
@@ -22,7 +26,7 @@
 		cancelButtonText: "Cancel",
 		description:
 			"Make changes to your profile here. Click save when you're done.",
-		id: "dialog",
+		id: uuid(),
 		open: false,
 		submitButtonText: "Save Changes",
 		title: "Edit profile"

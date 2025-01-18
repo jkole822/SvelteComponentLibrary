@@ -27,15 +27,19 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 {#snippet templateOne()}
 	<div class="flex gap-2 items-center">
-		<span>Button</span>
+		<span>{faker.lorem.word()}</span>
 		<i class="fa-solid fa-arrow-right"></i>
 	</div>
 {/snippet}
 
 {#snippet templateTwo()}
-	<span>Button</span>
+	<span>{faker.lorem.word()}</span>
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->

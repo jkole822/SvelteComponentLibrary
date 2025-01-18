@@ -13,5 +13,9 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Basic" args={{ checked: false, label: "Lorem Ipsum" }} />
+<Story name="Basic" args={{ checked: false, label: faker.lorem.words(2) }} />

@@ -1,4 +1,7 @@
 <script lang="ts">
+	// Packages
+	import { v4 as uuid } from "uuid";
+
 	// Components
 	import Slider from "./index.svelte";
 
@@ -26,7 +29,7 @@
 <Slider
 	{...rest}
 	{defaultValue}
-	id="lorem"
+	id={uuid()}
 	onValueChange={({ next }) => handleValueState(next)}
 />
 

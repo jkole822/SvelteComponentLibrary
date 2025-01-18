@@ -13,22 +13,35 @@
 	});
 
 	const options = {
-		sweet: ["Caramel", "Chocolate", "Strawberry", "Cookies & Cream"],
-		savory: ["Basil", "Bacon", "Rosemary"]
+		[faker.lorem.word()]: [
+			faker.lorem.words(2),
+			faker.lorem.word(),
+			faker.lorem.word(),
+			faker.lorem.words(3)
+		],
+		[faker.lorem.word()]: [
+			faker.lorem.word(),
+			faker.lorem.words(3),
+			faker.lorem.word()
+		]
 	};
+</script>
+
+<script>
+	import { faker } from "@faker-js/faker";
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
-		ariaLabel: "Flavor Selection",
-		label: "Favorite Flavor",
+		ariaLabel: faker.lorem.word(),
+		label: faker.lorem.words(2),
 		options,
 		onSelectedChange: ({ next }) => {
 			console.log(next);
 			return next;
 		},
-		placeholder: "Select a flavor"
+		placeholder: faker.lorem.words(3)
 	}}
 />

@@ -1,5 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
+	import { faker } from "@faker-js/faker";
 	import Accordion from "./index.svelte";
 	import { HeadingLevelEnum } from "../../types";
 
@@ -26,21 +27,18 @@
 	const items = [
 		{
 			id: "item-1",
-			title: "Ultricies at molestie",
-			description:
-				"Lorem ipsum dolor sit amet consectetur adipiscing elit natoque, porta sem massa est diam tristique eu, litora enim semper pharetra facilisi ridiculus dis."
+			title: faker.lorem.words(3),
+			description: faker.lorem.sentence()
 		},
 		{
 			id: "item-2",
-			title: "Torquent phasellus",
-			description:
-				"Praesent lectus at cum curabitur egestas mollis suscipit rutrum convallis torquent, congue quisque a purus odio erat et elementum hendrerit venenatis, pulvinar cras lacinia nostra gravida porta dictumst libero fames."
+			title: faker.lorem.words(2),
+			description: faker.lorem.sentence()
 		},
 		{
 			id: "item-3",
-			title: "Lacus fringilla dui aenean",
-			description:
-				"Ultricies at molestie rhoncus imperdiet non mattis senectus malesuada pharetra eleifend."
+			title: faker.lorem.words(4),
+			description: faker.lorem.sentence()
 		}
 	];
 </script>

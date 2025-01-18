@@ -40,12 +40,16 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
 		autoComplete: AutoCompleteEnum.off,
-		name: "Lorem Ipsum",
+		name: faker.lorem.word(),
 		inputType: InputTypeEnum.text,
 		required: false,
 		value: ""

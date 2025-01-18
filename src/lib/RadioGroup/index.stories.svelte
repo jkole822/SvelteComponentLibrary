@@ -1,5 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
+	import { faker } from "@faker-js/faker";
 	import RadioGroup from "./index.svelte";
 	import { RadioGroupOrientationEnum } from "./types";
 
@@ -23,15 +24,19 @@
 		}
 	});
 
-	const options = ["Lorem", "Ipsum", "Adipiscing", "Elit"];
+	const options = [
+		faker.lorem.words(3),
+		faker.lorem.word(),
+		faker.lorem.words(2),
+		faker.lorem.word()
+	];
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story
 	name="Basic"
 	args={{
-		ariaLabel: "Consectetur",
-		defaultValue: "Lorem",
+		ariaLabel: faker.lorem.word(),
 		onValueChange: ({ next }) => {
 			console.log(next);
 			return next;

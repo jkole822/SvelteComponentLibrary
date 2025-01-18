@@ -14,5 +14,9 @@
 	});
 </script>
 
+<script>
+	import { faker } from "@faker-js/faker";
+</script>
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Basic" args={{ ariaLabel: "Consectetur" }} />
+<Story name="Basic" args={{ ariaLabel: faker.lorem.word() }} />
