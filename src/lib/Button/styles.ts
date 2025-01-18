@@ -1,6 +1,6 @@
 import { oneLine } from "common-tags";
 
-const sharedStylesOne = oneLine`
+const SharedStyles = oneLine`
 duration-300
 font-bold
 outline-none
@@ -13,7 +13,7 @@ transition-all
 uppercase
 `;
 
-const sharedStylesTwo = oneLine`
+const SharedLineStyles = oneLine`
 [transition-timing-function:cubic-bezier(0.25,0.8,0.25,1)]
 border-none
 duration-[400ms]
@@ -50,7 +50,7 @@ hover:after:w-full
 `;
 
 export const FillButtonStyles = oneLine`
-${sharedStylesOne}
+${SharedStyles}
 bg-orange-400
 border-none
 shadow-[0.5rem_0.5rem_0.5rem_rgba(0,0,0,0.4)]
@@ -87,7 +87,7 @@ hover:before:w-7
 `;
 
 export const OutlineButtonStyles = oneLine`
-${sharedStylesOne}
+${SharedStyles}
 bg-transparent
 border-2
 border-orange-400
@@ -115,25 +115,25 @@ before:-translate-y-1/2
 before:-z-[1]
 before:absolute
 before:bg-orange-400
-before:duration-500
+before:duration-300
 before:ease-in-out
-before:h-12
+before:h-full
 before:left-1/2
 before:rounded-2xl
 before:scale-0
 before:top-1/2
 before:transition-all
-before:w-12
+before:w-full
 
 disabled:before:!scale-0
 
-focus:before:scale-[5]
+focus:before:scale-110
 
-hover:before:scale-[5]
+hover:before:scale-110
 `;
 
 export const LineOneButtonStyles = oneLine`
-${sharedStylesTwo}
+${SharedLineStyles}
 
 after:left-1/2
 
@@ -143,7 +143,7 @@ hover:after:left-0
 `;
 
 export const LineTwoButtonStyles = oneLine`
-${sharedStylesTwo}
+${SharedLineStyles}
 
 after:left-0
 
