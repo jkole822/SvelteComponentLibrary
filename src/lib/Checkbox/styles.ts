@@ -9,6 +9,7 @@ w-0
 [&:checked_~_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
 [&:checked_~_svg_.path]:[stroke-dashoffset:-262.2723388671875]
 
+[&:disabled_~_span]:cursor-not-allowed
 [&:disabled_~_span]:!text-stone-600
 
 [&:disabled_~_span:after]:!w-0
@@ -28,14 +29,16 @@ cursor-pointer
 flex
 group
 items-center
+w-fit
 `;
 
 export const LabelTextStyles = oneLine`
 checkbox-label-text
+cursor-pointer
 duration-300
 ml-1.5
 relative
-text-stone-300
+text-stone-200
 transition-all
 
 after:-bottom-0.5
@@ -48,8 +51,6 @@ after:left-0
 after:pointer-events-none
 after:transition-all
 after:w-0
-
-group-hover:text-stone-50
 `;
 
 export const PathStyles = oneLine`

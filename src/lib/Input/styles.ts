@@ -5,7 +5,6 @@ export const CharStyles = oneLine`
 duration-300
 inline-block
 input-char
-text-stone-300
 `;
 
 export const FormControlStyles = oneLine`
@@ -13,18 +12,24 @@ input-form-control
 relative
 `;
 
-export const InputStyles = ({ hasValue }: { hasValue: boolean }) => oneLine`
+export const InputStyles = ({
+	hasValue,
+	receivedFocus
+}: {
+	hasValue: boolean;
+	receivedFocus: boolean;
+}) => oneLine`
 bg-transparent
 block
 border-0
 border-b-2
-border-stone-300
-duration-300
+border-stone-200
+duration-200
 input-input
 outline-none
 px-0
 py-4
-text-stone-300
+text-stone-200
 transition-all
 w-full
 
@@ -33,19 +38,26 @@ disabled:cursor-not-allowed
 
 focus:border-orange-500
 
-hover:border-stone-50
-
 [&:disabled+label_span]:!text-stone-600
 
 [&:focus+label_span]:-translate-y-8
-[&:focus+label_span]:!text-orange-400
+[&:focus+label_span]:!text-orange-500
 
-${hasValue ? `
+${
+	hasValue
+		? `
 [&+label_span]:!-translate-y-8
-[&+label_span]:!text-orange-400
-` : ``}
+[&+label_span]:!text-orange-500
+`
+		: ``
+}
 
-[&:hover+label_span]:text-stone-50
+${receivedFocus ? `
+invalid:!border-red-500
+
+[&:invalid+label_span]:font-medium
+[&:invalid+label_span]:!text-red-500
+` : ``}
 `;
 
 export const LabelStyles = oneLine`

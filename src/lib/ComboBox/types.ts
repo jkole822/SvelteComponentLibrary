@@ -1,7 +1,7 @@
 import type { CreateComboboxProps } from "@melt-ui/svelte";
 
 export interface ComboBoxOption {
-	disabled?: boolean
+	disabled?: boolean;
 	id?: number | string;
 	label?: string;
 	title?: string;
@@ -10,9 +10,11 @@ export interface ComboBoxOption {
 
 export interface Props {
 	className?: string;
-	defaultSelected?: CreateComboboxProps<string>["defaultSelected"];
+	defaultSelected?: CreateComboboxProps<ComboBoxOption>["defaultSelected"];
+	disabled?: boolean;
 	label: string;
-	onSelectedChange?: CreateComboboxProps<string>["onSelectedChange"];
+	onSelectedChange?: CreateComboboxProps<ComboBoxOption>["onSelectedChange"];
 	options: ComboBoxOption[];
 	placeholder: string;
+	required?: boolean;
 }

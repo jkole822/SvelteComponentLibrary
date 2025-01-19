@@ -2,6 +2,9 @@
 	// Components
 	import Checkbox from "./index.svelte";
 
+	// Styles
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 	// Types
 	import type { Props } from "./types";
 
@@ -13,13 +16,11 @@
 
 	// Effects
 	$effect(() => {
-        checkedState = checked;
-    });
+		checkedState = checked;
+	});
 </script>
 
 <Checkbox {...rest} bind:checked={checkedState} />
 
-<div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
-	Binding Check
-</div>
-<div class="text-stone-200">{checkedState ? "Checked" : "Not Checked"}</div>
+<div class={SubHeadingStyles}>Binding Check</div>
+<div class={PararaphStyles}>{checkedState ? "Checked" : "Not Checked"}</div>

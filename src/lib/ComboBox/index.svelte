@@ -7,14 +7,14 @@
 	import {
 		CheckContainerStyles,
 		ContainerStyles,
-		FormControlStyles,
 		InputStyles,
 		LabelStyles,
-		ListStyles,
 		ListItemStyles,
 		ListItemValueStyles,
+		ListStyles,
 		NoResultsStyles,
 		ScrollContainerStyles,
+		TriggerStyles,
 		VectorContainerStyles
 	} from "./styles";
 
@@ -26,10 +26,12 @@
 	let {
 		className = "",
 		defaultSelected,
+		disabled,
 		label,
 		onSelectedChange,
 		options,
-		placeholder
+		placeholder,
+		required
 	}: Props = $props();
 
 	// MeltUI
@@ -37,16 +39,29 @@
 		elements: { menu, input, option: meltOption, label: meltLabel },
 		states: { open, inputValue, touchedInput, selected },
 		helpers: { isSelected }
-	} = createCombobox<string>({
+	} = createCombobox<ComboBoxOption>({
+		defaultSelected,
+		disabled,
 		forceVisible: true,
 		onSelectedChange,
-		defaultSelected
+		required
 	});
+
+	let InputRef = $state<HTMLInputElement | null>(null);
+
+	// State
+	let receivedFocus = $state(false);
 
 	// Effects
 	$effect(() => {
 		if (!$open) {
 			$inputValue = $selected?.label ?? "";
+		}
+	});
+
+	$effect(() => {
+		if (!$inputValue) {
+			$selected = undefined;
 		}
 	});
 
@@ -79,24 +94,40 @@
 	);
 </script>
 
-<div class={`${className} ${ContainerStyles}`}>
-	<div class={FormControlStyles}>
+<div class={className}>
+	<div class={ContainerStyles}>
+		<input
+			use:melt={$input}
+			bind:this={InputRef}
+			class={InputStyles({ hasValue: !!$inputValue, receivedFocus })}
+			onfocus={() => (receivedFocus = true)}
+			name={label}
+			{placeholder}
+			{required}
+		/>
 		<!-- svelte-ignore a11y_label_has_associated_control - $label contains the 'for' attribute -->
-		<label use:melt={$meltLabel}>
-			<span class={LabelStyles}>{label}</span>
+		<label use:melt={$meltLabel} class={LabelStyles}>
+			{label}
 		</label>
-		<div class="relative">
-			<input use:melt={$input} class={InputStyles} {placeholder} />
-			<div class={VectorContainerStyles({ isOpen: $open })}>
-				<i class="fa-solid fa-chevron-up"></i>
+		<button
+			aria-label="Show Suggestions"
+			class={TriggerStyles}
+			{disabled}
+			onclick={() => {
+				InputRef?.focus();
+				$open = !$open;
+			}}
+		>
+			<div class={VectorContainerStyles}>
+				<i aria-hidden="true" class="fa-solid fa-sort"></i>
 			</div>
-		</div>
+		</button>
 	</div>
 	{#if $open}
 		<ul
 			class={ListStyles}
 			use:melt={$menu}
-			transition:fly={{ duration: 150, y: -5 }}
+			transition:fly={{ duration: 300, y: 10 }}
 		>
 			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<div class={ScrollContainerStyles} tabindex="0">
@@ -107,7 +138,8 @@
 					>
 						{#if $isSelected(option)}
 							<div class={CheckContainerStyles}>
-								<i class="fa-solid fa-check"></i>
+								<i aria-hidden="true" class="fa-solid fa-check"
+								></i>
 							</div>
 						{/if}
 						<div class="pl-4">

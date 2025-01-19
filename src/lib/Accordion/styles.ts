@@ -25,7 +25,6 @@ hover:bg-stone-600
 export const ContainerStyles = oneLine`
 accordion-container
 bg-stone-700
-mx-auto
 rounded-md
 `;
 

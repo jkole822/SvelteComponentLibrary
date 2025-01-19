@@ -29,13 +29,12 @@
 
 <script>
 	import { faker } from "@faker-js/faker";
+	import { IconStyles } from "../../styles";
 </script>
 
 {#snippet templateOne()}
-	<div class="flex gap-2 items-center">
-		<span>{faker.lorem.word()}</span>
-		<i class="fa-solid fa-arrow-right"></i>
-	</div>
+	<span class="mr-2">{faker.lorem.word()}</span>
+	<i aria-hidden="true" class={IconStyles}></i>
 {/snippet}
 
 {#snippet templateTwo()}
@@ -59,6 +58,11 @@
 />
 
 <Story
-	name="Line Two"
+	name="LineTwo"
+	args={{ children: templateTwo, variant: ButtonVariantsEnum.lineTwo }}
+/>
+
+<Story
+	name="WithClass"
 	args={{ children: templateTwo, variant: ButtonVariantsEnum.lineTwo }}
 />

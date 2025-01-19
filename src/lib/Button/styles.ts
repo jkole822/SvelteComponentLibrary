@@ -1,6 +1,7 @@
 import { oneLine } from "common-tags";
 
 const SharedStyles = oneLine`
+block
 duration-300
 font-bold
 outline-none
@@ -8,9 +9,12 @@ px-6
 py-3
 relative
 rounded-md
+text-center
 tracking-wider
 transition-all
 uppercase
+w-full
+2xs:w-fit
 `;
 
 const SharedLineStyles = oneLine`

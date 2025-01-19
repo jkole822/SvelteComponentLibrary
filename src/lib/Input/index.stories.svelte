@@ -21,7 +21,10 @@
 				]
 			},
 			disabled: { control: "boolean" },
-			inputType: {
+			max: { control: "number" },
+			min: { control: "number" },
+			required: { control: "boolean" },
+			type: {
 				control: {
 					type: "select"
 				},
@@ -32,26 +35,25 @@
 					InputTypeEnum.password,
 					InputTypeEnum.text
 				]
-			},
-			max: { control: "number" },
-			min: { control: "number" },
-			required: { control: "boolean" }
+			}
 		}
 	});
 </script>
 
 <script>
 	import { faker } from "@faker-js/faker";
+	import { v4 as uuid } from "uuid";
+
+	const args = {
+		autoComplete: AutoCompleteEnum.off,
+		id: uuid(),
+		name: faker.lorem.word(),
+		required: true,
+		type: InputTypeEnum.text
+	};
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{
-		autoComplete: AutoCompleteEnum.off,
-		name: faker.lorem.word(),
-		inputType: InputTypeEnum.text,
-		required: false,
-		value: ""
-	}}
-/>
+<Story name="Basic" {args} />
+
+<Story name="WithClass" args={{ ...args, className: "sm:w-72" }} />

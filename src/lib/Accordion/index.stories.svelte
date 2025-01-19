@@ -41,10 +41,15 @@
 			description: faker.lorem.sentence()
 		}
 	];
+
+	const args = {
+		defaultValue: "item-1",
+		headingLevel: HeadingLevelEnum.One,
+		items
+	};
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{ defaultValue: "item-1", headingLevel: HeadingLevelEnum.One, items }}
-/>
+<Story name="Basic" {args} />
+
+<Story name="WithClass" args={{ ...args, className: "sm:w-72" }} />

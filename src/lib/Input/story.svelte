@@ -2,6 +2,9 @@
 	// Components
 	import Input from "./index.svelte";
 
+	// Story
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 	// Types
 	import type { Props } from "./types";
 
@@ -9,7 +12,7 @@
 	let { value, ...rest }: Props = $props();
 
 	// State
-	let valueState: Date | number | string = $state("");
+	let valueState: number | string | string[] = $state("");
 
 	// Effects
 	$effect(() => {
@@ -17,9 +20,7 @@
 	});
 </script>
 
-<Input {...rest} bind:value={valueState} id="lorem" />
+<Input {...rest} bind:value={valueState} />
 
-<div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
-	Binding Check
-</div>
-<div class="text-stone-200">{valueState}</div>
+<div class={SubHeadingStyles}>Binding Check</div>
+<div class={PararaphStyles}>{valueState}</div>

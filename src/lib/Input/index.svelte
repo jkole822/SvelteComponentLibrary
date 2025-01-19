@@ -15,11 +15,14 @@
 	let {
 		className = "",
 		id,
-		inputType = InputTypeEnum.text,
 		name,
+		type = InputTypeEnum.text,
 		value = $bindable(),
 		...props
 	}: Props = $props();
+
+	// State
+	let receivedFocus = $state(false);
 
 	// Derived
 	let characters = $derived(
@@ -29,7 +32,7 @@
 	let hasValue = $derived(!!value || value === 0);
 </script>
 
-{#snippet splitCharacters(char, delay)}
+{#snippet splitCharacters(char: string, delay: number)}
 	{#if char === " "}
 		<span style:transition-delay={`${delay}ms`}>&nbsp;</span>
 	{:else}
@@ -42,9 +45,10 @@
 <div class={`${className} ${FormControlStyles}`}>
 	<input
 		bind:value
-		class={InputStyles({ hasValue })}
+		class={InputStyles({ hasValue, receivedFocus })}
+		onfocus={() => (receivedFocus = true)}
 		{id}
-		type={inputType}
+		{type}
 		{...props}
 	/>
 	<label class={LabelStyles} for={id}>
