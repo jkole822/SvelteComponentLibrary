@@ -21,9 +21,11 @@ export const InputStyles = ({
 }) => oneLine`
 bg-transparent
 block
-border-0
+border-t-0
+border-x-0
 border-b-2
 border-stone-200
+rounded-none
 duration-200
 input-input
 outline-none
