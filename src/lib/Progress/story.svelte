@@ -15,7 +15,7 @@
 	// State
 	const value = writable(25);
 
-	// Helpers
+	// Life Cycle
 	onMount(() => {
 		let frame: number;
 		const updatePercentage = () => {
