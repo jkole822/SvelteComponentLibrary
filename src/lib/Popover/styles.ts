@@ -33,23 +33,23 @@ overflow-hidden
 popover-button
 relative
 ring-2
-ring-orange-500
-text-orange-500
+ring-primary-500
+text-primary-500
 tooltip-button
 transition-all
 
-disabled:!ring-stone-400
-disabled:!text-stone-400
+disabled:!ring-neutral-400
+disabled:!text-neutral-400
 disabled:cursor-not-allowed
 
 [&:disabled:hover:before]:h-0
 
-focus-visible:text-stone-50
+focus-visible:text-neutral-50
 
-hover:text-stone-800
+hover:text-neutral-800
 
 before:absolute
-before:bg-orange-500
+before:bg-primary-500
 before:bottom-0
 before:duration-300
 before:ease-in-out
@@ -77,20 +77,20 @@ outline-none
 p-1
 popover-close-button
 right-4
-ring-orange-400
+ring-primary-400
 rounded-full
-text-orange-600
+text-primary-600
 top-4
 transition-all
 w-6
 
 focus:ring-2
 
-hover:bg-orange-100 
+hover:bg-primary-100 
 `;
 
 export const ContentStyles = oneLine`
-bg-stone-900
+bg-neutral-900
 p-5
 popover-content
 relative

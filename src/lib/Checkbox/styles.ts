@@ -5,18 +5,18 @@ checkbox-input
 h-0
 w-0
 
-[&:checked_~_svg_.path]:stroke-orange-500
+[&:checked_~_svg_.path]:stroke-primary-500
 [&:checked_~_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
 [&:checked_~_svg_.path]:[stroke-dashoffset:-262.2723388671875]
 
 [&:disabled_~_span]:cursor-not-allowed
-[&:disabled_~_span]:!text-stone-600
+[&:disabled_~_span]:!text-neutral-600
 
 [&:disabled_~_span:after]:!w-0
 
-[&:disabled_~_svg_.path]:!stroke-stone-600
+[&:disabled_~_svg_.path]:!stroke-neutral-600
 
-[&:focus-visible_~_span]:text-stone-50
+[&:focus-visible_~_span]:text-neutral-50
 
 [&:focus-visible_~_span:after]:w-full
 `;
@@ -38,13 +38,13 @@ cursor-pointer
 duration-300
 ml-1.5
 relative
-text-stone-200
+text-neutral-200
 transition-all
 
 after:-bottom-0.5
 after:[transition-timing-function:cubic-bezier(0.25,0.8,0.25,1)]
 after:absolute
-after:bg-orange-500
+after:bg-primary-500
 after:duration-[400ms]
 after:h-0.5
 after:left-0
@@ -65,7 +65,7 @@ origin-center
 path
 scale-50
 stroke-[6]
-stroke-stone-100
+stroke-neutral-100
 `;
 
 export const VectorStyles = oneLine`

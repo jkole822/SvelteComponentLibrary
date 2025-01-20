@@ -24,32 +24,32 @@ block
 border-t-0
 border-x-0
 border-b-2
-border-stone-200
+border-neutral-200
 rounded-none
 duration-200
 input-input
 outline-none
 px-0
 py-4
-text-stone-200
+text-neutral-200
 transition-all
 w-full
 
-disabled:border-stone-600
+disabled:border-neutral-600
 disabled:cursor-not-allowed
 
-focus:border-orange-500
+focus:border-primary-500
 
-[&:disabled+label_span]:!text-stone-600
+[&:disabled+label_span]:!text-neutral-600
 
 [&:focus+label_span]:-translate-y-8
-[&:focus+label_span]:!text-orange-500
+[&:focus+label_span]:!text-primary-500
 
 ${
 	hasValue
 		? `
 [&+label_span]:!-translate-y-8
-[&+label_span]:!text-orange-500
+[&+label_span]:!text-primary-500
 `
 		: ``
 }

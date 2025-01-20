@@ -11,13 +11,13 @@ export const InputStyles = oneLine`
 bg-text-100
 outline-none
 pin-input
-ring-orange-400
+ring-primary-400
 rounded-md
 shadow-sm
 size-12
 text-center
 text-lg
-text-orange-800
+text-primary-800
 
 disabled:cursor-not-allowed
 disabled:opacity-80

@@ -27,10 +27,10 @@
 {/snippet}
 
 {#snippet popoverContent()}
-	<h1 class="mb-6 font-bold text-stone-200 w-[85%]">
+	<h1 class="mb-6 font-bold text-neutral-200 w-[85%]">
 		{faker.lorem.words(2)}
 	</h1>
-	<p class="text-stone-400 text-sm">{faker.lorem.sentence()}</p>
+	<p class="text-neutral-400 text-sm">{faker.lorem.sentence()}</p>
 	<Input
 		autoComplete={AutoCompleteEnum.name}
 		className="mt-6"

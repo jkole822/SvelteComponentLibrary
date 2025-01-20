@@ -19,10 +19,10 @@ h-6
 outline-none
 p-1
 right-2
-ring-orange-400
+ring-primary-400
 rounded-full
 text-center
-text-orange-600
+text-primary-600
 toast-close-button
 top-2
 transition-all
@@ -30,7 +30,7 @@ w-6
 
 focus:ring-2
 
-hover:bg-orange-100
+hover:bg-primary-100
 `;
 
 export const ContainerStyles = oneLine`
@@ -49,7 +49,7 @@ md:top-auto
 `;
 
 export const DescriptionStyles = oneLine`
-text-stone-400
+text-neutral-400
 text-sm
 toast-description
 `;
@@ -63,9 +63,9 @@ top-2.5
 `;
 
 export const ToastContainerStyles = oneLine`
-bg-stone-900
+bg-neutral-900
 border-[1px]
-border-stone-600
+border-neutral-600
 relative
 rounded-md
 shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),_0_4px_6px_-4px_rgb(0_0_0_/_0.1)]
@@ -86,6 +86,6 @@ w-96
 
 export const TitleStyles = oneLine`
 font-medium
-text-stone-50
+text-neutral-50
 toast-title
 `;

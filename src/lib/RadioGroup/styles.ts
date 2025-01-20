@@ -17,7 +17,7 @@ w-full
 origin-center
 radio-group-button-cover
 rounded-full
-bg-stone-100
+bg-neutral-100
 duration-300
 `;
 
@@ -28,7 +28,7 @@ gap-2
 radio-group-container
 w-fit
 
-[&:focus-within_.radio-group-group-label]:text-orange-400
+[&:focus-within_.radio-group-group-label]:text-primary-400
 `;
 
 export const GroupLabelStyles = oneLine`
@@ -42,7 +42,7 @@ transition-all
 `;
 
 export const LabelStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
-${isChecked ? 'text-stone-500' : 'text-stone-300'}
+${isChecked ? 'text-neutral-500' : 'text-neutral-300'}
 
 duration-300
 cursor-pointer
@@ -65,7 +65,7 @@ data-[orientation=horizontal]:flex-row
 `
 
 export const OptionStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
-${isChecked ? '[&:focus-within_label]:text-stone-400 [&:hover_label]:text-stone-400' : ''}
+${isChecked ? '[&:focus-within_label]:text-neutral-400 [&:hover_label]:text-neutral-400' : ''}
 
 cursor-pointer
 duration-300
@@ -78,9 +78,9 @@ radio-option
 rounded-full
 w-fit
 
-active:bg-stone-700
+active:bg-neutral-700
 
-focus-within:bg-stone-700
+focus-within:bg-neutral-700
 
-hover:bg-stone-700
+hover:bg-neutral-700
 `;

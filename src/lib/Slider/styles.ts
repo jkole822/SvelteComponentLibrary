@@ -11,21 +11,21 @@ inline-block
 font-bold
 mb-3
 slider-label
-text-orange-400
+text-primary-400
 text-sm
 tracking-wide
 uppercase
 `;
 
 export const RangeContainerStyles = oneLine`
-bg-stone-600
+bg-neutral-600
 h-[3px]
 slider-range-container
 w-full
 `;
 
 export const RangeStyles = oneLine`
-bg-orange-500
+bg-primary-500
 h-[3px]
 slider-range
 `;
@@ -40,7 +40,7 @@ w-full
 `;
 
 export const ThumbStyles = oneLine`
-bg-stone-100
+bg-neutral-100
 h-5
 outline-none
 rounded-full

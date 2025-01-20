@@ -25,7 +25,7 @@
 </script>
 
 {#snippet ellipsis()}
-	<span class="text-stone-100">...</span>
+	<span class="text-neutral-100">...</span>
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->

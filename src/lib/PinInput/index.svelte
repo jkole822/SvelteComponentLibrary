@@ -4,6 +4,7 @@
 
 	// Styles
 	import { ContainerStyles, InputStyles } from "./styles";
+	import { SubHeadingStyles } from "../../styles";
 
 	// Types
 	import type { Props } from "./types";
@@ -28,7 +29,7 @@
 	});
 </script>
 
-<p class="mb-5 text-orange-400 text-xl tracking-wide uppercase">**BROKEN**</p>
+<p class={SubHeadingStyles}>**BROKEN**</p>
 
 <div use:melt={$root} class={ContainerStyles}>
 	{#each { length }}

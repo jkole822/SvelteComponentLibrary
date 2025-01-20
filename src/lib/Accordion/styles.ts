@@ -2,7 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ButtonStyles = oneLine`
 accordion-button
-bg-stone-700
+bg-neutral-700
 cursor-pointer
 flex
 flex-grow
@@ -14,27 +14,27 @@ outline-none
 px-5
 py-5
 text-left
-text-stone-200
+text-neutral-200
 transition-colors
 
-focus-visible:text-orange-400
+focus-visible:text-primary-400
 
-hover:bg-stone-600
+hover:bg-neutral-600
 `;
 
 export const ContainerStyles = oneLine`
 accordion-container
-bg-stone-700
+bg-neutral-700
 rounded-md
 `;
 
 export const ContentStyles = oneLine`
 accordion-content
-bg-orange-200
+bg-primary-200
 overflow-hidden
 shadow-[inset_0px_1px_0px_rgb(214,211,209)]
 text-sm
-text-stone-700
+text-neutral-700
 `;
 
 export const DescriptionStyles = oneLine`

@@ -12,7 +12,7 @@ sm:gap-4
 `;
 
 export const CancelButtonStyles = oneLine`
-bg-stone-100
+bg-neutral-100
 dialog-close-button
 font-bold
 h-8
@@ -22,7 +22,7 @@ justify-center
 leading-none
 px-4
 rounded-md
-text-stone-700
+text-neutral-700
 tracking-wide
 uppercase
 `;
@@ -39,22 +39,22 @@ justify-center
 outline-none
 p-1
 right-4
-ring-orange-400
+ring-primary-400
 rounded-full    
-text-orange-600
+text-primary-600
 top-4
 transition-all
 w-6
 
 focus:ring-2
 
-hover:bg-orange-100 
+hover:bg-primary-100 
 `;
 
 export const ContentStyles = oneLine`
 -translate-x-1/2
 -translate-y-1/2
-bg-stone-900
+bg-neutral-900
 dialog-content
 fixed
 left-1/2
@@ -74,19 +74,19 @@ dialog-description
 leading-normal
 mb-4
 mt-2
-text-stone-400
+text-neutral-400
 `;
 
 export const HeadingStyles = oneLine`
 dialog-heading
 font-medium
 m-0
-text-stone-200
+text-neutral-200
 text-lg
 `;
 
 export const OverlayStyles = oneLine`
-bg-stone-900/50
+bg-neutral-900/50
 dialog-overlay
 fixed
 inset-0
@@ -94,7 +94,7 @@ z-50
 `;
 
 export const SubmitButtonStyles = oneLine`
-bg-orange-500
+bg-primary-500
 dialog-submit-button
 font-bold
 h-8
@@ -104,7 +104,7 @@ justify-center
 leading-none
 px-4
 rounded-md
-text-stone-100
+text-neutral-100
 tracking-wide
 uppercase
 `;

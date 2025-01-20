@@ -5,12 +5,12 @@ absolute
 check
 combo-box-check-container
 left-2
-text-orange-600
+text-primary-600
 translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-orange-800
+group-data-[highlighted]:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -33,46 +33,46 @@ input-input
 outline-none
 p-4
 ring-[1.5px]
-ring-stone-200
+ring-neutral-200
 rounded-md
-text-stone-200
+text-neutral-200
 transition-all
 w-full
 
-disabled:ring-stone-600
+disabled:ring-neutral-600
 disabled:cursor-not-allowed
 
-[&:disabled_~_label]:text-stone-600
+[&:disabled_~_label]:text-neutral-600
 
-focus:ring-orange-500
+focus:ring-primary-500
 
-[&:focus_~_label]:bg-stone-800
+[&:focus_~_label]:bg-neutral-800
 [&:focus_~_label]:px-0.5
 [&:focus_~_label]:scale-[0.8]
-[&:focus_~_label]:text-orange-500
+[&:focus_~_label]:text-primary-500
 [&:focus_~_label]:-translate-y-[55%]
 
-[&:focus_~_.combo-box-trigger]:bg-orange-500
-[&:focus_~_.combo-box-trigger]:text-stone-100
+[&:focus_~_.combo-box-trigger]:bg-primary-500
+[&:focus_~_.combo-box-trigger]:text-neutral-100
 
-focus:placeholder:text-stone-500
+focus:placeholder:text-neutral-500
 
 placeholder:text-transparent
 
 ${
 	hasValue
 		? `
-[&_~_label]:bg-stone-800
+[&_~_label]:bg-neutral-800
 [&_~_label]:px-0.5
-[&_~_label]:ring-orange-500
+[&_~_label]:ring-primary-500
 [&_~_label]:scale-[0.8]
-[&_~_label]:text-orange-500
+[&_~_label]:text-primary-500
 [&_~_label]:-translate-y-[55%]
 
-valid:ring-orange-500
+valid:ring-primary-500
 
-[&:valid_~_.combo-box-trigger]:bg-orange-500
-[&:valid_~_.combo-box-trigger]:text-stone-50
+[&:valid_~_.combo-box-trigger]:bg-primary-500
+[&:valid_~_.combo-box-trigger]:text-neutral-50
 `
 		: ``
 }
@@ -85,7 +85,7 @@ invalid:!ring-red-400
 [&:invalid_~_label]:text-red-400
 
 [&:invalid_~_.combo-box-trigger]:bg-red-400
-[&:invalid_~_.combo-box-trigger]:text-stone-50
+[&:invalid_~_.combo-box-trigger]:text-neutral-50
 
 [&:focus:invalid_~_label]:text-red-400
 `
@@ -100,7 +100,7 @@ ease-[cubic-bezier(0.4,0,0.2,1)]
 input-label
 left-4
 pointer-events-none
-text-stone-500
+text-neutral-500
 translate-y-4
 transition-all
 `;
@@ -120,13 +120,13 @@ scroll-my-2
 text-sm
 transition-all
 
-hover:bg-orange-100
+hover:bg-primary-100
 
 data-[disabled]:cursor-not-allowed
 data-[disabled]:opacity-50
 
-data-[highlighted]:bg-orange-200
-data-[highlighted]:text-orange-800
+data-[highlighted]:bg-primary-200
+data-[highlighted]:text-primary-800
 `;
 
 export const ListItemValueStyles = oneLine`
@@ -153,7 +153,7 @@ text-sm
 `
 
 export const ScrollContainerStyles = oneLine`
-bg-stone-900
+bg-neutral-900
 combo-box-scroll-container
 flex
 flex-col
@@ -163,12 +163,12 @@ overflow-y-auto
 p-2
 rounded-md
 shadow-lg
-text-stone-300
+text-neutral-300
 `;
 
 export const TriggerStyles = oneLine`
 absolute
-bg-stone-200
+bg-neutral-200
 combo-box-trigger
 duration-150
 ease-in-out
@@ -176,14 +176,14 @@ right-0
 rounded-br-md
 rounded-tr-md
 size-14
-text-stone-800
+text-neutral-800
 top-0
 transition-all
 
 disabled:hidden
 
-hover:bg-orange-500
-hover:text-stone-100
+hover:bg-primary-500
+hover:text-neutral-100
 `;
 
 export const VectorContainerStyles = oneLine`
