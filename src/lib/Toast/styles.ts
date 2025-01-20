@@ -5,7 +5,7 @@ export const CloseButtonIconStyles = oneLine`
 -translate-y-1/2
 absolute
 fa-solid
-fa-times
+fa-xmark
 left-1/2
 toast-close-button-icon
 top-1/2
@@ -42,7 +42,7 @@ items-end
 m-4
 right-0
 toast-container
-top-24
+top-0
 z-30
 md:bottom-0
 md:top-auto

@@ -96,7 +96,7 @@
 			<div>
 				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button use:melt={$trigger}>
-					<i class="fa-solid fa-calendar"></i>
+					<i aria-hidden="true" class="fa-solid fa-calendar"></i>
 				</button>
 			</div>
 		</div>
@@ -107,7 +107,8 @@
 				<header class={HeaderStyles}>
 					<!-- svelte-ignore a11y_consider_explicit_label -->
 					<button use:melt={$prevButton}>
-						<i class="fa-solid fa-chevron-left"></i>
+						<i aria-hidden="true" class="fa-solid fa-chevron-left"
+						></i>
 					</button>
 					<div use:melt={$heading} class={HeaderTextStyles}>
 						{$headingValue}

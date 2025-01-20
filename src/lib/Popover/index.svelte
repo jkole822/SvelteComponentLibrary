@@ -49,9 +49,7 @@
 	{...buttonProps}
 	aria-expanded={open ? "true" : "false"}
 >
-	<div class="trigger-content">
-		{@render buttonContent()}
-	</div>
+	{@render buttonContent()}
 </button>
 
 {#if open}
@@ -63,7 +61,7 @@
 		<div use:melt={$arrow}></div>
 		{@render popoverContent()}
 		<button use:melt={$close} aria-label="close" class={CloseButtonStyles}>
-			<i class="fa-solid fa-xmark"></i>
+			<i aria-hidden="true" class="fa-solid fa-xmark"></i>
 		</button>
 	</div>
 {/if}

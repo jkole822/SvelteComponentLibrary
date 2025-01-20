@@ -23,7 +23,7 @@
 </script>
 
 {#snippet buttonContent()}
-	<i aria-hidden class={IconStyles}></i>
+	<i aria-hidden="true" class={IconStyles}></i>
 {/snippet}
 
 {#snippet popoverContent()}

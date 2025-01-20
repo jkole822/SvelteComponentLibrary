@@ -41,7 +41,7 @@
 	<div class={ContainerStyles}>
 		<!-- svelte-ignore a11y_consider_explicit_label -->
 		<button use:melt={$prevButton} class={ButtonStyles}>
-			<i class="fa-solid fa-chevron-left"></i>
+			<i aria-hidden="true" class="fa-solid fa-chevron-left"></i>
 		</button>
 		{#each $pages as page (page.key)}
 			{#if page.type !== "ellipsis" && ellipsis}
@@ -56,7 +56,8 @@
 		{/each}
 		<!-- svelte-ignore a11y_consider_explicit_label -->
 		<button use:melt={$nextButton} class={ButtonStyles}
-			><i class="fa-solid fa-chevron-right"></i></button
+			><i aria-hidden="true" class="fa-solid fa-chevron-right"
+			></i></button
 		>
 	</div>
 </nav>
