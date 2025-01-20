@@ -1,5 +1,6 @@
 <script lang="ts">
 	// Packages
+	import { onMount } from "svelte";
 	import { writable } from "svelte/store";
 
 	// Components
@@ -15,10 +16,17 @@
 	const value = writable(25);
 
 	// Helpers
-	const sleep = (ms: number) =>
-		new Promise(resolve => setTimeout(resolve, ms));
-	sleep(1000).then(() => {
-		value.set(100);
+	onMount(() => {
+		let frame: number;
+		const updatePercentage = () => {
+			if ($value === 100) return;
+			value.set($value + 1);
+			frame = requestAnimationFrame(updatePercentage);
+		};
+
+		frame = requestAnimationFrame(updatePercentage);
+
+		return () => cancelAnimationFrame(frame);
 	});
 </script>
 

@@ -1,19 +1,13 @@
 <script lang="ts">
 	// Packages
-	import { createToaster, melt } from "@melt-ui/svelte";
+	import { createToaster } from "@melt-ui/svelte";
 	import { flip } from "svelte/animate";
-	import { fly } from "svelte/transition";
+
+	// Components
+	import { ToastInstance } from "./components";
 
 	// Styles
-	import {
-		CloseButtonIconStyles,
-		CloseButtonStyles,
-		ContainerStyles,
-		DescriptionStyles,
-		ToastContainerStyles,
-		ToastInnerContainerStyles,
-		TitleStyles
-	} from "./styles";
+	import { ContainerStyles } from "./styles";
 
 	// Types
 	import type { Props, Toast, ToastUpdate } from "./types";
@@ -25,12 +19,7 @@
 
 	// MeltUI
 	const {
-		elements: {
-			content,
-			title: meltTitle,
-			description: meltDescription,
-			close,
-		},
+		elements,
 		helpers: { addToast, updateToast },
 		states: { toasts: meltToasts },
 		actions: { portal }
@@ -61,34 +50,9 @@
 </script>
 
 <div class={ContainerStyles} use:portal>
-	{#each $meltToasts as { id, data } (id)}
-		<div
-			use:melt={$content(id)}
-			animate:flip={{ duration: 500 }}
-			in:fly={{ duration: 150, x: "100%" }}
-			out:fly={{ duration: 150, x: "100%" }}
-			class={ToastContainerStyles}
-		>
-			<div class={ToastInnerContainerStyles}>
-				<div>
-					<h3 use:melt={$meltTitle(id)} class={TitleStyles}>
-						{data.title}
-					</h3>
-					<div
-						use:melt={$meltDescription(id)}
-						class={DescriptionStyles}
-					>
-						{data.description}
-					</div>
-				</div>
-				<button
-					use:melt={$close(id)}
-					aria-label="close"
-					class={CloseButtonStyles}
-				>
-					<i class={CloseButtonIconStyles}></i></button
-				>
-			</div>
+	{#each $meltToasts as toast (toast.id)}
+		<div animate:flip={{ duration: 500 }}>
+			<ToastInstance {elements} {toast} />
 		</div>
 	{/each}
 </div>
