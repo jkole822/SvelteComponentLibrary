@@ -46,7 +46,7 @@ disabled:cursor-not-allowed
 
 focus:ring-orange-500
 
-[&:focus_~_label]:bg-zinc-800
+[&:focus_~_label]:bg-stone-800
 [&:focus_~_label]:px-0.5
 [&:focus_~_label]:scale-[0.8]
 [&:focus_~_label]:text-orange-500
@@ -62,7 +62,7 @@ placeholder:text-transparent
 ${
 	hasValue
 		? `
-[&_~_label]:bg-zinc-800
+[&_~_label]:bg-stone-800
 [&_~_label]:px-0.5
 [&_~_label]:ring-orange-500
 [&_~_label]:scale-[0.8]
@@ -153,15 +153,14 @@ text-sm
 `
 
 export const ScrollContainerStyles = oneLine`
-bg-zinc-900
+bg-stone-900
 combo-box-scroll-container
 flex
 flex-col
 gap-0
 max-h-full
 overflow-y-auto
-px-2
-py-2
+p-2
 rounded-md
 shadow-lg
 text-stone-300

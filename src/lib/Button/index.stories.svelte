@@ -27,42 +27,35 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
 	import { IconStyles } from "../../styles";
 </script>
 
-{#snippet templateOne()}
+{#snippet children()}
 	<span class="mr-2">{faker.lorem.word()}</span>
 	<i aria-hidden="true" class={IconStyles}></i>
 {/snippet}
 
-{#snippet templateTwo()}
-	<span>{faker.lorem.word()}</span>
-{/snippet}
-
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Fill"
-	args={{ children: templateOne, variant: ButtonVariantsEnum.fill }}
-/>
+<Story name="Fill" args={{ children, variant: ButtonVariantsEnum.fill }} />
 
 <Story
 	name="Outline"
-	args={{ children: templateOne, variant: ButtonVariantsEnum.outline }}
+	args={{ children, variant: ButtonVariantsEnum.outline }}
 />
 
 <Story
 	name="Line One"
-	args={{ children: templateTwo, variant: ButtonVariantsEnum.lineOne }}
+	args={{ children, variant: ButtonVariantsEnum.lineOne }}
 />
 
 <Story
 	name="LineTwo"
-	args={{ children: templateTwo, variant: ButtonVariantsEnum.lineTwo }}
+	args={{ children, variant: ButtonVariantsEnum.lineTwo }}
 />
 
 <Story
 	name="WithClass"
-	args={{ children: templateTwo, variant: ButtonVariantsEnum.lineTwo }}
+	args={{ children, variant: ButtonVariantsEnum.lineTwo }}
 />

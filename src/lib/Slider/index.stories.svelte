@@ -11,32 +11,29 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
 	import { v4 as uuid } from "uuid";
-</script>
 
-<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{
+	const args = {
 		defaultValue: [30],
 		id: uuid(),
 		label: faker.lorem.words(2),
 		max: 100,
 		min: 0,
 		step: 1
-	}}
-/>
+	};
+</script>
+
+<!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
+<Story name="Basic" {args} />
 
 <Story
 	name="Multi Value"
 	args={{
-		defaultValue: [30, 50],
-		id: uuid(),
-		label: faker.lorem.words(2),
-		max: 100,
-		min: 0,
-		step: 1
+		...args,
+		defaultValue: [25, 75]
 	}}
 />
+
+<Story name="WithClass" args={{ ...args, className: "mx-auto sm:w-72" }} />

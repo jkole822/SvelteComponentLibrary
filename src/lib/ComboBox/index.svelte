@@ -18,8 +18,10 @@
 		VectorContainerStyles
 	} from "./styles";
 
+	// Utils
+	import { toComboBoxOption } from "../../utils";
+
 	// Types
-	import type { ComboboxOptionProps } from "@melt-ui/svelte";
 	import type { ComboBoxOption, Props } from "./types";
 
 	// Props
@@ -47,6 +49,7 @@
 		required
 	});
 
+	// Refs
 	let InputRef = $state<HTMLInputElement | null>(null);
 
 	// State
@@ -65,29 +68,14 @@
 		}
 	});
 
-	// Helpers
-	const toOption = (
-		option: ComboBoxOption
-	): ComboboxOptionProps<ComboBoxOption> => ({
-		value: option,
-		label: option.label ?? option.title ?? "",
-		disabled: option.disabled
-	});
-
 	// Derived
 	let filteredOptions = $derived(
 		$touchedInput
-			? options.filter(({ id, label, title, value }) => {
+			? options.filter(({ label, value }) => {
 					const normalizedInput = $inputValue.toLowerCase();
 					return (
 						label?.toLowerCase().includes(normalizedInput) ||
-						title?.toLowerCase().includes(normalizedInput) ||
-						(!!value &&
-							String(value)
-								.toLowerCase()
-								.includes(normalizedInput)) ||
-						(!!id &&
-							String(id).toLowerCase().includes(normalizedInput))
+						value.toLowerCase().includes(normalizedInput)
 					);
 				})
 			: options
@@ -117,6 +105,7 @@
 				InputRef?.focus();
 				$open = !$open;
 			}}
+			tabindex="-1"
 		>
 			<div class={VectorContainerStyles}>
 				<i aria-hidden="true" class="fa-solid fa-sort"></i>
@@ -133,7 +122,7 @@
 			<div class={ScrollContainerStyles} tabindex="0">
 				{#each filteredOptions as option, index (index)}
 					<li
-						use:melt={$meltOption(toOption(option))}
+						use:melt={$meltOption(toComboBoxOption(option))}
 						class={ListItemStyles}
 					>
 						{#if $isSelected(option)}
@@ -143,11 +132,9 @@
 							</div>
 						{/if}
 						<div class="pl-4">
-							<span class="font-medium"
-								>{option.label ?? option.title ?? ""}</span
-							>
+							<span class="font-medium">{option.label}</span>
 							<span class={ListItemValueStyles}
-								>{option.value ?? option.id ?? ""}</span
+								>{option.value}</span
 							>
 						</div>
 					</li>

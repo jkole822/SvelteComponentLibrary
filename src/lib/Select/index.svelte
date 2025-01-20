@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Packages
 	import { createSelect, melt } from "@melt-ui/svelte";
-	import { fade } from "svelte/transition";
+	import { fly } from "svelte/transition";
 
 	// Styles
 	import {
@@ -15,8 +15,11 @@
 		VectorContainerStyles
 	} from "./styles";
 
+	// Utils
+	import { toComboBoxOption } from "../../utils";
+
 	// Types
-	import type { Props } from "./types";
+	import type { Props, SelectOption } from "./types";
 
 	// Props
 	let {
@@ -24,10 +27,12 @@
 		className = "",
 		defaultSelected,
 		disabled = false,
+		groupOptions,
 		label,
 		onSelectedChange,
 		options,
-		placeholder
+		placeholder,
+		required
 	}: Props = $props();
 
 	// MeltUI
@@ -35,14 +40,14 @@
 		elements: {
 			trigger,
 			menu,
-			option,
+			option: meltOption,
 			group,
-			groupLabel,
+			groupLabel: meltGroupLabel,
 			label: meltLabel
 		},
 		states: { selectedLabel, open },
 		helpers: { isSelected }
-	} = createSelect<string>({
+	} = createSelect<SelectOption>({
 		defaultSelected,
 		disabled,
 		forceVisible: true,
@@ -51,47 +56,70 @@
 			placement: "bottom",
 			fitViewport: true,
 			sameWidth: true
-		}
+		},
+		required
 	});
 </script>
 
+{#snippet listItem(option: SelectOption)}
+	<div class={ItemStyles}>
+		<div
+			class={CheckContainerStyles({
+				isSelected: $isSelected(option)
+			})}
+		>
+			<i aria-hidden="true" class="fa-solid fa-check"></i>
+		</div>
+		{option.label}
+	</div>
+{/snippet}
+
 <div class={`${className} ${ContainerStyles}`}>
 	<!-- svelte-ignore a11y_label_has_associated_control - $label contains the 'for' attribute -->
-	<label class={LabelStyles} use:melt={$meltLabel}>{label}</label>
+	{#if label}
+		<label class={LabelStyles} use:melt={$meltLabel}>{label}</label>
+	{/if}
 	<button class={TriggerStyles} use:melt={$trigger} aria-label={ariaLabel}>
 		{$selectedLabel || placeholder}
 		<div class={VectorContainerStyles({ isOpen: $open })}>
-			<i class="fa-solid fa-chevron-up"></i>
+			<i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
 		</div>
 	</button>
 	{#if $open}
-		<ul
-			class={MenuStyles}
-			use:melt={$menu}
-			transition:fade={{ duration: 150 }}
-		>
-			{#each Object.entries(options) as [key, arr]}
-				<li use:melt={$group(key)}>
-					<div class={GroupLabelStyles} use:melt={$groupLabel(key)}>
-						{key}
-					</div>
-					{#each arr as item}
-						<div
-							class={ItemStyles}
-							use:melt={$option({ value: item, label: item })}
-						>
+		<div use:melt={$menu} transition:fly={{ duration: 300, y: 10 }}>
+			<ul class={MenuStyles}>
+				{#if groupOptions}
+					{#each groupOptions as { label: groupLabel, values }}
+						<li use:melt={$group(groupLabel)}>
 							<div
-								class={CheckContainerStyles({
-									isSelected: $isSelected(item)
-								})}
+								class={GroupLabelStyles}
+								use:melt={$meltGroupLabel(groupLabel)}
 							>
-								<i class="fa-solid fa-check"></i>
+								{groupLabel}
 							</div>
-							{item}
-						</div>
+							{#each values as option}
+								<div
+									use:melt={$meltOption(
+										toComboBoxOption(option)
+									)}
+									class="group"
+								>
+									{@render listItem(option)}
+								</div>
+							{/each}
+						</li>
 					{/each}
-				</li>
-			{/each}
-		</ul>
+				{:else}
+					{#each options as option}
+						<li
+							use:melt={$meltOption(toComboBoxOption(option))}
+							class="group"
+						>
+							{@render listItem(option)}
+						</li>
+					{/each}
+				{/if}
+			</ul>
+		</div>
 	{/if}
 </div>

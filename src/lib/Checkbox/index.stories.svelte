@@ -13,7 +13,7 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
 
 	const args = {

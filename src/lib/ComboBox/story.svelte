@@ -17,13 +17,14 @@
 
 	const handleChange: CreateComboboxProps<ComboBoxOption>["onSelectedChange"] =
 		({ curr, next }) => {
-			value = next?.value;
-			return curr?.value.id !== next?.value.id ? next : undefined;
+			const isDeselectedValue = curr?.value.value === next?.value.value;
+			value = isDeselectedValue ? undefined : next?.value;
+			return isDeselectedValue ? undefined : next;
 		};
 </script>
 
 <ComboBox {...rest} onSelectedChange={handleChange} />
 
-<div class={SubHeadingStyles}>Binding Check</div>
-<div class={PararaphStyles}>ID: {value?.id}</div>
-<div class={PararaphStyles}>Title: {value?.title}</div>
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>Label: {value?.label}</p>
+<p class={PararaphStyles}>Value: {value?.value}</p>

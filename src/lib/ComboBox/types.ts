@@ -2,10 +2,8 @@ import type { CreateComboboxProps } from "@melt-ui/svelte";
 
 export interface ComboBoxOption {
 	disabled?: boolean;
-	id?: number | string;
-	label?: string;
-	title?: string;
-	value?: string | number;
+	label: string;
+	value: string;
 }
 
 export interface Props {

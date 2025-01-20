@@ -24,9 +24,9 @@
 	// Props
 	let {
 		cancelButtonText,
+		children,
 		className = "",
 		description,
-		dialogContent,
 		id,
 		onsubmit,
 		open,
@@ -84,7 +84,7 @@
 					{description}
 				</p>
 			{/if}
-			{@render dialogContent()}
+			{@render children()}
 			<div class={ButtonContainerStyles}>
 				{#if cancelButtonText}
 					<button use:melt={$close} class={CancelButtonStyles}>
@@ -106,7 +106,7 @@
 				aria-label="close"
 				class={CloseButtonStyles}
 			>
-				<i class="fa-solid fa-xmark"></i>
+				<i aria-hidden="true" class="fa-solid fa-xmark"></i>
 			</button>
 		</div>
 	</div>

@@ -10,7 +10,6 @@ export type RadioGroupOrientation =
 	| RadioGroupOrientationEnum.Vertical;
 
 export interface Props {
-	ariaLabel: string;
 	className?: string;
 	defaultValue?: string;
 	name: string;

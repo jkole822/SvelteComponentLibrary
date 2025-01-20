@@ -5,7 +5,7 @@ bg-stone-900
 date-range-picker-calendar
 p-3
 rounded-lg
-shadow-sm
+shadow-lg
 text-orange-300
 w-full
 
@@ -113,30 +113,29 @@ date-range-picker-container
 
 [&_[data-melt-datefield-label]]:font-bold
 [&_[data-melt-datefield-label]]:select-none
-[&_[data-melt-datefield-label]]:text-orange-400
+[&_[data-melt-datefield-label]]:text-orange-500
 [&_[data-melt-datefield-label]]:text-sm
 [&_[data-melt-datefield-label]]:tracking-wide
 [&_[data-melt-datefield-label]]:uppercase
 
 [&_[data-melt-datefield-field]]:bg-transparent
 [&_[data-melt-datefield-field]]:flex
-[&_[data-melt-datefield-field]]:h-10
 [&_[data-melt-datefield-field]]:items-center
 [&_[data-melt-datefield-field]]:min-w-40
 [&_[data-melt-datefield-field]]:mt-1
-[&_[data-melt-datefield-field]]:px-3
+[&_[data-melt-datefield-field]]:p-4
 [&_[data-melt-datefield-field]]:ring-2
 [&_[data-melt-datefield-field]]:ring-stone-200
 [&_[data-melt-datefield-field]]:rounded-md
 [&_[data-melt-datefield-field]]:text-stone-200
 [&_[data-melt-datefield-field]]:w-full
 
-[&_[data-melt-datefield-field]:focus-within]:ring-orange-400
+[&_[data-melt-datefield-field]:focus-within]:ring-orange-500
 
-[&_[data-melt-datefield-field]_.separator]:px-2
+[&_[data-melt-datefield-field]_.separator]:px-2d
+[&_[data-melt-datefield-field][data-invalid]]:ring-red-400
 
-[&_[data-melt-datefield-label][data-invalid]]:border-red-400
-[&_[data-melt-datefield-label][data-invalid]]:text-red-500
+[&_[data-melt-datefield-label][data-invalid]]:text-red-400
 
 [&_[data-melt-datefield-segment]]:outline-none
 [&_[data-melt-datefield-segment]]:ring-orange-300
@@ -144,12 +143,12 @@ date-range-picker-container
 
 [&_[data-melt-datefield-segment]:focus]:ring-2
 
-[&_[data-melt-datefield-segment][data-invalid]]:text-red-500
+[&_[data-melt-datefield-segment][data-invalid]]:text-red-400
 
 [&_[data-melt-datefield-segment]:not([data-segment="literal"])]:px-0.5
 
 [&_[data-melt-datefield-validation]]:self-start
-[&_[data-melt-datefield-validation]]:text-red-500
+[&_[data-melt-datefield-validation]]:text-red-400
 `;
 
 export const HeaderStyles = oneLine`

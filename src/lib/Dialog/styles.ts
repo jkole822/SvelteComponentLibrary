@@ -40,7 +40,7 @@ outline-none
 p-1
 right-4
 ring-orange-400
-rounded-full
+rounded-full    
 text-orange-600
 top-4
 transition-all

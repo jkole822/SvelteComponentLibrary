@@ -9,18 +9,13 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { checked, ...rest }: Props = $props();
+	let props: Props = $props();
 
 	// State
-	let checkedState = $state(false);
-
-	// Effects
-	$effect(() => {
-		checkedState = checked;
-	});
+	let value = $state("");
 </script>
 
-<Checkbox {...rest} bind:checked={checkedState} />
+<Checkbox {...props} onValueChange={({ next }) => (value = next)} />
 
 <p class={SubHeadingStyles}>Binding Check</p>
-<p class={PararaphStyles}>{checkedState ? "Checked" : "Not Checked"}</p>
+<p class={PararaphStyles}>{value}</p>

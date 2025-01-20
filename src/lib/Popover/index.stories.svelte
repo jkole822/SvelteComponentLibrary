@@ -8,15 +8,35 @@
 		component: Popover,
 		tags: ["autodocs"],
 		argTypes: {
-			disabled: { control: "boolean" },
-			isIconButton: { control: "boolean" }
+			disabled: { control: "boolean" }
 		}
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
+	import { IconStyles } from "../../styles";
+
+	const args = {
+		ariaLabel: faker.lorem.words(3),
+		buttonContent
+	};
 </script>
 
+{#snippet buttonContent()}
+	<span>Open Popover</span>
+{/snippet}
+
+{#snippet iconButtonContent()}
+	<i aria-hidden="true" class={IconStyles}></i>
+{/snippet}
+
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Basic" args={{ ariaLabel: faker.lorem.word() }} />
+<Story name="Basic" {args} />
+
+<Story
+	name="IconButton"
+	args={{ ...args, buttonContent: iconButtonContent, isIconButton: true }}
+/>
+
+<Story name="WithClass" args={{ ...args, className: "mx-auto" }} />

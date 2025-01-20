@@ -44,11 +44,13 @@
 			<i class="fa-solid fa-chevron-left"></i>
 		</button>
 		{#each $pages as page (page.key)}
-			{#if page.type === "ellipsis" && ellipsis}
-				{@render ellipsis()}
-			{:else}
+			{#if page.type !== "ellipsis" && ellipsis}
 				<button class={ButtonStyles} use:melt={$pageTrigger(page)}>
 					{page.value}
+				</button>
+			{:else if page.type === "ellipsis" && ellipsis}
+				<button class={`pagination-ellipsis ${ButtonStyles}`}>
+					{@render ellipsis()}
 				</button>
 			{/if}
 		{/each}

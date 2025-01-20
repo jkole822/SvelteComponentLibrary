@@ -2,28 +2,35 @@ import { oneLine } from "common-tags";
 
 export const ButtonStyles = oneLine`
 bg-stone-700
+duration-200
+ease-in-out
 grid
 h-8
 items-center
 outline-none
 pagination-button
 px-3
-ring-orange-400
+ring-2
+ring-stone-600
 rounded-md
 shadow-sm
 text-stone-200
 text-sm
+transition-all
 
 disabled:cursor-not-allowed
-disabled:opacity-50
+disabled:!opacity-25
 
-data-[selected]:bg-orange-400
+data-[selected]:bg-orange-500
 data-[selected]:ring-orange-100
-data-[selected]:text-stone-700
+data-[selected]:text-stone-100
+
+data-[selected]:hover:not(.pagination-ellipsis)]
 
 focus:ring-2
+focus:ring-orange-200
 
-hover:opacity-75
+[&:hover:not(.pagination-ellipsis)]:bg-stone-600
 `;
 
 export const ContainerStyles = oneLine`
@@ -34,9 +41,6 @@ pagination-container
 `;
 
 export const NavigationStyles = oneLine`
-flex
-flex-col
-gap-4
-items-center
+w-fit
 pagination-navigation
 `;

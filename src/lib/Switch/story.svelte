@@ -2,6 +2,9 @@
 	// Components
 	import Switch from "./index.svelte";
 
+	// Styles
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 	// Types
 	import type { Props } from "./types";
 
@@ -19,7 +22,5 @@
 
 <Switch {...rest} bind:checked={checkedState} />
 
-<div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
-	Binding Check
-</div>
-<div class="text-stone-200">{checkedState ? "Checked" : "Not Checked"}</div>
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>{checkedState ? "Checked" : "Not Checked"}</p>

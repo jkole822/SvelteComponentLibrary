@@ -1,18 +1,25 @@
 import type { CreateSelectProps } from "@melt-ui/svelte";
 
-// Example Options
-// const options = {
-//     sweet: ["Caramel", "Chocolate", "Strawberry", "Cookies & Cream"],
-//     savory: ["Basil", "Bacon", "Rosemary"]
-// };
-
-export interface Props {
-    ariaLabel: string;
-	className?: string;
-	defaultSelected?: CreateSelectProps<string>["defaultSelected"];
+export interface SelectOption {
 	disabled?: boolean;
 	label: string;
-	onSelectedChange?: CreateSelectProps<string>["onSelectedChange"];
-	options: any;
+	value: string;
+}
+
+export interface SelectGroupOption {
+	label: string;
+	values: SelectOption[];
+}
+
+export interface Props {
+	ariaLabel?: string;
+	className?: string;
+	defaultSelected?: CreateSelectProps<SelectOption>["defaultSelected"];
+	disabled?: boolean;
+	groupOptions?: SelectGroupOption[];
+	label?: string;
+	onSelectedChange?: CreateSelectProps<SelectOption>["onSelectedChange"];
+	options: SelectOption[];
 	placeholder: string;
+	required?: boolean;
 }

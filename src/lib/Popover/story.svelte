@@ -1,7 +1,14 @@
 <script lang="ts">
+	// Packages
+	import { faker } from "@faker-js/faker";
+	import { v4 as uuid } from "uuid";
+
 	// Components
 	import Popover from "./index.svelte";
 	import Input from "../Input/index.svelte";
+
+	// Styles
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 	// Types
 	import type { Props } from "./types";
@@ -11,35 +18,25 @@
 	let { isIconButton, ...rest }: Props = $props();
 
 	// State
-	let name = $state("");
-	let username = $state("");
+	let value = $state("");
 </script>
 
-{#snippet buttonContent()}
-	{#if isIconButton}
-		<i aria-hidden="true" class="fa-solid fa-ghost"></i>
-	{:else}
-		<span>Open Popover</span>
-	{/if}
-{/snippet}
-
 {#snippet popoverContent()}
-	<Input autoComplete={AutoCompleteEnum.name} bind:value={name} id="name" name="Name" />
+	<h1 class="mb-6 font-bold text-stone-200 w-[85%]">
+		{faker.lorem.words(2)}
+	</h1>
+	<p class="text-stone-400 text-sm">{faker.lorem.sentence()}</p>
 	<Input
-		autoComplete={AutoCompleteEnum.username}
-		bind:value={username}
-		className="mt-4"
-		id="username"
-		name="Username"
+		autoComplete={AutoCompleteEnum.name}
+		className="mt-6"
+		bind:value
+		id={uuid()}
+		name={faker.lorem.word()}
+		required
 	/>
 {/snippet}
 
-<Popover {...rest} {buttonContent} {isIconButton} {popoverContent} />
+<Popover {...rest} {isIconButton} {popoverContent} />
 
-<div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
-	Binding Check
-</div>
-<div class="text-stone-200">Name</div>
-<div class="text-stone-400 mb-1">{name}</div>
-<div class="text-stone-200">Username</div>
-<div class="text-stone-400">{username}</div>
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>{value}</p>

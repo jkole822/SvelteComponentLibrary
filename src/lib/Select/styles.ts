@@ -39,7 +39,6 @@ uppercase
 
 export const ItemStyles = oneLine`
 cursor-pointer
-group
 pl-8
 pr-4
 py-1
@@ -47,22 +46,18 @@ relative
 rounded-md
 select-item
 text-stone-300
-              
-focus:text-orange-700
-focus:z-10
 
-hover:bg-orange-100
+group-data-[disabled]:cursor-not-allowed
+group-data-[disabled]:opacity-50
 
-data-[disabled]:opacity-50
-
-data-[highlighted]:bg-orange-200
-data-[highlighted]:text-orange-800
+group-data-[highlighted]:bg-orange-200
+group-data-[highlighted]:text-orange-800
 `;
 
 export const LabelStyles = oneLine`
 font-bold
 select-label
-text-orange-400
+text-orange-500
 text-sm
 tracking-wide
 uppercase
@@ -74,7 +69,7 @@ flex
 flex-col
 max-h-72
 overflow-y-auto
-p-1
+p-2
 rounded-md
 select-menu
 shadow-md
@@ -86,20 +81,18 @@ focus:!ring-0
 export const TriggerStyles = oneLine`
 bg-transparent
 flex
-h-10
 items-center
 justify-between
-min-w-56
 outline-none
-px-3
-py-2
+p-4
 relative
 ring-2
 ring-stone-200
-rounded-md
+rounded-lg
 select-trigger
 text-stone-200
-transition-opacity
+transition-shadow
+w-full
 
 disabled:cursor-not-allowed
 disabled:ring-stone-600
@@ -107,10 +100,11 @@ disabled:text-stone-600
 
 [&:disabled_.select-vector-container]:text-stone-600
 
+focus:ring-orange-500
 
-focus:ring-orange-400
+hover:ring-orange-500
 
-hover:opacity-90
+[&_>_span[data-placeholder-shown]]:text-stone-500
 `;
 
 export const VectorContainerStyles = ({
@@ -118,18 +112,22 @@ export const VectorContainerStyles = ({
 }: {
 	isOpen: boolean;
 }) => oneLine`
-${isOpen ? `
+${
+	isOpen
+		? `
 rotate-0
 text-orange-500
-` : `
+`
+		: `
 rotate-180
 text-stone-200
-`}
+`
+}
 
 -translate-y-1/2
 absolute
 select-vector-container
-right-2
+right-4
 top-1/2
 z-10
 transition-all

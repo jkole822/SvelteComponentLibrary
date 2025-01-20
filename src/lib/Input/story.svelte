@@ -22,5 +22,5 @@
 
 <Input {...rest} bind:value={valueState} />
 
-<div class={SubHeadingStyles}>Binding Check</div>
-<div class={PararaphStyles}>{valueState}</div>
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>{valueState}</p>

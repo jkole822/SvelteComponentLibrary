@@ -24,9 +24,21 @@ duration-300
 export const ContainerStyles = oneLine`
 flex
 flex-col
-gap-0.5
-data-[orientation=horizontal]:flex-row
+gap-2
 radio-group-container
+w-fit
+
+[&:focus-within_.radio-group-group-label]:text-orange-400
+`;
+
+export const GroupLabelStyles = oneLine`
+duration-300
+ease-in-out
+font-extrabold
+radio-group-group-label
+tracking-wider
+uppercase
+transition-all
 `;
 
 export const LabelStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
@@ -42,6 +54,15 @@ tracking-wider
 transition-all
 uppercase
 `;
+
+export const OptionContainerStyles = oneLine`
+flex
+flex-col
+gap-0.5
+radio-group-option-container
+
+data-[orientation=horizontal]:flex-row
+`
 
 export const OptionStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
 ${isChecked ? '[&:focus-within_label]:text-stone-400 [&:hover_label]:text-stone-400' : ''}

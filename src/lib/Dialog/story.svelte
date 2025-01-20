@@ -1,16 +1,19 @@
 <script lang="ts">
 	// Components
+	import Button from "../Button/index.svelte";
 	import Dialog from "./index.svelte";
 	import Input from "../Input/index.svelte";
 
+	// Styles
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 	// Types
-	import type { Props } from "./types";
 	import { AutoCompleteEnum } from "../Input/types";
-	import Button from "../Button/index.svelte";
 	import { ButtonVariantsEnum } from "../Button/types";
+	import type { Props } from "./types";
 
 	// Props
-	let { id, open, ...rest }: Props = $props();
+	let { children: _, id, open, ...rest }: Props = $props();
 
 	// State
 	let openState = $state(false);
@@ -26,14 +29,9 @@
 	const handleOpen = () => {
 		openState = !openState;
 	};
-
-	const handleSubmit = () => {
-		console.log("Name:", name);
-		console.log("Username:", username);
-	};
 </script>
 
-{#snippet dialogContent()}
+{#snippet children()}
 	<Input
 		autoComplete={AutoCompleteEnum.name}
 		bind:value={name}
@@ -59,19 +57,12 @@
 	</Button>
 {/snippet}
 
-<Dialog
-	{...rest}
-	{dialogContent}
-	{id}
-	onsubmit={handleSubmit}
-	open={openState}
-	{trigger}
-/>
+<Dialog {...rest} {id} open={openState} {trigger}>
+	{@render children()}
+</Dialog>
 
-<div class="font-bold mb-1 mt-4 text-orange-400 tracking-wide uppercase">
-	Binding Check
-</div>
-<div class="text-stone-200">Name</div>
-<div class="text-stone-400 mb-1">{name}</div>
-<div class="text-stone-200">Username</div>
-<div class="text-stone-400">{username}</div>
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>Name</p>
+<p class={PararaphStyles}>{name}</p>
+<p class={PararaphStyles}>Username</p>
+<p class={PararaphStyles}>{username}</p>

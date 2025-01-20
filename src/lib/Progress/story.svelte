@@ -9,7 +9,7 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { ariaLabel }: Props = $props();
+	let { value: _, ...rest }: Props = $props();
 
 	// State
 	const value = writable(25);
@@ -22,4 +22,4 @@
 	});
 </script>
 
-<Progress {ariaLabel} {value} />
+<Progress {...rest} {value} />

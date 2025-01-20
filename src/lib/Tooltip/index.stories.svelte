@@ -11,8 +11,13 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
+
+	const args = {
+		children,
+		text: faker.lorem.sentence()
+	};
 </script>
 
 {#snippet children()}
@@ -20,10 +25,6 @@
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{
-		children,
-		text: faker.lorem.sentence(),
-	}}
-/>
+<Story name="Basic" {args} />
+
+<Story name="WithTriggerClass" args={{ ...args, triggerClass: "mx-auto" }} />

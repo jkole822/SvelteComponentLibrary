@@ -18,7 +18,7 @@ uppercase
 `;
 
 export const RangeContainerStyles = oneLine`
-bg-stone-900
+bg-stone-600
 h-[3px]
 slider-range-container
 w-full
@@ -36,17 +36,18 @@ h-5
 items-center
 relative
 slider-slider-container
-w-52
+w-full
 `;
 
 export const ThumbStyles = oneLine`
 bg-stone-100
 h-5
 outline-none
-ring-orange-400
 rounded-full
 slider-thumb
 w-5
 
-focus:ring-2
+hover:shadow-[0_0_0_4px_rgba(251_146_60_/_0.4)]
+
+focus:shadow-[0_0_0_4px_rgba(251_146_60_/_0.7)]
 `;

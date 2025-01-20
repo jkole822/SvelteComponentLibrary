@@ -44,9 +44,13 @@
 </script>
 
 <Toast {toastUpdates} />
-<Button className="mr-10" variant={ButtonVariantsEnum.fill} onclick={handleCreateToast}
-	>Create Toast</Button
->
-<Button variant={ButtonVariantsEnum.outline} onclick={handleUpdateRandomToast}
-	>Update Random Toast</Button
->
+
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+	<Button variant={ButtonVariantsEnum.fill} onclick={handleCreateToast}
+		>Create Toast</Button
+	>
+	<Button
+		variant={ButtonVariantsEnum.outline}
+		onclick={handleUpdateRandomToast}>Update Random Toast</Button
+	>
+</div>

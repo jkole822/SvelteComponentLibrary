@@ -13,9 +13,13 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
+
+	const args = { checked: false, label: faker.lorem.words(2) };
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Basic" args={{ checked: false, label: faker.lorem.words(2) }} />
+<Story name="Basic" {args} />
+
+<Story name="WithClass" args={{ ...args, className: "mx-auto" }} />

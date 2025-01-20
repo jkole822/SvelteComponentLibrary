@@ -18,6 +18,9 @@
 		TableHeaderCellTextStyles
 	} from "./styles";
 
+	// Utils
+	import { toComboBoxOption } from "../../utils";
+
 	// Types
 	import type { Props } from "./types";
 
@@ -57,14 +60,13 @@
 <section class={className}>
 	<Combobox
 		className={localeClassName}
-		defaultSelected={{
-			value: "en-US",
-			label: "English (US)"
-		}}
+		defaultSelected={toComboBoxOption({
+			label: "English (US)",
+			value: "en-US"
+		})}
 		label="Locale"
 		onSelectedChange={({ next }) => {
-			if (next) {
-				//@ts-ignore
+			if (next && typeof next.value.value === "string") {
 				locale.set(next.value.value);
 			}
 

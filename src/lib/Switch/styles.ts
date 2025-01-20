@@ -31,6 +31,7 @@ group
 items-center
 relative
 switch-label
+w-fit
 `;
 
 export const LabelTextStyles = oneLine`

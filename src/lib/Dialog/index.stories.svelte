@@ -15,7 +15,7 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { v4 as uuid } from "uuid";
 </script>
 

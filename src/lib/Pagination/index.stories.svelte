@@ -1,6 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Pagination from "./index.svelte";
+	import Pagination from "./story.svelte";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
@@ -11,27 +11,24 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import { faker } from "@faker-js/faker";
+
+	const args = {
+		ariaLabel: faker.lorem.word(),
+		count: 100,
+		defaultPage: 1,
+		ellipsis,
+		perPage: 10,
+		siblingCount: 1
+	};
 </script>
 
-{#snippet template()}
+{#snippet ellipsis()}
 	<span class="text-stone-100">...</span>
 {/snippet}
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{
-		ariaLabel: faker.lorem.word(),
-		count: 100,
-		defaultPage: 1,
-		ellipsis: template,
-		onPageChange: ({ next }) => {
-			console.log(next);
-			return next;
-		},
-		perPage: 10,
-		siblingCount: 1
-	}}
-/>
+<Story name="Basic" {args} />
+
+<Story name="WithClass" args={{ ...args, className: "mx-auto" }} />

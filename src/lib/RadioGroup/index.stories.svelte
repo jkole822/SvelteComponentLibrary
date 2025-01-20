@@ -1,7 +1,7 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import { faker } from "@faker-js/faker";
-	import RadioGroup from "./index.svelte";
+	import RadioGroup from "./story.svelte";
 	import { RadioGroupOrientationEnum } from "./types";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -10,8 +10,6 @@
 		component: RadioGroup,
 		tags: ["autodocs"],
 		argTypes: {
-			ariaLabel: { control: "text" },
-			name: { control: "text" },
 			orientation: {
 				control: {
 					type: "select"
@@ -30,17 +28,14 @@
 		faker.lorem.words(2),
 		faker.lorem.word()
 	];
+
+	const args = {
+		name: faker.lorem.word(),
+		options
+	};
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story
-	name="Basic"
-	args={{
-		ariaLabel: faker.lorem.word(),
-		onValueChange: ({ next }) => {
-			console.log(next);
-			return next;
-		},
-		options
-	}}
-/>
+<Story name="Basic" {args} />
+
+<Story name="WithClass" args={{ ...args, className: "mx-auto" }} />
