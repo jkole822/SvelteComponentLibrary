@@ -8,23 +8,29 @@
 	import Input from "../Input/index.svelte";
 	import Tabs from "./index.svelte";
 
+	// Styles
+	import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 	// Types
 	import type { Props } from "./types";
+	import type { Snippet } from "svelte";
 
 	// Props
 	let props: Props = $props();
 
 	// State
-	let value = $state("");
+	let valueOne = $state("");
+	let valueTwo = $state("");
+	let valueThree = $state("");
 	const defaultTabId = uuid();
 </script>
 
-{#snippet children()}
+{#snippet content(input: Snippet)}
 	<p class="mb-5 text-neutral-200">
 		{faker.lorem.sentence()}
 	</p>
 	<fieldset class="mb-4 flex w-full flex-col justify-start">
-		<Input bind:value name={faker.lorem.words()} />
+		{@render input()}
 	</fieldset>
 	<div class="mt-5 flex justify-end">
 		<Button
@@ -34,18 +40,42 @@
 	</div>
 {/snippet}
 
+{#snippet tabContentOne()}
+	{#snippet inputOne()}
+		<Input bind:value={valueOne} name={faker.lorem.words()} />
+	{/snippet}
+	{@render content(inputOne)}
+{/snippet}
+
+{#snippet tabContentTwo()}
+	{#snippet inputTwo()}
+		<Input bind:value={valueTwo} name={faker.lorem.words()} />
+	{/snippet}
+	{@render content(inputTwo)}
+{/snippet}
+
+{#snippet tabContentThree()}
+	{#snippet inputThree()}
+		<Input bind:value={valueThree} name={faker.lorem.words()} />
+	{/snippet}
+	{@render content(inputThree)}
+{/snippet}
+
 <Tabs
 	{...props}
-	ariaLabel={faker.lorem.words(2)}
-	className="flex flex-col overflow-hidden rounded-md data-[orientation=vertical]:flex-row"
 	defaultValue={defaultTabId}
 	items={[
 		{
-			children,
+			children: tabContentOne,
 			id: defaultTabId,
 			label: faker.lorem.word()
 		},
-		{ children, id: uuid(), label: faker.lorem.word() },
-		{ children, id: uuid(), label: faker.lorem.word() }
+		{ children: tabContentTwo, id: uuid(), label: faker.lorem.word() },
+		{ children: tabContentThree, id: uuid(), label: faker.lorem.word() }
 	]}
 />
+
+<p class={SubHeadingStyles}>Binding Check</p>
+<p class={PararaphStyles}>Value One: {valueOne}</p>
+<p class={PararaphStyles}>Value Two: {valueTwo}</p>
+<p class={PararaphStyles}>Value Three: {valueThree}</p>

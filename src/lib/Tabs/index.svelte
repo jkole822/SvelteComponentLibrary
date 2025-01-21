@@ -6,6 +6,7 @@
 
 	// Styles
 	import {
+		ContainerStyles,
 		ContentStyles,
 		ListStyles,
 		TriggerIndicatorStyles,
@@ -39,7 +40,7 @@
 	});
 </script>
 
-<div use:melt={$root} class={className}>
+<div use:melt={$root} class={`${className} ${ContainerStyles}`}>
 	<div use:melt={$list} aria-label={ariaLabel} class={ListStyles}>
 		{#each items as triggerItem}
 			<button use:melt={$trigger(triggerItem.id)} class={TriggerStyles}>

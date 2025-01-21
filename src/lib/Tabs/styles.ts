@@ -1,7 +1,15 @@
 import { oneLine } from "common-tags";
 
+export const ContainerStyles = oneLine`
+flex 
+flex-col
+tabs-container
+
+data-[orientation=vertical]:flex-row
+`
+
 export const ContentStyles = oneLine`
-bg-neutral-900/90
+bg-neutral-900
 grow
 p-5
 `;
