@@ -47,7 +47,7 @@ rounded-full
 slider-thumb
 w-5
 
-hover:shadow-[0_0_0_4px_rgba(251_146_60_/_0.4)]
+hover:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.4)]
 
-focus:shadow-[0_0_0_4px_rgba(251_146_60_/_0.7)]
+focus:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.7)]
 `;

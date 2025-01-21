@@ -32,7 +32,7 @@ export const ContentStyles = oneLine`
 accordion-content
 bg-primary-200
 overflow-hidden
-shadow-[inset_0px_1px_0px_rgb(214,211,209)]
+shadow-[inset_0px_1px_0px_rgb(var(--color-neutral-300))]
 text-sm
 text-neutral-700
 `;

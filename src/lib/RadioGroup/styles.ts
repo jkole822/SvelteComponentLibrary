@@ -1,7 +1,7 @@
 import { oneLine } from "common-tags";
 
 export const ButtonStyles = oneLine`
-bg-[linear-gradient(to_right_bottom,_rgb(253,186,116),_rgb(234,88,12))]
+bg-[linear-gradient(to_right_bottom,_rgb(var(--color-primary-300)),_rgb(var(--color-primary-600)))]
 h-5
 outline-none
 radio-group-button
