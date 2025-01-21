@@ -84,7 +84,6 @@ export const TreeStyles = oneLine`
 absolute
 bg-neutral-900
 capitalize
-fixed
 h-full
 hidden
 max-h-screen
