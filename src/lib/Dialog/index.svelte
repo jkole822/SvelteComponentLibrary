@@ -16,7 +16,7 @@
 	} from "./styles";
 
 	// Utils
-	import { flyAndScale } from "../../utils/animations";
+	import { scaleAndTransform } from "../../utils/animations";
 
 	// Types
 	import type { Props } from "./types";
@@ -70,7 +70,7 @@
 		></div>
 		<div
 			class={ContentStyles}
-			transition:flyAndScale={{
+			transition:scaleAndTransform={{
 				duration: 200,
 				transform: "translate(-50%, -50%)"
 			}}
