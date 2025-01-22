@@ -19,10 +19,11 @@
 	let props: Props = $props();
 
 	// State
+	const defaultId = uuid();
+	let activeTab = $state(defaultId);
 	let valueOne = $state("");
 	let valueTwo = $state("");
 	let valueThree = $state("");
-	const defaultTabId = uuid();
 </script>
 
 {#snippet content(input: Snippet)}
@@ -63,16 +64,13 @@
 
 <Tabs
 	{...props}
-	defaultValue={defaultTabId}
 	items={[
-		{
-			children: tabContentOne,
-			id: defaultTabId,
-			label: faker.lorem.word()
-		},
+		{ children: tabContentOne, id: defaultId, label: faker.lorem.word() },
 		{ children: tabContentTwo, id: uuid(), label: faker.lorem.word() },
 		{ children: tabContentThree, id: uuid(), label: faker.lorem.word() }
 	]}
+	onValueChange={input => (activeTab = input)}
+	value={activeTab}
 />
 
 <p class={SubHeadingStyles}>Binding Check</p>

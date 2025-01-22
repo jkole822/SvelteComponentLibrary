@@ -1,43 +1,40 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import { faker } from "@faker-js/faker";
 	import Tabs from "./story.svelte";
+	import { TabsOrientationEnum } from "./types";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
 		title: "Tabs",
 		component: Tabs,
 		tags: ["autodocs"],
-		argTypes: {}
+		argTypes: {
+			loop: { control: "boolean" },
+			orientation: {
+				control: "select",
+				options: [
+					TabsOrientationEnum.Horizontal,
+					TabsOrientationEnum.Vertical
+				]
+			},
+			selectWhenFocused: { control: "boolean" }
+		}
 	});
-</script>
 
-<script>
-	import { TabsOrientationEnum } from "./types";
-
-	const args = {
-		ariaLabel: faker.lorem.words(2)
-	};
+	const className = "mx-auto overflow-hidden rounded-md sm:w-[500px]";
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Horizontal" {args} />
+<Story name="Horizontal" />
 
 <Story name="Vertical" args={{ orientation: TabsOrientationEnum.Vertical }} />
 
-<Story
-	name="HorizontalWithClass"
-	args={{
-		...args,
-		className: "mx-auto overflow-hidden rounded-md sm:w-[500px]"
-	}}
-/>
+<Story name="HorizontalWithClass" args={{ className }} />
 
 <Story
 	name="VerticalWithClass"
 	args={{
-		...args,
-		className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",
+		className,
 		orientation: TabsOrientationEnum.Vertical
 	}}
 />

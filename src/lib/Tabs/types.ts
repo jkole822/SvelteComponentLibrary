@@ -16,9 +16,11 @@ export interface TabItem {
 }
 
 export interface Props {
-	ariaLabel: string;
 	className?: string;
-	defaultValue: string;
+	loop?: boolean;
 	items: TabItem[];
-	orientation: TabsOrientation;
+	onValueChange?: (value: string) => void;
+	orientation?: TabsOrientation;
+	selectWhenFocused?: boolean;
+	value?: string;
 }

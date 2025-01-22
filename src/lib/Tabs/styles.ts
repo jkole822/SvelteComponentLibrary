@@ -5,7 +5,7 @@ flex
 flex-col
 tabs-container
 
-data-[orientation=vertical]:flex-row
+[&:has([data-orientation=vertical])]:flex-row
 `
 
 export const ContentStyles = oneLine`
@@ -69,9 +69,9 @@ focus-visible:ring-2
 
 data-[orientation=vertical]:[padding-inline:theme(spacing.3)]
 
-data-[state="active"]:bg-neutral-900
-data-[state="active"]:ring-primary-500
-data-[state="active"]:text-neutral-100
+data-[active]:bg-neutral-900
+data-[active]:ring-primary-500
+data-[active]:text-neutral-100
 
-data-[state="active"]:focus:relative
+data-[active]:focus:relative
 `;

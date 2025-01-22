@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Packages
-	import { createTabs, melt } from "@melt-ui/svelte";
+	import { Tabs } from "melt/builders";
 	import { cubicInOut } from "svelte/easing";
 	import { crossfade } from "svelte/transition";
 
@@ -17,22 +17,10 @@
 	import type { Props } from "./types";
 
 	// Props
-	let {
-		ariaLabel,
-		className = "",
-		defaultValue,
-		items,
-		orientation
-	}: Props = $props();
+	let { className = "", items, ...rest }: Props = $props();
 
 	// MeltUI
-	const {
-		elements: { root, list, content, trigger },
-		states: { value }
-	} = createTabs({
-		defaultValue,
-		orientation
-	});
+	const tabs = new Tabs({ ...rest });
 
 	const [send, receive] = crossfade({
 		duration: 250,
@@ -40,12 +28,12 @@
 	});
 </script>
 
-<div use:melt={$root} class={`${className} ${ContainerStyles}`}>
-	<div use:melt={$list} aria-label={ariaLabel} class={ListStyles}>
-		{#each items as triggerItem}
-			<button use:melt={$trigger(triggerItem.id)} class={TriggerStyles}>
-				{triggerItem.label}
-				{#if $value === triggerItem.id}
+<div class="{className} {ContainerStyles}">
+	<div {...tabs.triggerList} class={ListStyles}>
+		{#each items as item}
+			<button {...tabs.getTrigger(item.id)} class={TriggerStyles}>
+				{item.label}
+				{#if tabs.value === item.id}
 					<div
 						in:send={{ key: "trigger" }}
 						out:receive={{ key: "trigger" }}
@@ -56,7 +44,7 @@
 		{/each}
 	</div>
 	{#each items as item}
-		<div use:melt={$content(item.id)} class={ContentStyles}>
+		<div {...tabs.getContent(item.id)} class={ContentStyles}>
 			{@render item.children()}
 		</div>
 	{/each}
