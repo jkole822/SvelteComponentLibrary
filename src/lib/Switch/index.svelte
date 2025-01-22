@@ -21,11 +21,9 @@
 
 <label class={`${className} ${LabelStyles({ disabled })}`}>
 	<input
-		aria-hidden="true"
 		bind:checked
 		class={InputStyles}
 		{disabled}
-		tabindex="-1"
 		type="checkbox"
 	/>
 	<span class={SliderStyles}></span>
