@@ -18,6 +18,7 @@ relative
 rounded-md
 size-16
 text-3xl
+toggle-button
 transition-all
 
 active:bg-neutral-600
@@ -38,11 +39,15 @@ ${CenterStyles}
 [[data-checked]_&]:[-webkit-text-stroke:0]
 [[data-checked]_&]:delay-300
 text-transparent
+toggle-icon
+toggle-icon-bottom-layer
 `;
 
 export const IconTopLayer = oneLine`
 ${CenterStyles}
 origin-[0%_0%]
 text-primary-500
+toggle-icon
+toggle-icon-top-layer
 transition-all
 `;
