@@ -26,12 +26,21 @@
 	});
 
 	const args = {
+		loop: true,
 		name: faker.lorem.word(),
-		options: Array.from({ length: 5 }).map(_ => faker.lorem.words(3))
+		options: Array.from({ length: 5 }).map(_ => faker.lorem.words(3)),
+		orientation: RadioGroupOrientationEnum.Vertical,
+		required: false,
+		selectWhenFocused: true
 	};
 </script>
 
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
-<Story name="Basic" {args} />
+<Story name="Vertical" {args} />
+
+<Story
+	name="Horizontal"
+	args={{ ...args, orientation: RadioGroupOrientationEnum.Horizontal }}
+/>
 
 <Story name="WithClass" args={{ ...args, className: "mx-auto" }} />

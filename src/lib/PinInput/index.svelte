@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Packages
-	import { PinInput } from "melt/builders";
+	import { getters, PinInput } from "melt/builders";
 
 	// Styles
 	import { ContainerStyles, InputStyles } from "./styles";
@@ -9,10 +9,10 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { className = "", ...rest }: Props = $props();
+	let { className = "", onValueChange, ...rest }: Props = $props();
 
 	// MeltUI
-	const pinInput = new PinInput({ ...rest });
+	const pinInput = new PinInput({ ...getters(rest), onValueChange });
 </script>
 
 <div {...pinInput.root} class="{className} {ContainerStyles}">

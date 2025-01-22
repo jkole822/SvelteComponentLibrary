@@ -26,7 +26,10 @@
 
 <script lang="ts">
 	const args = {
+		disabled: false,
+		mask: false,
 		maxLength: 5,
+		placeholder: "○",
 		type: PinInputEnum.AlphaNum
 	};
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Packages
-	import { RadioGroup } from "melt/builders";
+	import { getters, RadioGroup } from "melt/builders";
 
 	// Styles
 	import {
@@ -17,10 +17,16 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { className = "", name, options, ...rest }: Props = $props();
+	let {
+		className = "",
+		name,
+		onValueChange,
+		options,
+		...rest
+	}: Props = $props();
 
 	// MeltUI
-	const radioGroup = new RadioGroup({ ...rest });
+	const radioGroup = new RadioGroup({ ...getters(rest), onValueChange });
 </script>
 
 <div class="{className} {ContainerStyles}">

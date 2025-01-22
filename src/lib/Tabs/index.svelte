@@ -1,8 +1,8 @@
 <script lang="ts">
 	// Packages
-	import { Tabs } from "melt/builders";
 	import { cubicInOut } from "svelte/easing";
 	import { crossfade } from "svelte/transition";
+	import { getters, Tabs } from "melt/builders";
 
 	// Styles
 	import {
@@ -17,10 +17,10 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { className = "", items, ...rest }: Props = $props();
+	let { className = "", items, onValueChange, ...rest }: Props = $props();
 
 	// MeltUI
-	const tabs = new Tabs({ ...rest });
+	const tabs = new Tabs({ ...getters(rest), onValueChange });
 
 	const [send, receive] = crossfade({
 		duration: 250,
