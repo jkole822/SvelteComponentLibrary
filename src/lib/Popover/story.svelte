@@ -15,9 +15,10 @@
 	import { AutoCompleteEnum } from "../Input/types";
 
 	// Props
-	let { isIconButton, ...rest }: Props = $props();
+	let { isIconButton, open: _, onOpenChange: __, ...rest }: Props = $props();
 
 	// State
+	let open = $state(false);
 	let value = $state("");
 </script>
 
@@ -28,7 +29,7 @@
 	<p class="text-neutral-400 text-sm">{faker.lorem.sentence()}</p>
 	<Input
 		autoComplete={AutoCompleteEnum.name}
-		className="mt-6"
+		className="mt-6 text-neutral-200"
 		bind:value
 		id={uuid()}
 		name={faker.lorem.word()}
@@ -36,7 +37,13 @@
 	/>
 {/snippet}
 
-<Popover {...rest} {isIconButton} {popoverContent} />
+<Popover
+	onOpenChange={value => (open = value)}
+	{...rest}
+	{isIconButton}
+	{open}
+	{popoverContent}
+/>
 
 <p class={SubHeadingStyles}>Binding Check</p>
 <p class={PararaphStyles}>{value}</p>

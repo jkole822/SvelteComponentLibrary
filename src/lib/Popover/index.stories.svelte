@@ -8,17 +8,16 @@
 		component: Popover,
 		tags: ["autodocs"],
 		argTypes: {
-			disabled: { control: "boolean" }
+			disabled: { control: "boolean" },
+			forceVisible: { control: "boolean" }
 		}
 	});
 </script>
 
 <script lang="ts">
-	import { faker } from "@faker-js/faker";
 	import { IconStyles } from "../../styles";
 
 	const args = {
-		ariaLabel: faker.lorem.words(3),
 		buttonContent
 	};
 </script>

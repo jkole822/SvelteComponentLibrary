@@ -93,7 +93,8 @@ export const ContentStyles = oneLine`
 bg-neutral-900
 p-5
 popover-content
-relative
+absolute
+m-[unset]
 rounded-md
 shadow-lg
 w-60

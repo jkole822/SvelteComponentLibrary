@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Packages
-	import { createPopover, createSync, melt } from "@melt-ui/svelte";
 	import { fade } from "svelte/transition";
+	import { getters, Popover } from "melt/builders";
 
 	// Styles
 	import { ButtonStyles, CloseButtonStyles, ContentStyles } from "./styles";
@@ -11,56 +11,39 @@
 
 	// Props
 	let {
-		ariaLabel,
 		buttonContent,
 		className = "",
-		disabled = false,
+		disabled,
 		isIconButton,
-		popoverContent
+		onOpenChange,
+		popoverContent,
+		...rest
 	}: Props = $props();
 
-	// State
-	let open = $state(false);
-
-	// Derived
-	let buttonProps = $derived({
-		"aria-label": ariaLabel,
-		class: `${className} ${ButtonStyles({ isIconButton })}`,
-		disabled
-	});
-
 	// MeltUI
-	const {
-		elements: { trigger, content, arrow, close },
-		states
-	} = createPopover({
-		forceVisible: true
-	});
-
-	const sync = createSync(states);
-
-	$effect(() => {
-		sync.open(open, v => (open = v));
-	});
+	const popover = new Popover({ ...getters(rest), onOpenChange });
 </script>
 
 <button
-	use:melt={$trigger}
-	{...buttonProps}
-	aria-expanded={open ? "true" : "false"}
+	{...popover.trigger}
+	class="{className} {ButtonStyles({ isIconButton })}"
+	{disabled}
 >
 	{@render buttonContent()}
 </button>
 
-{#if open}
+{#if popover.open}
 	<div
-		use:melt={$content}
+		{...popover.content}
 		transition:fade={{ duration: 100 }}
 		class={ContentStyles}
 	>
-		<div use:melt={$arrow}></div>
 		{@render popoverContent()}
-		<button use:melt={$close} aria-label="close" class={CloseButtonStyles}>
+		<button
+			aria-label="Close Popover"
+			class={CloseButtonStyles}
+			onclick={() => onOpenChange(false)}
+		>
 			<i aria-hidden="true" class="fa-solid fa-xmark"></i>
 		</button>
 	</div>
