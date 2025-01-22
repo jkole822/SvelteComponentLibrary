@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Packages
-	import { createProgress, melt } from "@melt-ui/svelte";
+	import { getters, Progress } from "melt/builders";
 
 	// Styles
 	import { ContainerStyles, FillStyles } from "./styles";
@@ -9,27 +9,18 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { ariaLabel, className = "", value }: Props = $props();
+	let { className = "", ...rest }: Props = $props();
 
 	// MeltUI
-	const {
-		elements: { root },
-		options: { max }
-	} = createProgress({
-		value,
-		max: 100
-	});
+	const progress = new Progress({ ...getters(rest) });
 </script>
 
-<div
-	use:melt={$root}
-	aria-label={ariaLabel}
-	class={`${className} ${ContainerStyles}`}
->
+<div {...progress.root} class="{className} {ContainerStyles}">
 	<div
+		{...progress.progress}
 		class={FillStyles}
 		style:transform={`translateX(-${
-			100 - (100 * ($value ?? 0)) / ($max ?? 1)
+			100 - (100 * (progress.value ?? 0)) / (progress.max ?? 1)
 		}%)`}
 	></div>
 </div>

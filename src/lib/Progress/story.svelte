@@ -1,7 +1,6 @@
 <script lang="ts">
 	// Packages
 	import { onMount } from "svelte";
-	import { writable } from "svelte/store";
 
 	// Components
 	import Progress from "./index.svelte";
@@ -10,17 +9,18 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { value: _, ...rest }: Props = $props();
+	let { value: _, onValueChange: __, ...rest }: Props = $props();
 
 	// State
-	const value = writable(25);
+	let value = $state(50);
 
 	// Life Cycle
 	onMount(() => {
 		let frame: number;
 		const updatePercentage = () => {
-			if ($value === 100) return;
-			value.set($value + 1);
+			if (value === 100) return;
+
+			value += 1;
 			frame = requestAnimationFrame(updatePercentage);
 		};
 
@@ -30,4 +30,4 @@
 	});
 </script>
 
-<Progress {...rest} {value} />
+<Progress {...rest} {value} onValueChange={() => console.log(value)} />

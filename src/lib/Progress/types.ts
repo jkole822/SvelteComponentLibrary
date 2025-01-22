@@ -1,7 +1,6 @@
-import type { Writable } from "svelte/store";
-
 export interface Props {
-    ariaLabel: string;
     className?: string;
-	value: Writable<number>;
+    max?: number;
+    onValueChange?: (value: number) => void;
+	value: number;
 }
