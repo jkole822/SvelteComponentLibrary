@@ -15,7 +15,7 @@
 	let value = $state("");
 </script>
 
-<Checkbox {...props} onValueChange={({ next }) => (value = next)} />
+<Checkbox {...props} onValueChange={input => (value = input)} {value} />
 
 <p class={SubHeadingStyles}>Binding Check</p>
 <p class={PararaphStyles}>{value}</p>

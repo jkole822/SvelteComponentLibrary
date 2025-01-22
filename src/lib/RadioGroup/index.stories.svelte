@@ -10,6 +10,7 @@
 		component: RadioGroup,
 		tags: ["autodocs"],
 		argTypes: {
+			loop: { control: "boolean" },
 			orientation: {
 				control: {
 					type: "select"
@@ -18,20 +19,15 @@
 					RadioGroupOrientationEnum.Horizontal,
 					RadioGroupOrientationEnum.Vertical
 				]
-			}
+			},
+			required: { control: "boolean" },
+			selectWhenFocused: { control: "boolean" }
 		}
 	});
 
-	const options = [
-		faker.lorem.words(3),
-		faker.lorem.word(),
-		faker.lorem.words(2),
-		faker.lorem.word()
-	];
-
 	const args = {
 		name: faker.lorem.word(),
-		options
+		options: Array.from({ length: 5 }).map(_ => faker.lorem.words(3))
 	};
 </script>
 

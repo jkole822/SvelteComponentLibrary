@@ -1,5 +1,3 @@
-import type { CreateRadioGroupProps } from "@melt-ui/svelte";
-
 export enum RadioGroupOrientationEnum {
 	Vertical = "vertical",
 	Horizontal = "horizontal"
@@ -11,9 +9,12 @@ export type RadioGroupOrientation =
 
 export interface Props {
 	className?: string;
-	defaultValue?: string;
-	name: string;
-	onValueChange?: CreateRadioGroupProps["onValueChange"];
+	loop?: boolean;
+	name?: string;
+	onValueChange?: (active: string) => void;
 	options: string[];
 	orientation?: RadioGroupOrientation;
+	required?: boolean;
+	selectWhenFocused?: boolean;
+	value?: string;
 }

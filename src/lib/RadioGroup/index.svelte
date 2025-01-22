@@ -1,12 +1,12 @@
 <script lang="ts">
 	// Packages
-	import { createRadioGroup, melt } from "@melt-ui/svelte";
+	import { RadioGroup } from "melt/builders";
 	import { v4 as uuid } from "uuid";
 
 	// Styles
 	import {
-		ButtonStyles,
-		ButtonCoverStyles,
+		CircleCoverStyles,
+		CircleStyles,
 		ContainerStyles,
 		GroupLabelStyles,
 		LabelStyles,
@@ -16,62 +16,35 @@
 
 	// Types
 	import type { Props } from "./types";
-	import { RadioGroupOrientationEnum } from "./types";
 
 	// Props
-	let {
-		className = "",
-		defaultValue,
-		name,
-		onValueChange,
-		options,
-		orientation = RadioGroupOrientationEnum.Vertical
-	}: Props = $props();
+	let { className = "", name, options, ...rest }: Props = $props();
 
 	// MeltUI
-	const {
-		elements: { root, item, hiddenInput },
-		helpers: { isChecked }
-	} = createRadioGroup({
-		defaultValue,
-		orientation,
-		onValueChange
-	});
-
-	const labelId = uuid();
+	const radioGroup = new RadioGroup({ ...rest });
 </script>
 
 <div class={`${className} ${ContainerStyles}`}>
-	<div class={GroupLabelStyles} id={labelId}>{name}</div>
-	<div
-		use:melt={$root}
-		aria-labelledby={labelId}
-		class={OptionContainerStyles}
-	>
-		{#each options as option}
-			<div class={OptionStyles({ isChecked: $isChecked(option) })}>
-				<button
-					use:melt={$item(option)}
-					class={ButtonStyles}
-					id={option}
-					aria-labelledby="{option}-label"
-				>
-					<div
-						class={ButtonCoverStyles}
-						style:transform={$isChecked(option)
-							? "scale(0)"
-							: "scale(1)"}
-					></div>
-				</button>
-				<label
-					class={LabelStyles({ isChecked: $isChecked(option) })}
-					for={option}
-					id="{option}-label"
-				>
-					{option}
-				</label>
-			</div>
-		{/each}
+	<div {...radioGroup.root}>
+		<label {...radioGroup.label} class={GroupLabelStyles}>{name}</label>
+		<div class={OptionContainerStyles}>
+			{#each options as i}
+				{@const option = radioGroup.getItem(i)}
+				<div {...option.attrs} class={OptionStyles}>
+					<div class={CircleStyles}>
+						<div
+							class={CircleCoverStyles}
+							style:transform={option.checked
+								? "scale(0)"
+								: "scale(1)"}
+						></div>
+					</div>
+					<div class={LabelStyles({ isChecked: option.checked })}>
+						{option.value}
+					</div>
+				</div>
+			{/each}
+		</div>
 	</div>
-	<input {name} use:melt={$hiddenInput} />
+	<input {...radioGroup.hiddenInput} />
 </div>

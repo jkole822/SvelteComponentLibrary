@@ -1,34 +1,29 @@
 import { oneLine } from "common-tags";
 
-export const ButtonStyles = oneLine`
-bg-[linear-gradient(to_right_bottom,_rgb(var(--color-primary-300)),_rgb(var(--color-primary-600)))]
-h-5
-outline-none
-radio-group-button
-rounded-full
-w-5
-`;
-
-export const ButtonCoverStyles = oneLine`
-inline-block
-relative
-h-full
-w-full
-origin-center
-radio-group-button-cover
-rounded-full
+export const CircleCoverStyles = oneLine`
 bg-neutral-100
 duration-300
+inline-block
+origin-center
+radio-group-circle-cover
+relative
+rounded-full
+size-5
+`;
+
+export const CircleStyles = oneLine`
+bg-[linear-gradient(to_right_bottom,_rgb(var(--color-primary-300)),_rgb(var(--color-primary-600)))]
+outline-none
+radio-group-circle
+rounded-full
+size-5
 `;
 
 export const ContainerStyles = oneLine`
-flex
-flex-col
-gap-2
 radio-group-container
 w-fit
 
-[&:focus-within_.radio-group-group-label]:text-primary-400
+[&:focus-within_.radio-group-group-label]:text-primary-300
 `;
 
 export const GroupLabelStyles = oneLine`
@@ -38,11 +33,13 @@ font-extrabold
 radio-group-group-label
 tracking-wider
 uppercase
+text-xl
+text-primary-500
 transition-all
 `;
 
-export const LabelStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
-${isChecked ? 'text-neutral-500' : 'text-neutral-300'}
+export const LabelStyles = ({ isChecked }: { isChecked: boolean }) => oneLine`
+${isChecked ? "text-neutral-400" : "text-neutral-300"}
 
 duration-300
 cursor-pointer
@@ -61,26 +58,26 @@ flex-col
 gap-0.5
 radio-group-option-container
 
-data-[orientation=horizontal]:flex-row
-`
+[[data-orientation=horizontal]_&]:flex-row
+`;
 
-export const OptionStyles = ({isChecked}: {isChecked: boolean}) => oneLine`
-${isChecked ? '[&:focus-within_label]:text-neutral-400 [&:hover_label]:text-neutral-400' : ''}
-
+export const OptionStyles = oneLine`
 cursor-pointer
 duration-300
 flex
 gap-2
 items-center
+outline-none
 px-4
 py-3.5
 radio-option
-rounded-full
+ring-primary-500
+rounded-md
 w-fit
 
-active:bg-neutral-700
+focus:bg-neutral-700
 
-focus-within:bg-neutral-700
+focus-visible:ring-2
 
-hover:bg-neutral-700
+hover:bg-neutral-600
 `;
