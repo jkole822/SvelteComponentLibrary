@@ -1,7 +1,6 @@
 <script lang="ts">
 	// Packages
 	import { RadioGroup } from "melt/builders";
-	import { v4 as uuid } from "uuid";
 
 	// Styles
 	import {
@@ -24,8 +23,9 @@
 	const radioGroup = new RadioGroup({ ...rest });
 </script>
 
-<div class={`${className} ${ContainerStyles}`}>
+<div class="{className} {ContainerStyles}">
 	<div {...radioGroup.root}>
+		<!-- svelte-ignore a11y_label_has_associated_control -->
 		<label {...radioGroup.label} class={GroupLabelStyles}>{name}</label>
 		<div class={OptionContainerStyles}>
 			{#each options as i}
