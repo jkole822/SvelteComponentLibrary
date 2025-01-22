@@ -8,19 +8,20 @@ pin-container
 `;
 
 export const InputStyles = oneLine`
-bg-text-100
+bg-neutral-700
 outline-none
 pin-input
-ring-primary-400
+ring-neutral-600
 rounded-md
 shadow-sm
 size-12
 text-center
 text-lg
-text-primary-800
+text-neutral-200
 
 disabled:cursor-not-allowed
-disabled:opacity-80
+disabled:!opacity-25
 
 focus:ring-2
+focus:ring-primary-500
 `;
