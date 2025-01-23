@@ -17,29 +17,27 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { className = "", defaultValue, headingLevel, items }: Props = $props();
+	let { className = "", headingLevel, items, ...rest }: Props = $props();
 
 	// MeltUI
 	const {
 		elements: { content, item, trigger, root },
 		helpers: { isSelected }
-	} = createAccordion({
-		defaultValue
-	});
+	} = createAccordion(rest);
 </script>
 
 <div class={`${className} ${ContainerStyles}`} {...$root}>
-	{#each items as { id, title, description }, i}
-		<div use:melt={$item(String(id))} class={SectionStyles}>
+	{#each items as { id, title, description, disabled } (id)}
+		<div use:melt={$item(id)} class={SectionStyles}>
 			<svelte:element this={headingLevel} class={HeadingStyles}>
-				<button use:melt={$trigger(String(id))} class={ButtonStyles}>
+				<button use:melt={$trigger(id)} class={ButtonStyles} {disabled}>
 					{title}
 				</button>
 			</svelte:element>
-			{#if $isSelected(String(id))}
+			{#if $isSelected(id)}
 				<div
 					class={ContentStyles}
-					use:melt={$content(String(id))}
+					use:melt={$content(id)}
 					transition:slide
 				>
 					<div class={DescriptionStyles}>

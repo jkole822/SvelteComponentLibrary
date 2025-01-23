@@ -2,7 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ButtonStyles = oneLine`
 accordion-button
-bg-neutral-700
+bg-neutral-900
 cursor-pointer
 flex
 flex-grow
@@ -11,30 +11,34 @@ items-center
 justify-between
 leading-none
 outline-none
-px-5
-py-5
+p-5
 text-left
 text-neutral-200
 transition-colors
 
-focus-visible:text-primary-400
+disabled:opacity-25
+disabled:cursor-not-allowed
+disabled:text-neutral-200
 
-hover:bg-neutral-600
+focus-visible:text-primary-500
+
+hover:bg-neutral-900/50
+hover:text-primary-400
 `;
 
 export const ContainerStyles = oneLine`
 accordion-container
-bg-neutral-700
+bg-neutral-800
 rounded-md
 `;
 
 export const ContentStyles = oneLine`
 accordion-content
-bg-primary-200
+animate-accordionSlideUp
+bg-neutral-900/25
 overflow-hidden
-shadow-[inset_0px_1px_0px_rgb(var(--color-neutral-300))]
 text-sm
-text-neutral-700
+text-neutral-200
 `;
 
 export const DescriptionStyles = oneLine`

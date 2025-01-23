@@ -1,6 +1,5 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import { faker } from "@faker-js/faker";
 	import Accordion from "./index.svelte";
 	import { HeadingLevelEnum } from "../../types";
 
@@ -23,29 +22,26 @@
 			}
 		}
 	});
+</script>
 
-	const items = [
-		{
-			id: "item-1",
+<script lang="ts">
+	import { faker } from "@faker-js/faker";
+
+	const generateItems = (length: number) =>
+		Array.from({ length }).map((_, index) => ({
+			id: `item-${index + 1}`,
 			title: faker.lorem.words(3),
-			description: faker.lorem.sentence()
-		},
-		{
-			id: "item-2",
-			title: faker.lorem.words(2),
-			description: faker.lorem.sentence()
-		},
-		{
-			id: "item-3",
-			title: faker.lorem.words(4),
-			description: faker.lorem.sentence()
-		}
-	];
+			description: faker.lorem.sentence(),
+			disabled: index === 2
+		}));
 
 	const args = {
 		defaultValue: "item-1",
+        disabled: false,
+        forceVisible: false,
 		headingLevel: HeadingLevelEnum.One,
-		items
+		items: generateItems(5),
+        multiple: false,
 	};
 </script>
 
