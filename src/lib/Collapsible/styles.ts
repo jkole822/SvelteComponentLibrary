@@ -2,6 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ContentStyles = oneLine`
 bg-neutral-900
+collapsible-content
 flex
 flex-col
 gap-2
