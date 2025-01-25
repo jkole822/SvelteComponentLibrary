@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Packages
-	import { createAccordion, melt } from "@melt-ui/svelte";
+	import { Accordion, getters } from "melt/builders";
 	import { slide } from "svelte/transition";
 
 	// Styles
@@ -17,31 +17,35 @@
 	import type { Props } from "./types";
 
 	// Props
-	let { className = "", headingLevel, items, ...rest }: Props = $props();
+	let {
+		className = "",
+		headingLevel,
+		items,
+		onValueChange,
+		...rest
+	}: Props = $props();
 
 	// MeltUI
-	const {
-		elements: { content, item, trigger, root },
-		helpers: { isSelected }
-	} = createAccordion(rest);
+	const accordion = new Accordion({ ...getters(rest), onValueChange });
 </script>
 
-<div class={`${className} ${ContainerStyles}`} {...$root}>
-	{#each items as { id, title, description, disabled } (id)}
-		<div use:melt={$item(id)} class={SectionStyles}>
-			<svelte:element this={headingLevel} class={HeadingStyles}>
-				<button use:melt={$trigger(id)} class={ButtonStyles} {disabled}>
-					{title}
+<div {...accordion.root} class={`${className} ${ContainerStyles}`}>
+	{#each items as accordionItem}
+		{@const item = accordion.getItem(accordionItem)}
+		<div class={SectionStyles}>
+			<svelte:element
+				this={headingLevel}
+				{...item.heading}
+				class={HeadingStyles}
+			>
+				<button {...item.trigger} class={ButtonStyles}>
+					{item.item.title}
 				</button>
 			</svelte:element>
-			{#if $isSelected(id)}
-				<div
-					class={ContentStyles}
-					use:melt={$content(id)}
-					transition:slide
-				>
+			{#if item.isExpanded}
+				<div {...item.content} class={ContentStyles} transition:slide>
 					<div class={DescriptionStyles}>
-						{description}
+						{item.item.description}
 					</div>
 				</div>
 			{/if}

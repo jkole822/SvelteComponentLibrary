@@ -1,18 +1,20 @@
+import type { AccordionItem } from "melt/builders";
 import type { HeadingLevels } from "../../types";
+import type { SvelteSet } from "svelte/reactivity";
 
-export interface AccordionItem {
-	id: string;
+type Item = AccordionItem<{
 	description: string;
 	disabled?: boolean;
+	id: string;
 	title: string;
-}
+}>
 
 export interface Props {
 	className?: string;
-	defaultValue: string;
 	disabled?: boolean;
-	forceVisible?: boolean;
 	headingLevel: HeadingLevels;
-	items: AccordionItem[];
+	items: Item[];
 	multiple?: boolean;
+	onValueChange?: (value: string | SvelteSet<string> | undefined) => void;
+	value?: string | SvelteSet<string>;
 }

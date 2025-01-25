@@ -1,6 +1,6 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
-	import Accordion from "./index.svelte";
+	import Accordion from "./story.svelte";
 	import { HeadingLevelEnum } from "../../types";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -36,9 +36,7 @@
 		}));
 
 	const args = {
-		defaultValue: "item-1",
         disabled: false,
-        forceVisible: false,
 		headingLevel: HeadingLevelEnum.One,
 		items: generateItems(5),
         multiple: false,
@@ -48,4 +46,4 @@
 <!-- More on writing stories with args: https://storybook.js.org/docs/writing-stories/args -->
 <Story name="Basic" {args} />
 
-<Story name="WithClass" args={{ ...args, className: "sm:w-72" }} />
+<Story name="WithClass" args={{ ...args, className: "mx-auto sm:w-72" }} />
