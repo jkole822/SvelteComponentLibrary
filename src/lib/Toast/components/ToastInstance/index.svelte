@@ -36,13 +36,13 @@
 	let { id, data, getPercentage } = $derived(toast);
 
 	// State
-	const percentage = writable(0);
+	let percentage = $state(0);
 
 	// Life Cycle
 	onMount(() => {
 		let frame: number;
 		const updatePercentage = () => {
-			percentage.set(getPercentage());
+			percentage = getPercentage();
 			frame = requestAnimationFrame(updatePercentage);
 		};
 
@@ -58,11 +58,7 @@
 	out:fly={{ duration: 150, x: "100%" }}
 	class={ToastContainerStyles}
 >
-	<Progress
-		ariaLabel={`Toast Progress for ${data.title}`}
-		className={ProgressStyles}
-		value={percentage}
-	/>
+	<Progress className={ProgressStyles} value={percentage} />
 	<div class={ToastInnerContainerStyles}>
 		<div>
 			<h3 use:melt={$meltTitle(id)} class={TitleStyles}>

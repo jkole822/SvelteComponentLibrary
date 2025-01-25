@@ -11,6 +11,7 @@
 
 	// Props
 	let {
+		ariaLabel,
 		buttonContent,
 		className = "",
 		disabled,
@@ -26,6 +27,7 @@
 
 <button
 	{...popover.trigger}
+	aria-label={ariaLabel}
 	class="{className} {ButtonStyles({ isIconButton })}"
 	{disabled}
 >

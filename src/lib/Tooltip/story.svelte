@@ -19,7 +19,13 @@
 	let { children: _, ...rest }: Props = $props();
 
 	// State
+	let openPopover = $state(false);
 	let value = $state("");
+
+	// Helpers
+	const handlePopoverOpenChange = (value: boolean) => {
+		openPopover = value;
+	};
 </script>
 
 {#snippet buttonContent()}
@@ -33,7 +39,7 @@
 	<p class="text-neutral-400 text-sm">{faker.lorem.sentence()}</p>
 	<Input
 		autoComplete={AutoCompleteEnum.name}
-		className="mt-6"
+		className="mt-6 text-neutral-200"
 		bind:value
 		id={uuid()}
 		name={faker.lorem.word()}
@@ -44,9 +50,11 @@
 <Tooltip {...rest}>
 	<Popover
 		ariaLabel={faker.lorem.word()}
+		isIconButton
+		onOpenChange={handlePopoverOpenChange}
+		open={openPopover}
 		{buttonContent}
 		{popoverContent}
-		isIconButton
 	/>
 </Tooltip>
 

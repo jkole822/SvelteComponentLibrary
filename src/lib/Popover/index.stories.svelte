@@ -15,6 +15,7 @@
 </script>
 
 <script lang="ts">
+	import { faker } from "@faker-js/faker";
 	import { IconStyles } from "../../styles";
 
 	const args = {
@@ -35,7 +36,12 @@
 
 <Story
 	name="IconButton"
-	args={{ ...args, buttonContent: iconButtonContent, isIconButton: true }}
+	args={{
+		...args,
+		ariaLabel: faker.lorem.word(),
+		buttonContent: iconButtonContent,
+		isIconButton: true
+	}}
 />
 
 <Story name="WithClass" args={{ ...args, className: "mx-auto" }} />
