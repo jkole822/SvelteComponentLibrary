@@ -13,11 +13,13 @@
 	let {
 		ariaLabel,
 		buttonContent,
+		children,
 		className = "",
+		contentClass = "",
+		contentStyles = "",
 		disabled,
 		isIconButton,
 		onOpenChange,
-		popoverContent,
 		...rest
 	}: Props = $props();
 
@@ -38,9 +40,10 @@
 	<div
 		{...popover.content}
 		transition:fade={{ duration: 100 }}
-		class={ContentStyles}
+		class="{contentClass} {ContentStyles}"
+		style={contentStyles}
 	>
-		{@render popoverContent()}
+		{@render children()}
 		<button
 			aria-label="Close Popover"
 			class={CloseButtonStyles}

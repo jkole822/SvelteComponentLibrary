@@ -16,7 +16,7 @@
 	} from "./styles";
 
 	// Utils
-	import { scaleAndTransform } from "../../utils/animations";
+	import { scaleAndTransform } from "../../utils";
 
 	// Types
 	import type { Props } from "./types";

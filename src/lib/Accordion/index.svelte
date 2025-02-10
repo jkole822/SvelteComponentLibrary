@@ -47,6 +47,9 @@
 					<div class={DescriptionStyles}>
 						{item.item.description}
 					</div>
+					{#if item.content}
+						{@render item.content()}
+					{/if}
 				</div>
 			{/if}
 		</div>

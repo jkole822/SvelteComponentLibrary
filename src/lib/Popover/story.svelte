@@ -22,7 +22,7 @@
 	let value = $state("");
 </script>
 
-{#snippet popoverContent()}
+<Popover onOpenChange={value => (open = value)} {...rest} {isIconButton} {open}>
 	<h1 class="mb-6 font-bold text-neutral-200 w-[85%]">
 		{faker.lorem.words(2)}
 	</h1>
@@ -35,15 +35,7 @@
 		name={faker.lorem.word()}
 		required
 	/>
-{/snippet}
-
-<Popover
-	onOpenChange={value => (open = value)}
-	{...rest}
-	{isIconButton}
-	{open}
-	{popoverContent}
-/>
+</Popover>
 
 <p class={SubHeadingStyles}>Binding Check</p>
 <p class={PararaphStyles}>{value}</p>
