@@ -21,7 +21,6 @@ grid
 grid-rows-3
 m-0
 navigation-menu-content
-opacity-0
 outline-none
 p-[22px]
 relative
@@ -30,6 +29,7 @@ xs:gap-x-2.5
 xs:gap-y-0
 sm:absolute
 sm:left-0
+sm:opacity-0
 sm:pointer-events-none
 sm:top-0
 
@@ -175,6 +175,8 @@ navigation-menu-line
 stroke-[3]
 stroke-neutral-100
 transition-all
+
+group-hover:!stroke-neutral-100
 `;
 
 export const LineTopBottomStyles = oneLine`
@@ -197,6 +199,8 @@ ${
 	open
 		? `
     [&_svg]:-rotate-45
+    [&_svg]:-translate-x-[0.25px]
+    [&_svg]:translate-y-[0.75px]
     
     [&_svg]:[stroke-dasharray:20_300]
     
@@ -211,6 +215,8 @@ export const MobilePopoverContentStyles = oneLine`
 !max-w-[unset]
 !rounded-none
 outline-none
+w-screen
+!top-28
 
 [&_.popover-arrow]:hidden
 
@@ -220,6 +226,7 @@ outline-none
 export const MobilePopoverStyles = oneLine`
 duration-300
 ease-in-out
+group
 !ring-0
 transition-all
 sm:hidden

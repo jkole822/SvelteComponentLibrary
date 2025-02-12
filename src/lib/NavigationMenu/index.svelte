@@ -263,9 +263,15 @@
 	</a>
 {/snippet}
 
-{#snippet content(items: NavigationMenuItem[])}
-	<div >
-		Hola
+{#snippet mobileAccordionNavigationContent(
+	items: NavigationMenuItem[],
+	isFirstItem: IsFirstOrLastItem,
+	isLastItem: IsFirstOrLastItem
+)}
+	<div class={hasImage(items) ? ContentWithCallout : ContentWithoutCallout}>
+		{#each items as item}
+			{@render menuItem(item, isFirstItem, isLastItem)}
+		{/each}
 	</div>
 {/snippet}
 
@@ -388,6 +394,9 @@
 		{contentStyles}
 		className={MobilePopoverStyles}
 		contentClass={MobilePopoverContentStyles}
+		computePositionOptions={{
+			strategy: "fixed"
+		}}
 		isIconButton
 		open={mobileNavigationOpen}
 		onOpenChange={value => (mobileNavigationOpen = value)}
@@ -396,11 +405,14 @@
 			headingLevel={HeadingLevelEnum.Two}
 			items={items
 				.filter(item => item.items?.length > 0)
-				.map(({ disabled, items, title }) => ({
-					disabled,
+				.map(({ disabled, items, title }, index) => ({
 					description: "",
+					disabled,
 					id: uuid(),
-					content: content,
+					isFirstItem: index === 0,
+					isLastItem: index === items.length - 1,
+					mobileAccordionNavigationContent,
+					mobileAccordionNavigationItems: items,
 					title
 				}))}
 		/>

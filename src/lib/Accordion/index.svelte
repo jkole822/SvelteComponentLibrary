@@ -44,11 +44,17 @@
 			</svelte:element>
 			{#if item.isExpanded}
 				<div {...item.content} class={ContentStyles} transition:slide>
-					<div class={DescriptionStyles}>
-						{item.item.description}
-					</div>
-					{#if item.content}
-						{@render item.content()}
+					{#if item.item.description}
+						<div class={DescriptionStyles}>
+							{item.item.description}
+						</div>
+					{/if}
+					{#if accordionItem.mobileAccordionNavigationContent}
+						{@render accordionItem.mobileAccordionNavigationContent(
+							accordionItem.mobileAccordionNavigationItems,
+							accordionItem.isFirstItem,
+							accordionItem.isLastItem
+						)}
 					{/if}
 				</div>
 			{/if}
