@@ -40,6 +40,10 @@
 			>
 				<button {...item.trigger} class={ButtonStyles}>
 					{item.item.title}
+					<i
+						aria-hidden="true"
+						class="accordion-trigger-icon fa-solid fa-chevron-down"
+					></i>
 				</button>
 			</svelte:element>
 			{#if item.isExpanded}

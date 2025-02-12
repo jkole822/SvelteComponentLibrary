@@ -24,6 +24,12 @@ focus-visible:text-primary-500
 
 hover:bg-neutral-900/50
 hover:text-primary-400
+
+[&_.accordion-trigger-icon]:ease-[cubic-bezier(0.87,0,0.13,1)]
+[&_.accordion-trigger-icon]:duration-300
+[&_.accordion-trigger-icon]:transition-all
+
+[&[data-state=open]_.accordion-trigger-icon]:rotate-180
 `;
 
 export const ContainerStyles = oneLine`
