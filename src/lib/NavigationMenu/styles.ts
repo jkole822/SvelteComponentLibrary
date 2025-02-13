@@ -255,6 +255,7 @@ sm:block
 [&_ul]:justify-center
 
 [&[data-orientation=vertical]_ul]:flex-col
+[&[data-orientation=vertical]_li]:w-full
 `;
 
 export const TitleContainerStyles = oneLine`
