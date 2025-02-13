@@ -1,13 +1,23 @@
 <script module>
 	import { defineMeta } from "@storybook/addon-svelte-csf";
 	import NavigationMenu from "./index.svelte";
+	import Decorator from "./story-decorator.svelte";
 
 	// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 	const { Story } = defineMeta({
 		title: "NavigationMenu",
 		component: NavigationMenu,
 		tags: ["autodocs"],
-		argTypes: {},
+		argTypes: {
+			orientation: {
+				control: "select",
+				options: [
+					NavigationMenuOrientationEnum.Horizontal,
+					NavigationMenuOrientationEnum.Vertical
+				]
+			}
+		},
+		decorators: [() => Decorator],
 		parameters: {
 			layout: "fullscreen"
 		}
@@ -50,7 +60,7 @@
 
 	const args = {
 		className:
-			"bg-neutral-950 flex items-center justify-between p-4 sticky w-screen",
+			"bg-neutral-950 fixed flex items-center justify-between p-4 w-screen",
 		homeHref: "#",
 		icon: {
 			alt: faker.lorem.words(3),
@@ -69,7 +79,7 @@
 	args={{
 		...args,
 		className:
-			"bg-neutral-950 inline-flex items-center justify-between p-4 sticky w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto",
+			"bg-neutral-950 fixed inline-flex items-center justify-between p-4 w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto",
 		orientation: NavigationMenuOrientationEnum.Vertical
 	}}
 />

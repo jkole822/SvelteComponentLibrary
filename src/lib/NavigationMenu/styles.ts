@@ -218,11 +218,15 @@ ${
 `;
 
 export const MobilePopoverContentStyles = oneLine`
+!fixed
+!h-[calc(100vh-112px)]
 !max-w-[unset]
 !rounded-none
-outline-none
-w-screen
 !top-28
+navigation-menu-mobile-popover-content
+outline-none
+overflow-y-scroll
+w-screen
 
 [&_.popover-arrow]:hidden
 
@@ -230,10 +234,11 @@ w-screen
 `;
 
 export const MobilePopoverStyles = oneLine`
+!ring-0
 duration-300
 ease-in-out
 group
-!ring-0
+navigation-menu-mobile-popover
 transition-all
 sm:hidden
 

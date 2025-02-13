@@ -412,9 +412,6 @@
 		{contentStyles}
 		className={MobilePopoverStyles}
 		contentClass={MobilePopoverContentStyles}
-		computePositionOptions={{
-			strategy: "fixed"
-		}}
 		isIconButton
 		open={mobileNavigationOpen}
 		onOpenChange={value => (mobileNavigationOpen = value)}
