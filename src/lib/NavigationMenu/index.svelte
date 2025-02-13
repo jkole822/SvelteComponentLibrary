@@ -35,8 +35,13 @@
 
 	// Types
 	import { HeadingLevelEnum } from "../../types";
+	import {
+		type NavigationMenuItem,
+		NavigationMenuOrientationEnum,
+		type Props
+	} from "./types";
+
 	type IsFirstOrLastItem = boolean;
-	import type { NavigationMenuItem, Props } from "./types";
 
 	// Props
 	let {
@@ -52,6 +57,7 @@
 	let activeContentHeight = $state(0);
 	let activeContentWidth = $state(0);
 	let activeItem = $state<number | null>(null);
+	let arrowTop = $state(0);
 	let arrowRight = $state(0);
 	let contentStyles = $state("");
 	let mobileNavigationOpen = $state(false);
@@ -190,12 +196,20 @@
 				".navigation-menu-trigger[data-expanded=true]"
 			);
 
-			if (activeTrigger) {
+			if (
+				activeTrigger &&
+				orientation !== NavigationMenuOrientationEnum.Vertical
+			) {
 				const { right, width } = activeTrigger.getBoundingClientRect();
 				const distanceFromRight =
 					window.innerWidth - right - 24 + 0.5 * width;
 
 				arrowRight = distanceFromRight;
+			} else if (activeTrigger) {
+				const { top, height } = activeTrigger.getBoundingClientRect();
+				const distanceFromBottom = top - 106 + 0.5 * height;
+
+				arrowTop = distanceFromBottom;
 			}
 
 			const expandedContent = document.querySelector(
@@ -308,11 +322,11 @@
 						{disabled}
 						{href}
 						{target}
-						class={TriggerStyles}
 						aria-haspopup={_items.length > 0}
-						role="menuitem"
+						class={TriggerStyles}
 						data-expanded={activeItem === index}
 						id="navigation-menu-{index}"
+						role="menuitem"
 						onkeydown={(e: KeyboardEvent) =>
 							handleTriggerKeydown(e, {
 								hasSubMenu: _items.length > 0,
@@ -338,13 +352,17 @@
 		<div
 			class={ViewportStyles}
 			data-expanded={viewportOpen}
+			data-orientation={orientation}
 			style:height="{activeContentHeight}px"
 			style:width="{activeContentWidth}px"
 		>
 			<div
 				aria-hidden="true"
 				class={ArrowStyles}
-				style:right="{arrowRight}px"
+				data-orientation={orientation}
+				style={orientation === NavigationMenuOrientationEnum.Vertical
+					? `top: ${arrowTop}px`
+					: `right: ${arrowRight}px`}
 			>
 				<svg
 					display="block"
@@ -416,5 +434,10 @@
 					title
 				}))}
 		/>
+		{#each items.filter(item => !!item.href) as item}
+			<a {...item} class={TriggerStyles}>
+				{item.title}
+			</a>
+		{/each}
 	</Popover>
 </div>

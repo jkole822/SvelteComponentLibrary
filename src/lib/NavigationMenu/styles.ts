@@ -12,6 +12,12 @@ size-4
 stroke-[4]
 stroke-neutral-700
 transition-all
+
+[&[data-orientation=vertical]]:-left-4
+[&[data-orientation=vertical]]:-rotate-90
+[&[data-orientation=vertical]]:bottom-auto
+[&[data-orientation=vertical]]:right-auto
+[&[data-orientation=vertical]]:top-0
 `;
 
 const ContentStyles = oneLine`
@@ -248,7 +254,7 @@ sm:block
 [&_ul]:items-center
 [&_ul]:justify-center
 
-[&[data-orientation=vertical]]:flex-col
+[&[data-orientation=vertical]_ul]:flex-col
 `;
 
 export const TitleContainerStyles = oneLine`
@@ -290,12 +296,11 @@ transition-transform
 
 [[data-orientation=vertical]_&]:-rotate-90
 
-[[data-orientation=vertical]_.navigation-menu-trigger[data-expanded]_&]:[transform:rotate(-90deg)_rotateX(180deg)]
+[[data-orientation=vertical]_.navigation-menu-trigger[data-expanded=true]_&]:[transform:rotate(-90deg)_rotateX(180deg)]
 `;
 
 export const TriggerStyles = oneLine`
 appearance-none
-bg-neutral-950
 border-none
 duration-300
 font-medium
@@ -312,6 +317,7 @@ py-5
 text-neutral-300
 transition-colors
 w-auto
+md:bg-neutral-950
 
 [&[data-expanded=true]_.navigation-menu-trigger-indicator]:[transform:rotateX(180deg)]
 
@@ -354,6 +360,9 @@ z-100
 [&[data-expanded=true]]:pointer-events-auto
 [&[data-expanded=true]]:rounded-lg
 
+[&[data-orientation=vertical]]:-top-4
+[&[data-orientation=vertical]]:left-48
 [&[data-orientation=vertical]]:overflow-x-visible
 [&[data-orientation=vertical]]:overflow-y-clip
+[&[data-orientation=vertical]]:right-auto
 `;

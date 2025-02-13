@@ -16,6 +16,7 @@
 
 <script lang="ts">
 	import { faker } from "@faker-js/faker";
+	import { NavigationMenuOrientationEnum } from "./types";
 
 	const generateItems = (length: number, addImage?: boolean) =>
 		Array.from({ length }).map((_, index) => ({
@@ -68,6 +69,7 @@
 	args={{
 		...args,
 		className:
-			"bg-neutral-950 inline-flex items-center justify-between p-4 sticky w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto"
+			"bg-neutral-950 inline-flex items-center justify-between p-4 sticky w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto",
+		orientation: NavigationMenuOrientationEnum.Vertical
 	}}
 />
