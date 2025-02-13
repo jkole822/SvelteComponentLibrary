@@ -36,7 +36,7 @@ export interface Props {
 	id?: string;
 	onclick?: () => void;
 	tabIndex?: number;
-	target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
+	target?: "_blank" | "_self" | "_parent" | "_top" | "_unfencedTop";
 	type?: "button" | "submit" | "reset";
 	variant?: ButtonVariants;
 }

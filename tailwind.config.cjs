@@ -37,6 +37,16 @@ export default {
 			}
 		},
 		keyframes: {
+			carouselShow: {
+				from: {
+					filter: "blur(5px)",
+					transform: "translateY(calc(-50% + 75px))",
+				},
+				to: {
+					opacity: 1,
+					filter: "blur(0)",
+				},
+			},
 			navigationMenuEnterFromRight: {
 				from: {
 					opacity: 0,
@@ -119,6 +129,7 @@ export default {
 			}
 		},
 		animation: {
+			carouselShow: "carouselShow 750ms ease-in-out 300ms forwards",
 			navigationMenuEnterFromRight:
 				"navigationMenuEnterFromRight 300ms ease forwards",
 			navigationMenuEnterFromLeft:
