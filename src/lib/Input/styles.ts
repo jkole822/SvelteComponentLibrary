@@ -28,7 +28,7 @@ border-neutral-200
 rounded-none
 duration-200
 input-input
-outline-none
+outline-hidden
 px-0
 py-4
 text-neutral-200

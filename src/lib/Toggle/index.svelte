@@ -2,12 +2,10 @@
 	// Packages
 	import { getters, Toggle } from "melt/builders";
 	import { backOut, cubicOut } from "svelte/easing";
+	import { scale } from "svelte/transition";
 
 	// Styles
 	import { ButtonStyles, IconBottomLayer, IconTopLayer } from "./styles";
-
-	// Utils
-	import { scaleAndTransform } from "../../utils";
 
 	// Types
 	import type { Props } from "./types";
@@ -36,15 +34,13 @@
 		<i
 			aria-hidden="true"
 			class="fa-solid {solidFaIconClass} {IconTopLayer}"
-			in:scaleAndTransform={{
+			in:scale={{
 				duration: 300,
-				easingFn: backOut,
-				transform: "translate(-50%, -50%)"
+				easing: backOut
 			}}
-			out:scaleAndTransform={{
+			out:scale={{
 				duration: 300,
-				easingFn: cubicOut,
-				transform: "translate(-50%, -50%)"
+				easing: cubicOut
 			}}
 		></i>
 	{/if}

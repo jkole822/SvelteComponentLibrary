@@ -28,7 +28,7 @@ ease-in-out
 flex
 items-center
 justify-center
-outline-none
+outline-hidden
 overflow-hidden
 popover-button
 relative
@@ -73,7 +73,7 @@ h-6
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-1
 popover-close-button
 right-4

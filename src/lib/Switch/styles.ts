@@ -7,7 +7,7 @@ w-0
 
 [&:checked_+_.slider]:border-2
 [&:checked_+_.slider]:border-primary-600
-[&:checked_+_.slider]:shadow-[0_0_20px_rgba(var(--color-primary-600)_/_0.8)]
+[&:checked_+_.slider]:shadow-[0_0_20px_--alpha(var(--color-primary-600)_/_0.8)]
 
 [&:checked_+_.slider:before]:bg-primary-300
 [&:checked_+_.slider:before]:translate-x-6

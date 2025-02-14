@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Packages
 	import { createDialog, createSync, melt } from "@melt-ui/svelte";
-	import { fade } from "svelte/transition";
+	import { fade, scale } from "svelte/transition";
 
 	// Styles
 	import {
@@ -14,9 +14,6 @@
 		OverlayStyles,
 		SubmitButtonStyles
 	} from "./styles";
-
-	// Utils
-	import { scaleAndTransform } from "../../utils";
 
 	// Types
 	import type { Props } from "./types";
@@ -70,10 +67,7 @@
 		></div>
 		<div
 			class={ContentStyles}
-			transition:scaleAndTransform={{
-				duration: 200,
-				transform: "translate(-50%, -50%)"
-			}}
+			transition:scale={{ duration: 200 }}
 			use:melt={$content}
 		>
 			{#if title}

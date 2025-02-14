@@ -119,7 +119,7 @@
 		</div>
 	</div>
 
-	<div class={`${SectionStyles} h-screen z-[100]`}>
+	<div class={`${SectionStyles} h-screen z-100`}>
 		<ul class={CarouselLinksContainerStyles}>
 			{#each items as { cta }, index}
 				<li
@@ -177,7 +177,7 @@
 
 	{#if bottomLinkCTA}
 		<div
-			class={`${SectionStyles} bg-neutral-900 py-[100px] overflow-hidden z-[200]`}
+			class={`${SectionStyles} bg-neutral-900 py-[100px] overflow-hidden z-200`}
 		>
 			<div class={SectionInnerContainerStyles}>
 				<div class={`${SectionFlexRowStyles} justify-center`}>

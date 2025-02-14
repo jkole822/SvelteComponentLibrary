@@ -10,7 +10,7 @@ translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-primary-800
+group-data-highlighted:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -30,7 +30,7 @@ bg-transparent
 duration-150
 ease-[cubic-bezier(0.4,0,0.2,1)]
 input-input
-outline-none
+outline-hidden
 p-4
 ring-[1.5px]
 ring-neutral-200
@@ -55,9 +55,9 @@ focus:ring-primary-500
 [&:focus_~_.combo-box-trigger]:bg-primary-500
 [&:focus_~_.combo-box-trigger]:text-neutral-100
 
-focus:placeholder:text-neutral-500
+focus:placeholder:!text-neutral-500
 
-placeholder:text-transparent
+placeholder:!text-transparent
 
 ${
 	hasValue
@@ -122,11 +122,11 @@ transition-all
 
 hover:bg-primary-100
 
-data-[disabled]:cursor-not-allowed
-data-[disabled]:opacity-50
+data-disabled:cursor-not-allowed
+data-disabled:opacity-50
 
-data-[highlighted]:bg-primary-200
-data-[highlighted]:text-primary-800
+data-highlighted:bg-primary-200
+data-highlighted:text-primary-800
 `;
 
 export const ListItemValueStyles = oneLine`

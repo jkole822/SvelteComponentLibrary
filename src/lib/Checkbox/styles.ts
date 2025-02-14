@@ -64,7 +64,7 @@ fill-none
 origin-center
 path
 scale-50
-stroke-[6]
+stroke-6
 stroke-neutral-100
 `;
 

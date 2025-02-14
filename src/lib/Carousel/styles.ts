@@ -80,28 +80,30 @@ sm:w-[160px]
 lg:h-[300px]
 lg:w-[200px]
 
-[&:nth-child(1)]:[transform:none]
-[&:nth-child(1)]:h-full
-[&:nth-child(1)]:opacity-100
-[&:nth-child(1)]:rounded-none
-[&:nth-child(1)]:shadow-none
-[&:nth-child(1)]:top-0
-[&:nth-child(1)]:w-full
+nth-1:[transform:none]
+nth-1:h-full
+nth-1:opacity-100
+nth-1:rounded-none
+nth-1:shadow-none
+nth-1:top-0
+nth-1:translate-y-[unset]
+nth-1:w-full
 
-[&:nth-child(2)]:[transform:none]
-[&:nth-child(2)]:h-full
-[&:nth-child(2)]:opacity-100
-[&:nth-child(2)]:rounded-none
-[&:nth-child(2)]:shadow-none
-[&:nth-child(2)]:top-0
-[&:nth-child(2)]:w-full
+nth-2:[transform:none]
+nth-2:h-full
+nth-2:opacity-100
+nth-2:rounded-none
+nth-2:shadow-none
+nth-2:top-0
+nth-2:translate-y-[unset]
+nth-2:w-full
 
-[&:nth-child(2)]:before:absolute
-[&:nth-child(2)]:before:inset-0
-[&:nth-child(2)]:before:bg-neutral-950/75
+nth-2:before:absolute
+nth-2:before:inset-0
+nth-2:before:bg-neutral-950/75
 
-[&:nth-of-type(2)_.carousel-content]:animate-carouselShow
-[&:nth-of-type(2)_.carousel-content]:block
+nth-2:[&_.carousel-content]:animate-carousel-show
+nth-2:[&_.carousel-content]:block
 `;
 
 export const ContainerStyles = oneLine`
@@ -113,8 +115,6 @@ place-items-center
 relative
 shadow-[0_3px_10px_rgba(0,0,0,0.3)]
 w-full
-
-
 
 2xs:min-h-[500px]
 

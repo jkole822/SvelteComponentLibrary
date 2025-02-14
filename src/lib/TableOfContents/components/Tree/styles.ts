@@ -6,12 +6,12 @@ items-center
 justify-center
 gap-1
 no-underline
-outline-none
+outline-hidden
 ring-primary-500
 rounded
 transition-colors
 
-data-[active]:text-primary-500
+data-active:text-primary-500
 
 hover:!text-primary-300
 

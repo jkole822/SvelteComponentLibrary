@@ -13,7 +13,7 @@ block
 bg-transparent
 duration-300
 ease-out
-outline-none
+outline-hidden
 relative
 rounded-md
 size-16
@@ -26,7 +26,7 @@ active:bg-neutral-600
 disabled:bg-neutral-900
 disabled:cursor-not-allowed
 
-focus-visible:ring
+focus-visible:ring-3
 focus-visible:ring-primary-500
 
 hover:cursor-pointer
@@ -35,9 +35,9 @@ hover:bg-neutral-700
 
 export const IconBottomLayer = oneLine`
 ${CenterStyles}
-[-webkit-text-stroke:2px_rgb(var(--color-neutral-500))]
-[[data-checked]_&]:[-webkit-text-stroke:0]
-[[data-checked]_&]:delay-300
+[-webkit-text-stroke:2px_var(--color-neutral-500)]
+in-data-checked:[-webkit-text-stroke:0]
+in-data-checked:delay-300
 text-transparent
 toggle-icon
 toggle-icon-bottom-layer
@@ -45,7 +45,7 @@ toggle-icon-bottom-layer
 
 export const IconTopLayer = oneLine`
 ${CenterStyles}
-origin-[0%_0%]
+origin-center
 text-primary-500
 toggle-icon
 toggle-icon-top-layer

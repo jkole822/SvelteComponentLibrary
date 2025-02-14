@@ -11,7 +11,7 @@ export const InputStyles = oneLine`
 bg-neutral-900
 duration-300
 ease-in-out
-outline-none
+outline-hidden
 pin-input
 ring-2
 ring-neutral-600

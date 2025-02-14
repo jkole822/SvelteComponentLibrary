@@ -44,7 +44,7 @@ group-data-[orientation=vertical]:w-1
 `;
 
 export const TriggerStyles = oneLine`
-[padding-inline:theme(spacing.2)]
+[padding-inline:--spacing(2)]
 bg-neutral-950
 flex
 font-medium
@@ -54,7 +54,7 @@ h-12
 items-center
 justify-center
 leading-4
-outline-none
+outline-hidden
 relative
 ring-primary-500
 rounded-none
@@ -67,11 +67,11 @@ focus:relative
 focus-visible:z-10
 focus-visible:ring-2
 
-data-[orientation=vertical]:[padding-inline:theme(spacing.3)]
+data-[orientation=vertical]:[padding-inline:--spacing(3)]
 
-data-[active]:bg-neutral-900
-data-[active]:ring-primary-500
-data-[active]:text-neutral-100
+data-active:bg-neutral-900
+data-active:ring-primary-500
+data-active:text-neutral-100
 
-data-[active]:focus:relative
+data-active:focus:relative
 `;

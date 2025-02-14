@@ -35,7 +35,7 @@
 	</fieldset>
 	<div class="mt-5 flex justify-end">
 		<Button
-			className="before:bg-[linear-gradient(135deg,_rgb(var(--color-neutral-900))_0%,_rgb(var(--color-neutral-900))_50%,_rgb(var(--color-primary-600))_50%,_rgb(var(--color-primary-500))_60%)]"
+			className="before:bg-[linear-gradient(135deg,_var(--color-neutral-900)_0%,_var(--color-neutral-900)_50%,_var(--color-primary-600))_50%,_var(--color-primary-500)_60%)]"
 			>{faker.lorem.word()}</Button
 		>
 	</div>

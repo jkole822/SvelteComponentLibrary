@@ -9,15 +9,15 @@ shadow-lg
 text-primary-300
 w-full
 
-[&_[data-melt-calendar-prevbutton]]:p-1
-[&_[data-melt-calendar-prevbutton]]:rounded-lg
-[&_[data-melt-calendar-prevbutton]]:transition-all
+**:data-melt-calendar-prevbutton:p-1
+**:data-melt-calendar-prevbutton:rounded-lg
+**:data-melt-calendar-prevbutton:transition-all
 
 [&_[data-melt-calendar-prevbutton]:hover]:bg-primary-500/20
 
-[&_[data-melt-calendar-nextbutton]]:p-1
-[&_[data-melt-calendar-nextbutton]]:rounded-lg
-[&_[data-melt-calendar-nextbutton]]:transition-all
+**:data-melt-calendar-nextbutton:p-1
+**:data-melt-calendar-nextbutton:rounded-lg
+**:data-melt-calendar-nextbutton:transition-all
 
 [&_[data-melt-calendar-nextbutton]:hover]:bg-primary-500/20
 
@@ -31,20 +31,20 @@ w-full
 [&_[data-melt-calendar-nextbutton][data-disabled]]:pointer-events-none
 [&_[data-melt-calendar-nextbutton][data-disabled]]:rounded-lg
 
-[&_[data-melt-calendar-heading]]:font-semibold
+**:data-melt-calendar-heading:font-semibold
 
-[&_[data-melt-calendar-grid]]:w-full
+**:data-melt-calendar-grid:w-full
 
-[&_[data-melt-calendar-cell]]:cursor-pointer
-[&_[data-melt-calendar-cell]]:flex
-[&_[data-melt-calendar-cell]]:h-6
-[&_[data-melt-calendar-cell]]:items-center
-[&_[data-melt-calendar-cell]]:justify-center
-[&_[data-melt-calendar-cell]]:p-4
-[&_[data-melt-calendar-cell]]:ring-primary-400
-[&_[data-melt-calendar-cell]]:rounded-lg
-[&_[data-melt-calendar-cell]]:select-none
-[&_[data-melt-calendar-cell]]:w-6
+**:data-melt-calendar-cell:cursor-pointer
+**:data-melt-calendar-cell:flex
+**:data-melt-calendar-cell:h-6
+**:data-melt-calendar-cell:items-center
+**:data-melt-calendar-cell:justify-center
+**:data-melt-calendar-cell:p-4
+**:data-melt-calendar-cell:ring-primary-400
+**:data-melt-calendar-cell:rounded-lg
+**:data-melt-calendar-cell:select-none
+**:data-melt-calendar-cell:w-6
 
 [&_[data-melt-calendar-cell]:hover]:bg-primary-200 
 [&_[data-melt-calendar-cell]:hover]:text-primary-700 
@@ -89,46 +89,46 @@ date-range-picker-container
 [&_[data-melt-datefield-field]_div:last-of-type]:ml-4
 [&_[data-melt-datefield-field]_div:last-of-type]:w-full
 
-[&_[data-melt-popover-content]]:bg-neutral-100
-[&_[data-melt-popover-content]]:min-w-80
-[&_[data-melt-popover-content]]:rounded-md
-[&_[data-melt-popover-content]]:shadow-sm
-[&_[data-melt-popover-content]]:z-10
+**:data-melt-popover-content:bg-neutral-100
+**:data-melt-popover-content:min-w-80
+**:data-melt-popover-content:rounded-md
+**:data-melt-popover-content:shadow-xs
+**:data-melt-popover-content:z-10
 
-[&_[data-melt-popover-trigger]]:bg-primary-500
-[&_[data-melt-popover-trigger]]:duration-200
-[&_[data-melt-popover-trigger]]:ease-in-out
-[&_[data-melt-popover-trigger]]:outline-none
-[&_[data-melt-popover-trigger]]:py-0.5
-[&_[data-melt-popover-trigger]]:px-1.5
-[&_[data-melt-popover-trigger]]:ring-primary-300
-[&_[data-melt-popover-trigger]]:rounded-md
-[&_[data-melt-popover-trigger]]:text-sm
-[&_[data-melt-popover-trigger]]:text-neutral-100
-[&_[data-melt-popover-trigger]]:transition-all
+**:data-melt-popover-trigger:bg-primary-500
+**:data-melt-popover-trigger:duration-200
+**:data-melt-popover-trigger:ease-in-out
+**:data-melt-popover-trigger:outline-hidden
+**:data-melt-popover-trigger:py-0.5
+**:data-melt-popover-trigger:px-1.5
+**:data-melt-popover-trigger:ring-primary-300
+**:data-melt-popover-trigger:rounded-md
+**:data-melt-popover-trigger:text-sm
+**:data-melt-popover-trigger:text-neutral-100
+**:data-melt-popover-trigger:transition-all
 
 [&_[data-melt-popover-trigger]:focus-visible]:ring-2
 
 [&_[data-melt-popover-trigger]:hover]:bg-primary-700/90
 
-[&_[data-melt-datefield-label]]:font-bold
-[&_[data-melt-datefield-label]]:select-none
-[&_[data-melt-datefield-label]]:text-primary-500
-[&_[data-melt-datefield-label]]:text-sm
-[&_[data-melt-datefield-label]]:tracking-wide
-[&_[data-melt-datefield-label]]:uppercase
+**:data-melt-datefield-label:font-bold
+**:data-melt-datefield-label:select-none
+**:data-melt-datefield-label:text-primary-500
+**:data-melt-datefield-label:text-sm
+**:data-melt-datefield-label:tracking-wide
+**:data-melt-datefield-label:uppercase
 
-[&_[data-melt-datefield-field]]:bg-transparent
-[&_[data-melt-datefield-field]]:flex
-[&_[data-melt-datefield-field]]:items-center
-[&_[data-melt-datefield-field]]:min-w-40
-[&_[data-melt-datefield-field]]:mt-1
-[&_[data-melt-datefield-field]]:p-4
-[&_[data-melt-datefield-field]]:ring-2
-[&_[data-melt-datefield-field]]:ring-neutral-200
-[&_[data-melt-datefield-field]]:rounded-md
-[&_[data-melt-datefield-field]]:text-neutral-200
-[&_[data-melt-datefield-field]]:w-full
+**:data-melt-datefield-field:bg-transparent
+**:data-melt-datefield-field:flex
+**:data-melt-datefield-field:items-center
+**:data-melt-datefield-field:min-w-40
+**:data-melt-datefield-field:mt-1
+**:data-melt-datefield-field:p-4
+**:data-melt-datefield-field:ring-2
+**:data-melt-datefield-field:ring-neutral-200
+**:data-melt-datefield-field:rounded-md
+**:data-melt-datefield-field:text-neutral-200
+**:data-melt-datefield-field:w-full
 
 [&_[data-melt-datefield-field]:focus-within]:ring-primary-500
 
@@ -137,9 +137,9 @@ date-range-picker-container
 
 [&_[data-melt-datefield-label][data-invalid]]:text-red-400
 
-[&_[data-melt-datefield-segment]]:outline-none
-[&_[data-melt-datefield-segment]]:ring-primary-300
-[&_[data-melt-datefield-segment]]:rounded
+**:data-melt-datefield-segment:outline-hidden
+**:data-melt-datefield-segment:ring-primary-300
+**:data-melt-datefield-segment:rounded-sm
 
 [&_[data-melt-datefield-segment]:focus]:ring-2
 
@@ -147,8 +147,8 @@ date-range-picker-container
 
 [&_[data-melt-datefield-segment]:not([data-segment="literal"])]:px-0.5
 
-[&_[data-melt-datefield-validation]]:self-start
-[&_[data-melt-datefield-validation]]:text-red-400
+**:data-melt-datefield-validation:self-start
+**:data-melt-datefield-validation:text-red-400
 `;
 
 export const HeaderStyles = oneLine`

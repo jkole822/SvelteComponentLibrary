@@ -28,7 +28,7 @@ md:w-[calc(100%-288px)]
 `;
 
 export const OverlayStyles = oneLine`
-backdrop-blur-sm
+backdrop-blur-xs
 bg-neutral-900/50
 fixed
 inset-0
@@ -68,9 +68,9 @@ z-10
 
 [&_>_button]:duration-200
 [&_>_button]:ease-in-out
-[&_>_button]:outline-none
+[&_>_button]:outline-hidden
 [&_>_button]:ring-primary-500
-[&_>_button]:rounded
+[&_>_button]:rounded-sm
 [&_>_button]:transition-colors
 
 [&_>_button:focus-visible]:ring-2

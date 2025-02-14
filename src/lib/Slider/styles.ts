@@ -42,12 +42,12 @@ w-full
 export const ThumbStyles = oneLine`
 bg-neutral-100
 h-5
-outline-none
+outline-hidden
 rounded-full
 slider-thumb
 w-5
 
-hover:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.4)]
+hover:shadow-[0_0_0_4px_--alpha(var(--color-primary-400)_/_0.4)]
 
-focus:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.7)]
+focus:shadow-[0_0_0_4px_--alpha(var(--color-primary-400)_/_0.7)]
 `;

@@ -12,8 +12,8 @@ size-5
 `;
 
 export const CircleStyles = oneLine`
-bg-[linear-gradient(to_right_bottom,_rgb(var(--color-primary-300)),_rgb(var(--color-primary-600)))]
-outline-none
+bg-[linear-gradient(to_right_bottom,_var(--color-primary-300),_var(--color-primary-600))]
+outline-hidden
 radio-group-circle
 rounded-full
 size-5
@@ -58,7 +58,7 @@ flex-col
 gap-0.5
 radio-group-option-container
 
-[[data-orientation=horizontal]_&]:flex-row
+in-data-[orientation=horizontal]:flex-row
 `;
 
 export const OptionStyles = oneLine`
@@ -67,7 +67,7 @@ duration-300
 flex
 gap-2
 items-center
-outline-none
+outline-hidden
 px-4
 py-3.5
 radio-option

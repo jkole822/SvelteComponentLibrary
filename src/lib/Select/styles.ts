@@ -16,7 +16,7 @@ translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-primary-800
+group-data-highlighted:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -47,11 +47,11 @@ rounded-md
 select-item
 text-neutral-300
 
-group-data-[disabled]:cursor-not-allowed
-group-data-[disabled]:opacity-50
+group-data-disabled:cursor-not-allowed
+group-data-disabled:opacity-50
 
-group-data-[highlighted]:bg-primary-200
-group-data-[highlighted]:text-primary-800
+group-data-highlighted:bg-primary-200
+group-data-highlighted:text-primary-800
 `;
 
 export const LabelStyles = oneLine`
@@ -83,7 +83,7 @@ bg-transparent
 flex
 items-center
 justify-between
-outline-none
+outline-hidden
 p-4
 relative
 ring-2

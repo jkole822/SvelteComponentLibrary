@@ -62,6 +62,7 @@
 	</div>
 </TableOfContents>
 
+<!--
 <style lang="postcss">
 	#container > h1 {
 		@apply capitalize font-black text-primary-500 text-3xl tracking-wide;
@@ -83,3 +84,4 @@
 		@apply font-medium text-primary-300 tracking-wider uppercase;
 	}
 </style>
+-->

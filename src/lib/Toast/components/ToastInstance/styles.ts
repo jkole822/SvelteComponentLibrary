@@ -16,7 +16,7 @@ absolute
 duration-200
 ease-in
 h-6
-outline-none
+outline-hidden
 p-1
 right-2
 ring-primary-400

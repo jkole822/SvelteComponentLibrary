@@ -22,7 +22,7 @@ flex
 items-center
 justify-between
 mx-auto
-outline-none
+outline-hidden
 p-4
 relative
 border-2
@@ -34,7 +34,7 @@ w-full
 z-10
 
 data-[state=open]:border-primary-500
-data-[state=open]:shadow-[0_0_20px_rgba(var(--color-primary-600)_/_0.8)]
+data-[state=open]:shadow-[0_0_20px_--alpha(var(--color-primary-600)_/_0.8)]
 
 disabled:cursor-not-allowed
 disabled:opacity-50

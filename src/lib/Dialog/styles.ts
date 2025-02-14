@@ -36,7 +36,7 @@ h-6
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-1
 right-4
 ring-primary-400
@@ -60,7 +60,7 @@ fixed
 left-1/2
 max-h-[85vh]
 max-w-[28.125rem]
-origin-top-left
+origin-center
 p-6
 rounded-xl
 shadow-lg

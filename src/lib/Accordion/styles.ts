@@ -5,12 +5,12 @@ accordion-button
 bg-neutral-900
 cursor-pointer
 flex
-flex-grow
+grow
 font-medium
 items-center
 justify-between
 leading-none
-outline-none
+outline-hidden
 p-5
 text-left
 text-neutral-200

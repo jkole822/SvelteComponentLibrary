@@ -4,7 +4,7 @@ const SharedStyles = oneLine`
 block
 duration-300
 font-bold
-outline-none
+outline-hidden
 px-6
 py-3
 relative
@@ -22,7 +22,7 @@ const SharedLineStyles = oneLine`
 border-none
 duration-[400ms]
 font-extrabold
-outline-none
+outline-hidden
 relative
 text-neutral-200
 tracking-wide
@@ -68,8 +68,8 @@ disabled:!bg-neutral-400
 disabled:cursor-not-allowed
 
 before:absolute
-before:bg-[linear-gradient(135deg,_rgb(var(--color-neutral-800))_0%,_rgb(var(--color-neutral-800))_50%,_rgb(var(--color-primary-600))_50%,_rgb(var(--color-primary-500))_60%)]
-before:duration-400
+before:bg-[linear-gradient(135deg,_var(--color-neutral-800)_0%,_var(--color-neutral-800)_50%,_var(--color-primary-600)_50%,_var(--color-primary-500)_60%)]
+before:duration-250
 before:ease-in
 before:h-0
 before:left-0
@@ -107,16 +107,16 @@ disabled:!text-neutral-400
 disabled:cursor-not-allowed
 
 focus:scale-110
-focus:shadow-[0_0px_20px_rgba(var(--color-primary-400)_/_0.4)]
+focus:shadow-[0_0px_20px_--alpha(var(--color-primary-400)_/_0.4)]
 focus:text-neutral-800
 
 hover:scale-110
-hover:shadow-[0_0px_20px_rgba(var(--color-primary-400)_/_0.4)]
+hover:shadow-[0_0px_20px_--alpha(var(--color-primary-400)_/_0.4)]
 hover:text-neutral-800
 
 before:-translate-x-1/2
 before:-translate-y-1/2
-before:-z-[1]
+before:-z-1
 before:absolute
 before:bg-primary-400
 before:duration-300
