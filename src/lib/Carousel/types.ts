@@ -9,6 +9,7 @@ interface CTA {
 export interface CarouselItem {
   cta?: CTA;
   description?: string;
+  id: string;
   image: ImageProps;
   title?: string;
 }

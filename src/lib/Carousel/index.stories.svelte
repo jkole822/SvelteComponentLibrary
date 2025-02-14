@@ -13,6 +13,7 @@
 
 <script lang="ts">
 	import { faker } from "@faker-js/faker";
+	import { v4 as uuid } from "uuid";
 
 	const generateItems = (length: number) =>
 		Array.from({ length }).map(_ => ({
@@ -22,6 +23,7 @@
 				title: faker.lorem.word()
 			},
 			description: faker.lorem.sentence(),
+			id: uuid(),
 			image: {
 				alt: faker.lorem.words(2),
 				src: faker.image.url({ height: 900, width: 1200 })

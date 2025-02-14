@@ -48,12 +48,12 @@
 
 <div class="{className} {ContainerStyles}">
 	<div class={CarouselStyles}>
-		{#each cards as { cta, description, image, title }, index (title)}
+		{#each cards as { cta, description, id, image, title }, index (id)}
 			<div
 				class={CardStyles}
 				style:background-image="url('{image.src}')"
 				style:left={index >= 2
-					? `calc(${$isTwoExtraSmall ? '50%' : '20px'} + ${(index - 2) * displacement}px)`
+					? `calc(${$isTwoExtraSmall ? "50%" : "20px"} + ${(index - 2) * displacement}px)`
 					: 0}
 			>
 				<div class={CardContentStyles}>
