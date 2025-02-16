@@ -1,12 +1,7 @@
 import { oneLine } from "common-tags";
+import { SelectValidationStateEnum } from "./types";
 
-export const CheckContainerStyles = ({
-	isSelected
-}: {
-	isSelected: boolean;
-}) => oneLine`
-${isSelected ? "block" : "hidden"}
-
+export const CheckContainerStyles = oneLine`
 absolute
 check
 select-check-container
@@ -16,7 +11,7 @@ translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-highlighted:text-primary-800
+group-data-[highlighted=true]:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -26,38 +21,19 @@ gap-1
 select-container
 `;
 
-export const GroupLabelStyles = oneLine`
-py-1
-pl-3
-pr-4
-font-extrabold
-select-group-label
-text-primary-300
-tracking-wide
-uppercase
-`;
-
-export const ItemStyles = oneLine`
-cursor-pointer
-pl-8
-pr-4
-py-1
-relative
-rounded-md
-select-item
-text-neutral-300
-
-group-data-disabled:cursor-not-allowed
-group-data-disabled:opacity-50
-
-group-data-highlighted:bg-primary-200
-group-data-highlighted:text-primary-800
+export const ContentStyles = oneLine`
+bg-neutral-900
+outline-none
+rounded-lg
+select-content
+shadow-lg
+z-10
 `;
 
 export const LabelStyles = oneLine`
 font-bold
 select-label
-text-primary-500
+text-primary-400
 text-sm
 tracking-wide
 uppercase
@@ -69,17 +45,19 @@ flex
 flex-col
 max-h-72
 overflow-y-auto
-p-2
-rounded-md
+p-1
 select-menu
-shadow-md
-z-10
-
-focus:!ring-0
 `;
 
-export const TriggerStyles = oneLine`
+export const TriggerStyles = ({
+  receivedFocus,
+  validationState,
+}: {
+  receivedFocus?: boolean;
+  validationState?: string;
+}) => oneLine`
 bg-transparent
+cursor-pointer
 flex
 items-center
 justify-between
@@ -94,31 +72,50 @@ text-neutral-200
 transition-shadow
 w-full
 
-disabled:cursor-not-allowed
-disabled:ring-neutral-600
-disabled:text-neutral-600
+data-[disabled=true]:cursor-not-allowed
+data-[disabled=true]:ring-neutral-600
+data-[disabled=true]:text-neutral-600
 
-[&:disabled_.select-vector-container]:text-neutral-600
+[&[data-disabled=true]_.select-vector-container]:text-neutral-600
 
 focus:ring-primary-500
 
 hover:ring-primary-500
 
-[&_>_span[data-placeholder-shown]]:text-neutral-500
+${
+  receivedFocus && validationState === SelectValidationStateEnum.Invalid
+    ? `
+      !ring-red-400      
+    `
+    : ``
+}
 `;
 
 export const VectorContainerStyles = ({
-	isOpen
+  isOpen,
+  receivedFocus,
+  validationState,
 }: {
-	isOpen: boolean;
+  isOpen: boolean;
+  receivedFocus?: boolean;
+  validationState?: string;
 }) => oneLine`
 ${
-	isOpen
-		? `
+  isOpen
+    ? `
 rotate-0
+
+${
+  receivedFocus && validationState === SelectValidationStateEnum.Invalid
+    ? `
+text-red-500
+`
+    : `
 text-primary-500
 `
-		: `
+}
+`
+    : `
 rotate-180
 text-neutral-200
 `
@@ -129,6 +126,5 @@ absolute
 select-vector-container
 right-4
 top-1/2
-z-10
 transition-all
 `;

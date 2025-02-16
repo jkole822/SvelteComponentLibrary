@@ -22,7 +22,7 @@
 	const collapsible = new Collapsible({ ...getters(rest), onOpenChange });
 </script>
 
-<div {...collapsible.root} class={className}>
+<div class={className}>
 	<button {...collapsible.trigger} class={TriggerStyles}>
 		{@render buttonContent()}
 		<i

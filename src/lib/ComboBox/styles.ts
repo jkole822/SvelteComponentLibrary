@@ -1,5 +1,22 @@
 import { oneLine } from "common-tags";
 
+const SharedCloseButtonStyles = oneLine`
+duration-200
+ease-in-out
+inline-flex
+items-center
+justify-center
+outline-hidden
+p-2
+ring-primary-400
+rounded-full
+transition-all
+focus:ring-2
+
+hover:bg-primary-100 
+hover:text-primary-600
+`;
+
 export const CheckContainerStyles = oneLine`
 absolute
 check
@@ -111,6 +128,7 @@ cursor-pointer
 duration-100
 ease-in
 group
+outline-hidden
 pl-7
 pr-4
 py-2
@@ -120,13 +138,29 @@ scroll-my-2
 text-sm
 transition-all
 
-hover:bg-primary-100
+data-[disabled=true]:cursor-not-allowed
+data-[disabled=true]:opacity-50
 
-data-disabled:cursor-not-allowed
-data-disabled:opacity-50
+data-[highlighted=true]:bg-primary-200
+data-[highlighted=true]:text-primary-800
+`;
 
-data-highlighted:bg-primary-200
-data-highlighted:text-primary-800
+export const ListItemDescriptionStyles = oneLine`
+block
+combo-box-list-item-description
+opacity-75
+text-sm
+text-neutral-400
+
+in-data-[highlighted=true]:text-primary-800
+`;
+
+export const ListItemLabelStyles = oneLine`
+block
+combo-box-list-item-label
+text-neutral-200
+
+in-data-[highlighted=true]:text-primary-900
 `;
 
 export const ListItemValueStyles = oneLine`
@@ -145,12 +179,22 @@ overflow-hidden
 z-10
 `;
 
+export const MultiSelectionCloseButtonStyles = oneLine`
+${SharedCloseButtonStyles}
+-translate-y-1/2
+absolute
+right-16
+size-6
+text-neutral-200
+top-1/2
+`;
+
 export const NoResultsStyles = oneLine`
 combo-box-no-results
 opacity-75
 pl-4
 text-sm
-`
+`;
 
 export const ScrollContainerStyles = oneLine`
 bg-neutral-900
@@ -164,6 +208,25 @@ p-2
 rounded-md
 shadow-lg
 text-neutral-300
+`;
+
+export const SelectionItemCloseButtonStyles = oneLine`
+${SharedCloseButtonStyles}
+size-4
+`;
+
+export const SelectionItemStyles = oneLine`
+bg-neutral-900
+combo-box-selection-item
+gap-1.5
+inline-flex
+items-center
+px-1.5
+py-0.5
+ring-2
+ring-neutral-600
+rounded
+text-neutral-400
 `;
 
 export const TriggerStyles = oneLine`

@@ -1,124 +1,240 @@
 <script lang="ts">
 	// Packages
-	import { createSelect, melt } from "@melt-ui/svelte";
-	import { fly } from "svelte/transition";
+	import { getters, Select } from "melt/builders";
+	import { slide } from "svelte/transition";
+	import { size } from "@floating-ui/dom";
 
 	// Styles
 	import {
 		CheckContainerStyles,
 		ContainerStyles,
-		GroupLabelStyles,
-		ItemStyles,
+		ContentStyles,
 		LabelStyles,
 		MenuStyles,
 		TriggerStyles,
 		VectorContainerStyles
 	} from "./styles";
-
-	// Utils
-	import { toComboBoxOption } from "../../utils";
+	import {
+		ListItemDescriptionStyles,
+		ListItemLabelStyles,
+		ListItemStyles,
+		MultiSelectionCloseButtonStyles,
+		SelectionItemCloseButtonStyles,
+		SelectionItemStyles
+	} from "../ComboBox/styles";
+	import { DescriptionStyles, ErrorMessageStyles } from "../../styles";
 
 	// Types
-	import type { Props, SelectOption } from "./types";
+	import type { Props } from "./types";
+	import { SelectValidationStateEnum } from "./types";
 
 	// Props
 	let {
 		ariaLabel,
 		className = "",
-		defaultSelected,
-		disabled = false,
-		groupOptions,
-		label,
-		onSelectedChange,
+		description,
+		disabled,
+		errorMessage,
+		name,
 		options,
+		onValueChange,
 		placeholder,
-		required
+		required,
+		triggerClass = "",
+		validationState = SelectValidationStateEnum.Valid,
+		value,
+		...rest
 	}: Props = $props();
 
 	// MeltUI
-	const {
-		elements: {
-			trigger,
-			menu,
-			option: meltOption,
-			group,
-			groupLabel: meltGroupLabel,
-			label: meltLabel
+	const select = new Select({
+		...getters(rest),
+		computePositionOptions: {
+			middleware: [
+				size({
+					apply({ availableWidth, availableHeight, elements }) {
+						Object.assign(elements.floating.style, {
+							maxWidth: `${Math.max(0, availableWidth)}px`,
+							maxHeight: `${Math.max(0, availableHeight)}px`,
+							width: `${elements.reference.getBoundingClientRect().width}px`
+						});
+					}
+				})
+			],
+			placement: "bottom"
 		},
-		states: { selectedLabel, open },
-		helpers: { isSelected }
-	} = createSelect<SelectOption>({
-		defaultSelected,
-		disabled,
-		forceVisible: true,
-		onSelectedChange,
-		positioning: {
-			placement: "bottom",
-			fitViewport: true,
-			sameWidth: true
-		},
-		required
+		onValueChange,
+		value
+	});
+
+	// State
+	let receivedFocus = $state(false);
+	let validation = $state(SelectValidationStateEnum.Valid);
+
+	// Derived
+	const derivedValue = $derived(
+		select.multiple
+			? null
+			: options.find(option => option.id === select.value)?.label
+	);
+
+	const derivedValues = $derived(
+		select.multiple && select.value && Array.from(select.value).length > 0
+			? options.filter(option => select.value?.has(option.id))
+			: null
+	);
+
+	const derivedValidationState = $derived(
+		validation === SelectValidationStateEnum.Valid &&
+			validationState === SelectValidationStateEnum.Valid
+			? SelectValidationStateEnum.Valid
+			: SelectValidationStateEnum.Invalid
+	);
+
+	// Effects
+	$effect(() => {
+		if (select.multiple) {
+			if (
+				receivedFocus &&
+				required &&
+				(!derivedValues || derivedValues.length === 0)
+			) {
+				validation = SelectValidationStateEnum.Invalid;
+			} else {
+				validation = SelectValidationStateEnum.Valid;
+			}
+		} else {
+			if (receivedFocus && required && !derivedValue) {
+				validation = SelectValidationStateEnum.Invalid;
+			} else {
+				validation = SelectValidationStateEnum.Valid;
+			}
+		}
 	});
 </script>
 
-{#snippet listItem(option: SelectOption)}
-	<div class={ItemStyles}>
-		<div
-			class={CheckContainerStyles({
-				isSelected: $isSelected(option)
-			})}
-		>
-			<i aria-hidden="true" class="fa-solid fa-check"></i>
-		</div>
-		{option.label}
-	</div>
-{/snippet}
+<div class={className}>
+	<div class={`${triggerClass} ${ContainerStyles}`}>
+		<label class={LabelStyles} for={select.trigger.id}>
+			{name}
+		</label>
 
-<div class={`${className} ${ContainerStyles}`}>
-	<!-- svelte-ignore a11y_label_has_associated_control - $label contains the 'for' attribute -->
-	{#if label}
-		<label class={LabelStyles} use:melt={$meltLabel}>{label}</label>
-	{/if}
-	<button class={TriggerStyles} use:melt={$trigger} aria-label={ariaLabel}>
-		{$selectedLabel || placeholder}
-		<div class={VectorContainerStyles({ isOpen: $open })}>
-			<i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
-		</div>
-	</button>
-	{#if $open}
-		<div use:melt={$menu} transition:fly={{ duration: 300, y: 10 }}>
-			<ul class={MenuStyles}>
-				{#if groupOptions}
-					{#each groupOptions as { label: groupLabel, values }}
-						<li use:melt={$group(groupLabel)}>
-							<div
-								class={GroupLabelStyles}
-								use:melt={$meltGroupLabel(groupLabel)}
-							>
-								{groupLabel}
-							</div>
-							{#each values as option}
-								<div
-									use:melt={$meltOption(
-										toComboBoxOption(option)
-									)}
-									class="group"
-								>
-									{@render listItem(option)}
-								</div>
-							{/each}
-						</li>
-					{/each}
-				{:else}
-					{#each options as option}
-						<li
-							use:melt={$meltOption(toComboBoxOption(option))}
-							class="group"
+		<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+		<div
+			{...select.trigger}
+			{...disabled
+				? {
+						onclick: e => e.preventDefault()
+					}
+				: {}}
+			aria-label={ariaLabel}
+			class={TriggerStyles({
+				receivedFocus: receivedFocus,
+				validationState: derivedValidationState
+			})}
+			data-disabled={disabled}
+			tabindex="0"
+		>
+			{#if derivedValues}
+				<div class="flex gap-2.5 flex-wrap w-[calc(100%-5.5rem)]">
+					{#each derivedValues as option}
+						<span
+							class={SelectionItemStyles}
+							onpointerdown={e => e.stopPropagation()}
 						>
-							{@render listItem(option)}
-						</li>
+							<span>{option.label}</span>
+							<button
+								aria-label="Remove Selection"
+								class={SelectionItemCloseButtonStyles}
+								onclick={() => select.value?.delete(option.id)}
+							>
+								<i aria-hidden="true" class="fa-solid fa-xmark"
+								></i>
+							</button>
+						</span>
 					{/each}
+				</div>
+
+				{#if derivedValues.length > 0}
+					<button
+						aria-label="Clear All Selections"
+						class={MultiSelectionCloseButtonStyles}
+						onclick={() => select.value?.clear()}
+						onpointerdown={e => e.stopPropagation()}
+					>
+						<i aria-hidden="true" class="fa-solid fa-xmark"></i>
+					</button>
 				{/if}
+			{:else if derivedValue}
+				{derivedValue}
+			{:else}
+				<span class="text-neutral-500">{placeholder}</span>
+			{/if}
+
+			<div
+				class={VectorContainerStyles({
+					isOpen: select.open,
+					receivedFocus: receivedFocus,
+					validationState: derivedValidationState
+				})}
+				role="presentation"
+			>
+				<i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
+			</div>
+		</div>
+	</div>
+
+	{#if description || errorMessage}
+		<div class="mt-2">
+			{#if description}
+				<div class={DescriptionStyles}>
+					{description}
+				</div>
+			{/if}
+			{#if errorMessage && derivedValidationState === SelectValidationStateEnum.Invalid}
+				<div class={ErrorMessageStyles}>
+					{errorMessage}
+				</div>
+			{/if}
+		</div>
+	{/if}
+
+	{#if select.open}
+		<div
+			{...select.content}
+			class={ContentStyles}
+			onblur={() => (receivedFocus = true)}
+			transition:slide={{ duration: 150 }}
+		>
+			<ul class={MenuStyles}>
+				{#each options as { description, disabled, id, label }}
+					{@const selectOption = select.getOption(id)}
+					<li
+						{...selectOption}
+						class={ListItemStyles}
+						data-disabled={disabled}
+						{...disabled
+							? {
+									onclick: e => e.preventDefault()
+								}
+							: {}}
+					>
+						<div class={ListItemLabelStyles}>
+							{label}
+						</div>
+						{#if description}
+							<div class={ListItemDescriptionStyles}>
+								{description}
+							</div>
+						{/if}
+						{#if selectOption["aria-selected"]}
+							<div class={CheckContainerStyles}>
+								<i aria-hidden="true" class="fa-solid fa-check"
+								></i>
+							</div>
+						{/if}
+					</li>
+				{/each}
 			</ul>
 		</div>
 	{/if}

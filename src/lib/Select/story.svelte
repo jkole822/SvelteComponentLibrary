@@ -2,31 +2,51 @@
 	// Components
 	import Select from "./index.svelte";
 
-	// Story
+	// Styles
 	import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 	// Types
-	import type { SelectOption, Props } from "./types";
-	import type { CreateSelectProps } from "@melt-ui/svelte";
+	import type { Props, SelectItem } from "./types";
 
 	// Props
-	let { onSelectedChange: _, ...rest }: Props = $props();
+	let { defaultValue, multiple, options, ...rest }: Props = $props();
 
 	// State
-	let value: SelectOption | undefined = $state();
+	let value = $state(defaultValue);
 
-	const handleChange: CreateSelectProps<SelectOption>["onSelectedChange"] = ({
-		curr,
-		next
-	}) => {
-		const isDeselectedValue = curr?.value.value === next?.value.value;
-		value = isDeselectedValue ? undefined : next?.value;
-		return isDeselectedValue ? undefined : next;
-	};
+	// Derived
+	const derivedValue = $derived(
+		multiple ? null : options.find(option => option.id === value)
+	);
+
+	const derivedValues = $derived(
+		multiple && value && Array.from(value).length > 0
+			? options.filter(option => value?.has(option.id))
+			: null
+	);
 </script>
 
-<Select {...rest} onSelectedChange={handleChange} />
+{#snippet bindingCheck(item: SelectItem | undefined)}
+	<p class={PararaphStyles}>
+		Label: {item?.label ?? derivedValue?.label ?? ""}
+	</p>
+	<p class={PararaphStyles}>
+		Description: {item?.description ?? derivedValue?.description ?? ""}
+	</p>
+{/snippet}
 
+<Select
+	{...rest}
+	onValueChange={selected => (value = selected)}
+	{multiple}
+	{options}
+	{value}
+/>
 <p class={SubHeadingStyles}>Binding Check</p>
-<p class={PararaphStyles}>Label: {value?.label}</p>
-<p class={PararaphStyles}>Value: {value?.value}</p>
+{#if multiple && derivedValues}
+	{#each derivedValues as item}
+		{@render bindingCheck(item)}
+	{/each}
+{:else}
+	{@render bindingCheck(undefined)}
+{/if}

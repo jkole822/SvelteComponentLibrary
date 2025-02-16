@@ -1,5 +1,18 @@
 import { oneLine } from "common-tags";
 
+export const DescriptionStyles = oneLine`
+description
+text-neutral-primary-400
+text-sm
+`;
+
+export const ErrorMessageStyles = oneLine`
+error-message
+font-medium
+text-red-400
+text-sm
+`;
+
 export const IconStyles = oneLine`
 fa-solid
 fa-ghost

@@ -1,25 +1,36 @@
-import type { CreateSelectProps } from "@melt-ui/svelte";
+import type { SvelteSet } from "svelte/reactivity";
 
-export interface SelectOption {
-	disabled?: boolean;
-	label: string;
-	value: string;
+export enum SelectValidationStateEnum {
+	Valid = "valid",
+	Invalid = "invalid"
 }
 
-export interface SelectGroupOption {
+export type SelectValidationState =
+	| SelectValidationStateEnum.Valid
+	| SelectValidationStateEnum.Invalid;
+
+export interface SelectItem {
+	id: string;
+	description?: string;
+	disabled?: boolean;
 	label: string;
-	values: SelectOption[];
 }
 
 export interface Props {
 	ariaLabel?: string;
 	className?: string;
-	defaultSelected?: CreateSelectProps<SelectOption>["defaultSelected"];
+	defaultValue?: string | SvelteSet<string>;
+	description?: string;
 	disabled?: boolean;
-	groupOptions?: SelectGroupOption[];
-	label?: string;
-	onSelectedChange?: CreateSelectProps<SelectOption>["onSelectedChange"];
-	options: SelectOption[];
-	placeholder: string;
+	errorMessage?: string;
+	multiple?: boolean;
+	name: string;
+	onValueChange: (value: string | SvelteSet<string> | undefined) => void;
+	options: SelectItem[];
+	placeholder?: string;
 	required?: boolean;
+	triggerClass?: string;
+	typeaheadTimeout?: number;
+	validationState?: SelectValidationState;
+	value?: string | SvelteSet<string>;
 }
